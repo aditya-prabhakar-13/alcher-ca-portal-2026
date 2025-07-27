@@ -1,0 +1,37 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/heroSection.css' %}" />
+<style>
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
+</style>
+<div class="heroSectionn">
+  <div class="contHolderBox">
+    <p class="alcherTxt">ALCHERINGA 2025</p>
+    <p class="caTxt">CAMPUS AMBASSADOR</p>
+    <p class="caPara">
+      With the vision to bring out the essential Leadership traits in you,
+      Alcheringa IIT Guwahati presents the Campus Ambassador Program.
+    </p>
+  </div>
+  <a href="{% url 'register_single' %}" class="joinBtn navhero-btn">Join Now</a>
+  <div class="counterBox">
+    <div class="valBox">
+      <p class="num">500+</p>
+      <p class="title1">Colleges</p>
+    </div>
+    <div class="valBox">
+      <p class="num">100+</p>
+      <p class="title1">Events</p>
+    </div>
+    <div class="valBox">
+      <p class="num">140k+</p>
+      <p class="title1">Footfall</p>
+    </div>
+    <div class="valBox">
+      <p class="num">45+</p>
+      <p class="title1">Competitions</p>
+    </div>
+  </div>
+</div>

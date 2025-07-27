@@ -1,0 +1,141 @@
+{% extends '../basic.html'%} {% load static %} {%block title%}Dashboard |
+Alcheringa {%endblock%} {% block body %}
+<style>
+    .leaderboard-body{
+        padding:1rem;
+    }
+  @media only screen and (max-width: 930px) {
+    .leaderboard-body {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+  }
+  @media only screen and (min-width: 9300px) {
+    .leaderboard-ind {
+      width: 35.5vw;
+    }
+  }
+  
+</style>
+
+<body class="bg-blue-50">
+  <div class="body flex" style="background-color: #f6ebff">
+    {% include "../navbar.html" %}
+    <div style="display: flex; gap: 5vw" class="leaderboard-body">
+      <!-- Singles Leaderboard -->
+      <div class="leaderboard1" style="display: flex; flex-direction: column">
+        <div class="ml-4" style="font-size: larger; font-weight: bolder">
+          Singles Leaderboard
+        </div>
+        <div class="bg-white mt-2 rounded p-6 w-screen w-auto">
+          {% for user in users %}
+          <div
+            class="px-3 my-2"
+            style="
+              border: 1px solid rgb(218, 218, 218);
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <div
+              class="pr-3"
+              style="border-right: 1px solid rgb(218, 218, 218)"
+            >
+              <div
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  padding: 5px 13px 5px 13px;
+                "
+              >
+                {{ forloop.counter }}
+              </div>
+            </div>
+            <div class="mx-4 my-2">
+              {{ user.firstname }} {{ user.lastname }}
+            </div>
+            <div
+              class="ml-auto pl-3"
+              style="
+                border-left: 1px solid rgb(218, 218, 218);
+                color: rgb(82, 82, 82);
+                width: 60px;
+                text-align: center;
+              "
+            >
+              {{ user.points }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Group Leaderboard -->
+      <div
+        class="leaderboard1"
+        style="display: flex; flex-direction: column;"
+      >
+        <div class="ml-4" style="font-size: larger; font-weight: bolder">
+          Group Leaderboard
+        </div>
+        <div class="bg-white mt-2 rounded p-6">
+          {% for user in grpusers %}
+          <div
+            class="px-3 my-2"
+            style="
+              border: 1px solid rgb(218, 218, 218);
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+            "
+          >
+            <div
+              class="pr-3"
+              style="border-right: 1px solid rgb(218, 218, 218)"
+            >
+              <div
+                style="
+                  border: 1px solid grey;
+                  border-radius: 20px;
+                  padding: 5px 13px 5px 13px;
+                "
+              >
+                {{ forloop.counter }}
+              </div>
+            </div>
+            <div class=" my-2 px-4 ">
+              {{ user.leader.firstname }} {{ user.leader.lastname }} <br />
+              {{ user.executive.firstname }} {{ user.executive.lastname }}
+            </div>
+            <div
+              class="ml-auto pl-3"
+              style="
+                border-left: 1px solid rgb(218, 218, 218);
+                color: rgb(82, 82, 82);
+                width: 60px;
+                text-align: center;
+              "
+            >
+              {{ user.getPoints }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <!-- <div class="pagination" style="align-items:center">
+            {% if index1.has_previous %}
+                <a href="?page=1" class="my-2 mx-2 btn btn-outline-info btn-sm">First</a>
+                <a href="?page={{ index1.previous_page_number }}" class="my-2 mx-2 btn btn-outline-info btn-sm">Previous</a>
+            {% endif %}
+            <span>Page <span style="color:rgb(13 202 240)" >{{ index1.number }} </span> of {{ index1.paginator.num_pages }}</span>
+            {% if index1.has_next %}
+                <a href="?page={{ index1.next_page_number }}" class="my-2 mx-2 btn btn-outline-info btn-sm">Next</a>
+                {% endif %}
+            <a href="?page={{ index1.paginator.num_pages }}" class="my-2 mx-2 btn btn-outline-info btn-sm">Last</a>
+        </div> -->
+    </div>
+  </div>
+</body>
+{%endblock%} {% block script %} {% endblock %}

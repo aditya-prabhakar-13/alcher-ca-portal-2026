@@ -1,0 +1,162 @@
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Extralight.ttf) format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Semibold.ttf) format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+.heroSectionn {
+  height: 110vh;
+  width: 100%;
+  background: linear-gradient(to right, #b542fb6b 42%, #b542fb 100%);
+  background-image: url(../images/purple1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  font-family: "GeneralSans";
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 82%, 15% 89%, 0 100%);
+}
+
+@media screen and (max-width: 768px) {
+  .heroSectionn {
+    clip-path: polygon(100.3% 0%, 100.3% 87.8%, 20.1% 91%, 0% 96.8%, 0% 0%);
+    height: 80vh;
+  }
+  .movie_splide__arrow > img {
+    transform: scale(1);
+  }
+  .testimonial_splide__arrow img {
+    transform: scale(1);
+  }
+}
+
+.contHolderBox {
+  /* position: absolute; */
+  /* top: 12.36vw; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contHolderBox > p {
+  color: white;
+}
+
+.alcherTxt {
+  font-size: 2.55vmax;
+  font-weight: 600;
+  text-align: center;
+  font-family: GeneralSans;
+}
+
+.caTxt {
+  font-size: 4.44vmax;
+  font-weight: 700;
+  text-align: center;
+  font-family: GeneralSans;
+}
+
+.caPara {
+  font-size: 1.4vmax;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 0.3vw;
+  width: 60%;
+  font-family: GeneralSans;
+}
+
+.joinBtn {
+  border-radius: 5px;
+  background: #b542fb;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3vmax;
+  padding: 0.5rem 1.25rem;
+  color: white;
+  text-decoration: none;
+  
+  font-family: GeneralSans;
+}
+
+.counterBox {
+  width: 100%;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.valBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.valBox > p {
+  color: white;
+  overflow: hidden;
+  text-align: center;
+  margin: 0;
+}
+
+.num {
+  font-size: 3vmax;
+  font-weight: 700;
+  font-family: GeneralSans;
+}
+
+.title1 {
+  font-size: 1.75vmax;
+  font-weight: 700;
+  font-family: GeneralSans;
+}

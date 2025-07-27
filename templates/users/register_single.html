@@ -1,0 +1,258 @@
+{% extends '../basicbootstrap.html'%}
+{% load static %}
+{%block title%}Register | Alcheringa {%endblock%}
+{% block style %}
+<link rel="stylesheet" href={% static "css/register_login.css" %}>
+<link rel="stylesheet" href={% static "css/autoFill.css" %}>
+<script src="{% static 'js/autoFill.js' %}"></script>
+{% endblock %}
+{% block body %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- CSS only -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+
+{% if request.session.show_alert %}
+	
+    <script>
+        // alert('Registration successful. Check your mail for the link to activate your account.');
+        window.location.href = "{% url 'successfull' %}";
+    </script>
+    
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+</script>
+<nav class="navbar navbar-light" style="background-color: #F6EBFF; padding: 1vh 4.5vh">
+	<div class="ccontainer-fluid" style="width: 100%; height:100%">
+		<a class="cnavbar-brand" href="/">
+			<img src="{% static 'images/alcherlogopurple.svg' %}" alt="">
+		</a>
+	</div>
+</nav>
+<style>
+	@media only screen and (max-width:950px) {
+		.img-div {
+			display: none;
+		}
+		.ccol{
+			width: 100%;
+		}
+	}
+	.bg-pur{
+        background-color: #B542FB;
+    }
+    .bg-pur:hover{
+        background-color: #a715ff;
+    }
+	.crow{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 5vh;
+	}
+</style>
+
+<div class="crow">
+	<div class="ccol form-div">
+		<div class="ccontainer form-wrapper">
+			<h2 >Registration</h2>
+
+			<div class="cform">
+				<div class="cform-head my-2 mb-4">
+					<div class="row1" style="display: flex; justify-content:space-evenly ; background-color: #F6EBFF; padding: 1.5vh 0.75vh; gap:10px;" >
+						<div>
+							<a href="{% url 'register_single' %}" type="button" class="register-top"
+								style="text-decoration: none;font-weight: 500;color:#B542FB">Solo
+								Registration</a>
+						</div>
+						<div>
+							<a href="{% url 'register_group' %}" type="button" class="register-top"
+								style="text-decoration: none;font-weight: 500;color:rgb(141, 141, 141)">Team
+								Registration</a>
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- <div class="progress-bar-container">
+					<i type="button" class="fa fa-chevron-circle-left" style="color: #B542FB;" id="GoBack" ></i>
+					<div class="step step1" style="background-color: #B542FB;">1</div>
+					<div class="connector connector1" ></div>
+					<div class="step step2">2</div>
+				</div> -->
+				<div class="accordion-item" style="background-color: white;">
+					<h2 class="accordion-header" id="flush-headingOne">
+						<button id="guidelinesButton" class="accordion-button collapsed btn-primary" type="button"
+							data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+							aria-controls="flush-collapseOne" style="background-color: white;">
+							<a href="#" class="guidelinesTag" style="background-color: #B542FB;">
+								Guidelines</a>
+						</button>
+					</h2>
+					<div class="overlay" id="overlay">
+						<div id="flush-collapseOne" class="accordion-collapse collapse"
+							style="background-color: #F3F6F8; padding: 10px; border-radius: 6px; color: #616C74; margin-bottom: 15px;"
+							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">
+								<div class="content" style="padding: 1% 5%; height:55vh; overflow-y: scroll;">
+									<br> 1) Following the usual method to complete registration, fill up all the details
+									from
+									your name to modules.
+
+									<br> 2) Text fields marked with a red asterisk mark (*) makes them mandatory to
+									fill.
+
+									<br> 3) Fill up the Position of Responsibility (POR) field with your role in your
+									organisation or university. For instance:
+
+									<br> &nbsp;&nbsp;&nbsp;&nbsp; a) Student. <br>
+									&nbsp;&nbsp;&nbsp;&nbsp; b) Secretary of the Music/Arts Club <br>
+									&nbsp;&nbsp;&nbsp;&nbsp; c) Fill up the role you serve in your respective college
+									<br> 4) Fill up the interested module(s) field with the performing - arts,
+									practices,
+									activities that interest you. For instance, Music, Dance, Photography, sports etc.
+									<br> 5) Give a pat to yourself; you are just a click away from being a CA of
+									Alcheringa.
+									Click the submit button and finish the email-based verification to dive into the
+									Dashboard.
+									<br> 6) Welcome to Alcheringa.
+									<br>
+								</div>
+								<br>
+								<button class="btn btn-primary" style="background-color: #B542FB; border:none"
+									id="backBtn">Back</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<form id="form" method="POST">
+					{% csrf_token %}
+					<ul class="errorlist">
+						{% if single_user_register_form.non_field_errors %}
+						<li>{{ single_user_register_form.non_field_errors }}</li>
+						{% endif %}
+						{% for field in single_user_register_form %}
+						{% if field.errors %}
+						<ul class="errorlist">
+							{% for error in field.errors %}
+							{{ error }}
+							{% endfor %}
+						</ul>
+						{% endif %}
+						{% endfor %}
+					</ul>
+					<div id="form1" style="overflow-y:scroll;">
+
+						<p class="my-1">Field marked * are mandatory</p>
+
+
+						{{ single_user_register_form.firstname }}
+						{{ single_user_register_form.email }}
+						{{ single_user_register_form.phone }}
+						{{ single_user_register_form.password1 }}
+						{{ single_user_register_form.password2 }}
+						{% comment %} <p class="my-1">Field marked * are mandatory</p> {% endcomment %}
+
+						{{ single_user_register_form.graduation_year }}
+						{{ single_user_register_form.college_name }}
+						<div class="StateAndCity">
+							<div style="width:100%">
+								<input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off"
+							 placeholder="College State*">
+
+						<div id="state-suggestions"></div>
+							</div>
+						<div style="width:100%">
+							<input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off"
+							 placeholder="College City*">
+						<div id="city-suggestions"></div>
+						</div>
+						</div>	
+						
+						{{ single_user_register_form.referred_by }}
+						<input type="submit" id="form-submit-btn"
+							class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm text-base"
+							style="background-color: #B542FB;" />
+						<!-- <button type="button" id="nextButton" class="btn btn-primary"
+							style="background-color:#B542FB ; border: none">Next Page</button> -->
+					</div>
+					<p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
+				</form>
+				<br />
+				Registered already? <a id="navlink5" style="cursor:pointer; color:#B542FB;">Login</a>
+				<br /><br />
+			</div>
+
+		</div>
+	</div>
+	<div class="ccol img-div " style = "width: 40%">
+		<!-- <img src="{% static 'images/man.svg' %}" alt="" style="width: 25vw; margin-left: 5%;"> -->
+		<img src="{% static 'images/registersingle.svg' %}" alt="" style="width: 30%; position:fixed; left:90%; top:50%; transform:translate(-90%,-50%);">
+
+	</div>
+</div>
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const guidelinesButton = document.getElementById("guidelinesButton");
+		const overlay = document.getElementById("overlay");
+		const backBtn = document.getElementById("backBtn");
+		const form1 = document.getElementById("form1");
+		const form2 = document.getElementById("form2");
+		const nextButton = document.getElementById("nextButton");
+		const GoBack = document.getElementById("GoBack");
+		guidelinesButton.addEventListener("click", function () {
+			const popupContainer = document.getElementById("flush-collapseOne");
+			if (popupContainer.classList.contains("show")) {
+				popupContainer.classList.remove("show");
+				overlay.style.display = "none";
+			} else {
+				popupContainer.classList.add("show");
+				overlay.style.display = "block";
+				
+			}
+		});
+		backBtn.addEventListener("click", function () {
+			const popupContainer = document.getElementById("flush-collapseOne");
+			if (popupContainer.classList.contains("show")) {
+				popupContainer.classList.remove("show");
+				overlay.style.display = "none";
+			}
+		})
+
+		//form next button
+		nextButton.addEventListener("click", function () {
+			form1.style.display = "none";
+			form2.style.display = "block";
+			document.querySelector(".connector").classList.add("completed");
+			document.querySelector(".step2").classList.add("completed");
+
+		});
+		//form back button
+		GoBack.addEventListener("click", function () {
+			if (form2.style.display == "none") {
+				var previousURL = "/";
+				window.location.href = previousURL;
+			} else if (form2.style.display == "block") {
+				form1.style.display = "block";
+				form2.style.display = "none";
+				document.querySelector(".step2").classList.remove("completed");
+				document.querySelector(".connector1").classList.remove("completed");
+			}
+		})
+	});
+	document.getElementById("form-submit-btn").addEventListener("click", showloading);
+
+	function showloading() {
+		document.getElementById("showload").style.display = "block"
+	}
+</script>
+{% include 'users/login.html' %}
+{% endblock %}

@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px auto;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#state-suggestions, #city-suggestions {
+    margin-top: 5px;
+    max-height: 120px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#state-suggestions div, #city-suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#state-suggestions div:hover, #city-suggestions div:hover {
+    background-color: #f1f1f1;
+}

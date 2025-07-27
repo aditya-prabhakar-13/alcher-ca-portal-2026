@@ -1,0 +1,140 @@
+
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Extralight.ttf) format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Semibold.ttf) format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GeneralSans";
+  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+.part1 {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.down1 {
+  display: flex;
+  gap: 2rem;
+  font-family: 'GeneralSans';
+  margin: 2rem 0;
+  justify-content: center;
+}
+.upper{
+    display: flex;
+    justify-content: center;
+}
+.flyer {
+  width: 40rem;
+  transform: translateX(-13%);
+}
+.h {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.ph{
+    font-weight: 600;
+}
+.details1 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mobile{
+    display: none;
+}
+@media screen and (max-width: 850px) {
+  /* .part1 {
+    flex-direction: column;
+  } */
+  .flyer {
+    width: 30rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .mobile{
+    display: block;
+  }
+  .flyer{
+    display: none;
+  }
+  .down1{
+    scale: 0.9;
+  }
+  /* .down1{
+    flex-direction: column;
+  } */
+}
+@media screen and (max-width: 650px) {
+  .down1 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  .mobile{
+    width: 40vw;
+  }
+  .part1{
+    width: 62vw;
+  }
+  .one{
+    width: 18vw;
+  }
+  .h{
+    font-size:4vw;
+  }
+  .p{
+    font-size: 3vw;
+  }
+  .ph{
+    font-size: 3vw;
+  }
+  /* .flyer {
+    width: 20rem;
+  } */
+}

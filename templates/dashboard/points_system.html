@@ -1,0 +1,213 @@
+{% extends '../basic.html'%}
+{% load static %}
+{%block title%}Dashboard | Alcheringa {%endblock%}
+{% block body %}
+<link rel="stylesheet" href={% static "css/font.css" %}>
+<link rel="stylesheet" href={% static "css/font.css" %}>
+<body class="bg-blue-50 gen" style="background-color: #f6ebff;">
+    <style>
+        .-translate-x-1\/2.-translate-y-1\/2 {
+            transform: translate(-50%, -50%);
+        }
+
+        .translate-x-1\/2.translate-y-1\/2 {
+            transform: translate(50%, 50%);
+        }
+
+
+        .translate-x-1\/2.-translate-y-1\/2 {
+            transform: translate(50%, -50%);
+        }
+
+        .translate-x-3 {
+            transform: translateX(10px);
+        }
+        li {
+            font-size: 13px;
+        }
+    </style>
+    <div class="flex gen">
+        {% include "../navbar.html" %}
+        <!-- levels-all_screens -->
+        <div
+            class="mt-3 md:mx-6 bg-white rounded-md shadow-md flex flex-col justify-center content-center text-gray-600">
+            <div class="py-3 pl-6 font-semibold text-lg border-b-2">Levels</div>
+            <div class="text-gray-700 hidden md:block">
+            </div>
+
+            <!-- level_rewards-all_screens -->
+            <div class="hidden md:block  mx-2 py-2">
+                <div class="grid grid-cols-2 py-3 font-semibold text-lg">
+                    <div class="pl-2">Level</div>
+                    <div>Rewards</div>
+                </div>
+                <div class=" space-y-2">
+                    <!-- <div class=" sm:grid sm:grid-cols-2 p-2 border-gray-100 border-2 rounded-md">
+                        <div class=" p-3 flex text-lg font-semibold text-gray-600 items-center">Novice</div>
+                        <div class=" ml-4 text-gray-600">
+                            <li>Grab the chance to win a cash price of 75K for the top performers of Platinum and Gold
+                                Levels.
+                            </li>
+                            <li>Different levels of Certificates from Alcheringa commemorating your efforts.</li>
+                            <li>Access to Alcher’s premium content for top levels.</li>
+                            <li>Depending on the level, get a call from us to be a part of Alcher’s execution team.</li>
+                        </div>
+                    </div> -->
+                    <div class="sm:grid sm:grid-cols-2 p-2 border-yellow-600 border-2 rounded-md">
+                        <div class=" p-3 flex text-lg font-semibold text-gray-600 items-center">Bronze</div>
+                        <div class=" ml-4 text-gray-600">
+                            <li>Bronze level certificates from Alcheringa commemorating your efforts.
+
+                            </li>
+                            <!-- <li>Different levels of Certificates from Alcheringa commemorating your efforts.</li>
+                            <li>Access to Alcher’s premium content for top levels.</li>
+                            <li>Depending on the level, get a call from us to be a part of Alcher’s execution team.</li> -->
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-2 p-2 border-gray-300 border-2 rounded-md">
+                        <div class=" p-3 flex text-lg font-semibold text-gray-600 items-center">Silver</div>
+                        <div class=" ml-4 text-gray-600">
+                            <li>Silver level Certificates from Alcheringa commemorating your efforts.
+                            </li>
+                            <li>Be a part of Alcher’s execution team.</li>
+                            <!-- <li>Access to Alcher’s premium content for top levels.</li>
+                            <li>Depending on the level, get a call from us to be a part of Alcher’s execution team.</li> -->
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-2 p-2 border-yellow-200 border-2 rounded-md">
+                        <div class=" p-3 flex text-lg font-semibold text-gray-600 items-center">Gold</div>
+                        <div class=" ml-4 text-gray-600">
+                            <li>Exciting prizes and incentives.
+
+                            </li>
+                            <li>Gold level Certificates from Alcheringa commemorating your efforts.
+                            </li>
+                            <!-- <li>Access to Alcher’s premium content for top levels.</li>
+                            <li>Depending on the level, get a call from us to be a part of Alcher’s execution team.</li> -->
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-2 p-2 border-gray-400 border-2 rounded-md">
+                        <div class=" p-3 flex text-lg font-semibold text-gray-600 items-center">Platinum</div>
+                        <div class=" ml-4 text-gray-600">
+                            <li>Grab the chance to win a prize worth of 75K.
+
+                            </li>
+                            <li>Platinum Certificates from Alcheringa commemorating your efforts.</li>
+                            <li>Access to Alcher’s premium content.
+                            </li>
+                            <!-- <li>Depending on the level, get a call from us to be a part of Alcher’s execution team.</li> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- tasks -->
+        <div
+            class="md:mx-6 my-6 bg-white rounded-md shadow-md flex flex-col justify-center content-center text-gray-600">
+            <p class="py-3 pl-6 font-semibold text-lg border-b-2"> Tasks </p>
+            <div class="p-2 md:p-6 text-gray-500">
+            </div>
+            <div class="md:mx-6 mx-3 mb-3">
+                <table class="w-full table-fixed text-sm border-separate rounded-sm" style="border-spacing:4px">
+                    <thead>
+                        <tr>
+                            <th class=" p-2 text-left md:w-3/4 w-3/5">Task</th>
+                            <th class=" p-2 text-left md:w-1/4 w-2/5" >Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td class=" bg-gray-50 p-3 rounded-md text-gray-700">Social Engagement with recent feed on
+                                Facebook
+                            </td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">10</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">Social Engagement with
+                                recent
+                                feed on Instagram and tag
+                                @alcheringaiitg</td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">10</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">If Referral is used for
+                                reg of
+                                the same college</td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">40</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">If Referral is used for
+                                reg of
+                                the other college</td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700"style="text-align: center;">60</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">Submission of an Idea
+                            </td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">20</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">POC Submission</td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700"style="text-align: center;">30</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">Joining Bonus (Solo)
+                            </td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">50</td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">Joining Bonus (Team)
+                            </td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">100</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">Event Organizing in your
+                                city
+                                (City Eliminations)</td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">Based on Performance</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 drop-shadow-sm">Giving presentations in
+                                key
+                                clubs/societies</td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700" style="text-align: center;">Based on Performance</td>
+                        </tr>
+                        <tr>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 shadow-sm">Getting participants for the
+                                Events
+                            </td>
+                            <td class=" bg-gray-50 p-3 rounded-sm text-gray-700 shadow-sm" style="text-align: center;">Based on Performance</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+{%endblock%}
+{% block script %}
+<script>
+    const tabs = document.querySelectorAll(".tabs");
+    const tab = document.querySelectorAll(".tab");
+    const panel = document.querySelectorAll(".tab-content");
+
+    function onTabClick(event) {
+
+        // deactivate existing active tabs and panel
+
+        for (let i = 0; i < tab.length; i++) {
+            tab[i].classList.remove("border-b-2");
+            tab[i].classList.remove("border-blue-500"); tab[i].classList.remove("text-blue-500");
+        } for (let i = 0; i <
+            panel.length; i++) { panel[i].classList.remove("active"); } // activate new tabs and panel
+        event.target.classList.add("border-b-2"); event.target.classList.add("border-blue-500");
+        event.target.classList.add("text-blue-500"); let classString = event.target.getAttribute('data-target');
+        console.log(classString);
+        document.getElementById('panels').getElementsByClassName(classString)[0].classList.add("active");
+    } for (let i = 0; i
+        < tab.length; i++) { tab[i].addEventListener('click', onTabClick, false); }
+</script>
+{% endblock %}

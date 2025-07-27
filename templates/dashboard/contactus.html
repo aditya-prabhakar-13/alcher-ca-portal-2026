@@ -1,0 +1,71 @@
+{% extends '../basic.html'%}
+{% load static %}
+{%block title%}Profile | Alcheringa {%endblock%}
+{% block body %}
+<link rel="stylesheet" href={% static "css/font.css" %}>
+<body>
+    <div class="bg-blue-50 flex gen" style="background-color: #f6ebff;">
+        {% include "../navbar.html" %}
+        <div class="flex " >
+           
+                <!-- component -->
+                <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12" style="box-sizing: border-box;">
+                    <div class="grid grid-cols-1   lg:grid-cols-3 gap-6">
+                        <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center">
+                            <div class="rounded-md mb-4">
+                                <img src="{% static 'images/pr/sulabh.jpg' %}" style="width: 30vh !important;">
+                            </div>
+                            
+                            <div class="text-center">
+                                <p class="text-xl text-gray-700 font-bold ">Sulabh Napit
+                                </p>
+                                <p class="text-base text-gray-400 font-normal">Media and Outreach<br>Head</p>
+                                <p class="text-base text-gray-400 font-normal">sulabh@alcheringa.in</p>
+                                <p class="text-base text-gray-400 font-normal">+91 83198 55908
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center">
+                            <div class="rounded-md mb-4">
+                                <img src="{% static 'images/pr/siddhart.jpg' %}" style="width: 30vh !important;">
+                            </div>
+                            <div class="text-center">
+                                <p class="text-xl text-gray-700 font-bold ">Siddharth Shukla</p>
+                                <p class="text-base text-gray-400 font-normal">Public Relations<br>Head</p>
+                                <p class="text-base text-gray-400 font-normal">siddharth@alcheringa.in</p>
+                                <p class="text-base text-gray-400 font-normal">+91 73546 47811</p>
+                            </div>
+                        </div>
+                        <div class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center">
+                            <div class="rounded-md mb-4">
+                                <img src="{% static 'images/pr/sudhanshu.jpg' %}" style="width: 30vh !important;">
+                            </div>
+                            
+                            <div class="text-center">
+                                <p class="text-xl text-gray-700 font-bold ">Sudhanshu Raj</p>
+                                <p class="text-base text-gray-400 font-normal">Public Relations<br>Head</p>
+                                <p class="text-base text-gray-400 font-normal">sudhanshu@alcheringa.in</p>
+                                <p class="text-base text-gray-400 font-normal">+91 82929 67325</p>
+                                <div class="flex mt-2 mx-4 items-center">
+                                    <!-- <a href="https://www.instagram.com/danda_akshara/" target="_blank" ><img class="mx-2" src="{% static 'images/social/ins.png' %}"></a>
+                                    <a href="https://www.facebook.com/akshara.reddy.37051" target="_blank"><img class="mx-2" src="{% static 'images/social/fb.png' %}"></a>
+                                    <a href="https://wa.me/message/LTSEPGLKIM35C1" target="_blank"><img class="mx-2" style="height:22px;width:22px;" src="{% static 'images/social/twitter.png' %}"></a>
+                                    <a href="https://api.whatsapp.com/send?phone=917061520276&app=facebook&entry_point=page_cta&fbclid=IwAR0iTaa4nq5ZKq3wypRtyjPNeGx4eQvLD-qbkjutsIk8dbE9ZafuaAtygp8" target="_blank"><img class="mx-2" style="height:22px;width:22px;" src="{% static 'icons/whatsapp.png' %}"></a> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </section>
+          
+        </div>
+    </div>
+    </div>
+
+</body>
+{%endblock%}
+{% block script %}
+
+{% endblock %}

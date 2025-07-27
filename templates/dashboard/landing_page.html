@@ -1,0 +1,776 @@
+{% extends '../basicbootstrap.html'%} {% load static %} {%block title%}Alcheringa{%endblock%} {% block style %}
+
+<link rel="stylesheet" href="{% static 'css/landing_style.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap" rel="stylesheet">
+<link href="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+" rel="stylesheet">
+ <link rel="stylesheet" href={% static 'css/carousel.css' %}>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
+{% endblock %} {% block body %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<nav style="width:100%;" class="scrolled">
+    <a href="/"><img src="{% static 'images/Logomain.svg' %}" alt="Logo" /></a>
+    <div class="nav-links" id="navLinks">
+        {% comment %} <i class="fa fa-times" id="navcross" style="display:none;color:white" onclick="hideMenu()"></i> {% endcomment %}
+        <ul>
+            <li><a href="#about" id="navlink1">About</a></li>
+            <li><a href="#responsibility" id="navlink3">Responsibilities</a></li>
+            <li><a href="#faq1" id="navlink4">FAQs</a></li>
+            <li><a href="#testimonials_" id="navlink2">Testimonials</a></li>
+            <li><a id="navlink5">Login</a></li>
+            <li>
+                <a href="{% url 'register_single' %}" class="navhero-btn">Join Now</a>
+            </li>
+            <li>
+                <button class="navhero-btn" onclick="hideMenu()" style="font-weight: 600 !important; display:none; " id="navcross" >Close</button>
+            </li>
+        </ul>
+    </div>
+    <i class="fa fa-bars" style="color: white;" onclick="showMenu()"></i>
+</nav>
+{%include 'dashboard/components/heroSection.html'%} 
+
+<div class="movie_splide_component_wrapper relative">
+    <div class="half"></div>
+    <div class="movie_splide_component">
+        <section id="movie_splide" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide movie_splide__slide">
+                        <div class="movie_div">
+                            <iframe src="https://www.youtube.com/embed/CWhFx8v1mg8" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                            <p id="res">
+                                <span id="diff_color">AfterMovie</span>&nbsp;Alcheringa 2023
+                            </p>
+                        </div>
+                    </li>
+                    <li class="splide__slide movie_splide__slide">
+                        <div class="movie_div">
+                            <iframe width="677" height="381" src="https://www.youtube.com/embed/tViVTORVQyE" title="Alcheringa 2022 : Voyage to Neoterra Offical Aftermovie" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <p id="res">
+                                <span id="diff_color">AfterMovie</span>&nbsp;Alcheringa 2022
+                            </p>
+                        </div>
+                    </li>
+                    <li class="splide__slide movie_splide__slide">
+                        <div class="movie_div">
+                            <iframe src="https://www.youtube.com/embed/xSDlUEJ22vU" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                            <p id="res">
+                                <span id="diff_color">AfterMovie</span>&nbsp;Alcheringa 2020
+                            </p>
+                        </div>
+                    </li>
+                    <li class="splide__slide movie_splide__slide">
+                        <div class="movie_div">
+                            <iframe src="https://www.youtube.com/embed/b1Xq6ofywkk" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                            <p id="res">
+                                <span id="diff_color">AfterMovie</span>&nbsp;Alcheringa 2019
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="splide__arrows splide__arrows--ltr">
+                <button class="splide__arrow splide__arrow--prev movie_splide__arrow" id="movie_splide_prev_arrow"
+                    type="button" aria-label="Previous slide" aria-controls="splide01-track">
+                    <img src="{% static 'images/assets/arrow_prev.jpg' %}" />
+                </button>
+                <button class="splide__arrow splide__arrow--next movie_splide__arrow" id="movie_splide_next_arrow"
+                    type="button" aria-label="Next slide" aria-controls="splide01-track">
+                    <img src="{% static 'images/assets/arrow.jpg' %}" />
+                </button>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="flex flex-col items-center justify-center relative mb-12" id="about">
+    <img src="{% static 'images/assets/whoca.png' %}" style="max-height:30%" class="who"/>
+    <p id="res">
+        <span id="diff_color">Who</span>&nbsp;is a Campus Ambassador?
+    </p>
+    <p style="width:90%; text-align:center; font-family:GeneralSans; font-weight:300; font-size:1.5vmax ">Campus Ambassadors are the key players of IIT Guwahati's Alcheringa capacity building and youth outreach programme. With the insight of bringing out the
+        essence of an authentic leader within you . Along with a host of valuable experiences and reassurance from Team Alcheringa, come forward and take up the
+        opportunity to plan , organise and execute exciting events. Join a community that engulfs you with moments that refines your managerial and
+        communicative skills.</p>
+</div>
+
+
+
+<div class="goody_heading" style="display:flex; justify-content: center; align-items: center; margin-bottom: 3rem;" id="benefits">
+    <img src="{% static 'images/assets/goody_arrow.svg' %}" class="leftgood" />
+    <p id="res">
+        Why Should you <span id="diff_color">&nbsp;Join?</span>
+    </p>
+    <img src="{% static 'images/assets/goody_arrow.svg' %}" class="rightgood"/>
+</div>
+
+<div class="goody_splide_component_wrapper">
+    <div class="goody_splide_component">
+        <section id="goody_splide" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track goody_splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide goody_splide">
+                        <div class="goody_img_div">
+                            <img src="{% static 'images/assets/a.png' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="splide__slide goody_splide">
+                        <div class="goody_img_div">
+                            <img src="{% static 'images/assets/b.png' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="splide__slide goody_splide">
+                        <div class="goody_img_div">
+                            <img src="{% static 'images/assets/c.png' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="splide__slide goody_splide">
+                        <div class="goody_img_div">
+                            <img src="{% static 'images/assets/d.png' %}" alt="">
+                        </div>
+                    </li>
+                    <li class="splide__slide goody_splide">
+                        <div class="goody_img_div">
+                            <img src="{% static 'images/assets/e.png' %}" alt="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="splide__arrows splide__arrows--ltr">
+                <button class="splide__arrow splide__arrow--prev goody_splide__arrow" type="button"
+                    aria-label="Previous slide" aria-controls="splide01-track">
+                    <img src="{% static 'images/assets/arrow_prev.jpg' %}" />
+                </button>
+                <button class="splide__arrow splide__arrow--next goody_splide__arrow" type="button"
+                    aria-label="Next slide" aria-controls="splide01-track">
+                    <img src="{% static 'images/assets/arrow.jpg' %}" />
+                </button>
+            </div>
+        </section>
+        <divi id="responsibility"></div>
+    </div>
+</div>
+
+<section id="responsibility1">
+    <!-- <div id="blue"> -->
+        <p id="res">
+            Roles<span id="diff_color">&nbsp;And&nbsp;</span>Responsibilities
+            <img src="{% static 'images/Punctuation_3.svg' %}" class="hidden md:block"  />
+        </p>
+        <div class="roles_grid">
+            <div class="college_branding">
+                <img src="{% static 'images/college_branding.png' %}" alt="college_branding">
+                <div class="roles_details">
+                    <h3>College Branding</h3>
+                    <p style="font-family:GeneralSans; font-weight:300;">Lead Alcheringa promotion at your <br> college. Present to key clubs and <br> social groups.</p>
+                </div>
+            </div>
+            <div class="city_eliminations">
+                <img src="{% static 'images/city_eliminations.png' %}" alt="city_eliminations">
+                <div class="roles_details">
+                    <h3>City Eliminations</h3>
+                    <p style="font-family:GeneralSans; font-weight:300;">Lead your city's top performer <br> search and help organize <br> Alcheringa's city elimination.</p>
+                </div>
+            </div>
+            <div class="increasing_reach">
+                <img src="{% static 'images/increasing_reach.png' %}" alt="increasing_reach">
+                <div class="roles_details">
+                    <h3>Increasing Reach</h3>
+                    <p style="font-family:GeneralSans; font-weight:300;">Expand Alcheringa by connecting <br> with college societies.</p>
+                </div>
+            </div>
+            <div class="complete_tasks">
+                <img src="{% static 'images/complete_tasks.png' %}" alt="complete_tasks">
+                <div class="roles_details">
+                    <h3>Complete Tasks</h3>
+                    <p style="font-family:GeneralSans; font-weight:300;">Complete all tasks promptly to <br> effectively promote and represent <br> Alcheringa</p>
+                </div>
+            </div>
+            <div class="get_registerations">
+                <img src="{% static 'images/get_registerations.png' %}" alt="get_registerations">
+                <div class="roles_details">
+                    <h3>Get Registrations</h3>
+                    <p style="font-family:GeneralSans; font-weight:300;">Drive registrations by actively <br> engaging with students and promoting <br> the event in campus.</p>
+                </div>
+            </div>
+            <div class="suggest_ideas">
+                <img src="{% static 'images/suggest_ideas.png' %}" alt="suggest_ideas">
+                <div class="roles_details">
+                    <h3>Suggest Ideas</h3>
+                    <p style="font-family:GeneralSans; font-weight:300;">Suggest creative ideas to <br> enhance event visibility and <br> engagement across campus.</p>
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!--<section id="faq">
+        <div>
+            <p class="joining">Past offers</p>
+        </div>
+        <div class="join">
+            <div>
+                <img src="{% static 'images/perspaleta1_0016.png' %}" />
+                <h2>Level-wise Certification</h2>
+                <p>Platinum Certificate (Top 5 CAs)</p>
+            </div>
+            <div>
+                <img src="{% static 'images/perspaleta1.png' %}" />
+                <h2>Level-wise Certification</h2>
+                <p>Feel the pride and honor of being<br />the leader of champions</p>
+            </div>
+            <div>
+                <img src="{% static 'images/perspaleta1_0003.png' %}" />
+                <h2>Level-wise Certification</h2>
+                <p>
+                    Prizes worth 1.85 lakhs to be won<br />Certified Internships and
+                    Workshops.
+                </p>
+            </div>
+        </div>
+
+    </section>-->
+<!-- 
+<section>
+    <div>
+        <p class="joining">
+            Join as a Team or Solo
+        </p>
+        <p class="text" style="color: #707683;">
+            For the first time ever, you can now work as a team of two to make your CA<br />experience even better. You
+            can still join solo as well.
+        </p>
+    </div>
+
+    <div class="join flex sm:flex-row" style="justify-content: flex-start;">
+        <img class="ml-0.5 mr-0.5" id="fly" src="{% static 'images/team.svg' %}" />
+        <div>
+
+            <div class="flex mx-auto rounded overflow-hidden mt-6 -ml-10 mb-8">
+                <button class="py-1 px-4 border-b-4 focus:outline-none"
+                    style="border-color: #334D6E; color: #334D6E;" onclick="switchVisible2();" id="teamH">Team</button>
+                <button class="py-1 px-4 focus:outline-none" style="color: #90A0B7;" onclick="switchVisible1();" id="soloH">Solo</button>
+            </div>
+            <ul class="list-disc" id="teamT" style="display: block;">
+                <li class="mb-4" style="color: #707683;">
+                    Play as a team to increase collaborations and allows for brainstorming. As a consequence, develop
+                    more ideas which increase productivity.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Working as a Team gives a chance to look at a problem from multiple angles, thus creating a greater multitude of solutions. Teamwork makes members more open and enables learning of different cultures.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Teamwork encourages communication among the team, enhances socialising traits, and helps to build
+                    your rapport skills.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Working as a team makes you learn faster.
+                </li>
+            </ul>
+            <ul class="list-disc" id="soloT" style="display: none;">
+                <li class="mb-4" style="color: #707683;">
+                    Be the only one to think, organise and execute your plan to get an output.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Work at your own pace and make things fall in place in your style.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Be the only stress buster of your own and keep motivating yourself throughout your tenure.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Be in Charge of your tasks and complete them.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section> -->
+
+
+
+<section class="join_team_solo">
+    <div class="flex flex-row" style="justify-content: center;">
+        <p id="res">
+            Join as a Team <span id="diff_color">&nbsp;Or&nbsp;</span> Solo
+        </p>
+    </div>
+
+    <div class="join " style=" padding-bottom: 10vh;">
+        <!-- <img class="ml-0.5 mr-0.5" id="fly" src="{% static 'images/team.svg' %}" /> -->
+        <div class="join_card ">
+            <div class="min_join_card">
+
+                <div class="flex mx-auto rounded overflow-hidden mt-6 -ml-10 mb-8">
+                    <button class="py-1 px-4 border-b-4 focus:outline-none"
+                    style="border-color: #B542FB; color: #B542FB; font-size:larger; font-weight: 600;" onclick="switchVisible2(); changeimg('{% static 'images/team_img.png' %}');" id="teamH">TEAM</button>
+                    <button class="py-1 px-4 focus:outline-none" style="color: #90A0B7; font-size: larger;font-weight: 600;" onclick="switchVisible1(); changeimg('{% static 'images/solo.png' %}');" id="soloH">SOLO</button>
+                </div>
+                <ul class="list-disc jointeamm" id="teamT" style="display: block;">
+                    <li class="mb-4" style="color: #13141D;">
+                        Play as a team to increase collaborations and allows for brainstorming. As a consequence, develop more ideas which increase productivity.
+                    </li>
+                    <li class="mb-4" style="color: #13141D;">
+                        Working as a Team gives a chance to look at a problem from multiple angles, thus creating a greater multitude of solutions. Teamwork makes members more open and enables learning of different cultures.
+                    </li>
+                    <li class="mb-4" style="color: #13141D;">
+                        Teamwork encourages communication among the team, enhances socialising traits, and helps to build your rapport skills.
+                    </li>
+                    <li class="mb-4" style="color: #13141D;">
+                        Working as a team accelerates your learning process by allowing you to share knowledge, gain diverse perspectives, and tackle challenges collaboratively.
+                    </li>
+                </ul>
+                <ul class="list-disc jointeamm" id="soloT" style="display: none;">
+                    <li class="mb-4" style="color: #13141D;">
+                        Be the only one to think, organise and execute your plan to get an output.
+                    </li>
+                    <li class="mb-4" style="color: #13141D;">
+                        Work at your own pace and make things fall in place in your style.
+                    </li>
+                    <li class="mb-4" style="color: #13141D;">
+                        Be the only stress buster of your own and keep motivating yourself throughout your tenure.
+                    </li>
+                    <li class="mb-4" style="color: #13141D;">
+                        Be in charge of your tasks and complete them.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="team_bg absolute">
+            <img id="teamimage" src="{% static 'images/team.png' %}" alt="">
+            <img id="soloimage" src="{% static 'images/solo.png' %}" alt="" style="display:none;">
+        </div>
+    </div>
+    <div id="testimonials_"></div>
+</section>
+
+<div class="testimonial_heading" style="display: flex; justify-content: center; align-items: center; height: fit-content; margin-bottom: 3rem; margin-top: 3rem" id="testimonials">
+    <img src="{% static 'images/assets/lefttest.svg' %}" class="lefttest" />
+    <p id="res">
+        Testimonial<span id="diff_color">s</span>
+    </p>
+    <img src="{% static 'images/assets/doddle.svg' %}" />
+</div>
+
+<div class="testimonial_splide_component_wrapper">
+    <div class="testimonial_splide_component">
+        <section id="testimonials_splide" class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track testimonial_splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide testimonial_splide__slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-image">
+                                <img src="{% static 'images/testimonials/ema.jpg' %}" alt="">
+                            </div>
+                            <div class="testimonial-wrapper">
+                                <img src="{% static 'images/quote2.svg' %}" class="quote_open" />
+                                <p class="testimonial-content">
+                                    "l represented Alcheringa, IIT Guwahati, last year. It was a great opportunity
+                                    to represent this lovely program as a campus ambassador. The entire
+                                    experience was incredible. I gained fresh knowledge from this experience,
+                                    which also aided in my development of leadership, management, and
+                                    communication abilities. To make this happen, I assembled a talented team.
+                                    They also do admirably at this tournament. The team was very amazing. We
+                                    are pleased to participate in this monumental occasion. We aim to attend this
+                                    major event every year and strengthen our friendship. Finally, I want to
+                                    express my gratitude to the entire Alcheringa team for picking me up and
+                                    providing me with this chance, as well as to my friend Prashams Matcha."
+                                </p>
+                                <img src="{% static 'images/quote2.svg' %}" class="quote_close" />
+                                <p class="author">- Emadadul Hoq <span id="diff_color" style="color: black;">Milon</span></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="splide__slide testimonial_splide__slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-image">
+                                <img src="{% static 'images/testimonials/nan.jpg' %}" alt="Nandini Goyal">
+                            </div>
+                            <div class="testimonial-wrapper">
+                                <img src="{% static 'images/quote2.svg' %}" class="quote_open" />
+                                <p class="testimonial-content">
+                                    "I received significant experience as a campus ambassador at Alcheringa, IIT-
+                                    Guwahati's annual festival. As an introvert, I earned the chance to create
+                                    interactions, build networks, and, most importantly, a sense of self in my own
+                                    campus. In addition, as the highest-scoring campus ambassador in the
+                                    country, I received an invitation to attend Alcheringa live at IIT-Guwahati.
+                                    Alcheringa captivated me. Hail Alcher!"
+                                </p>
+                                <img src="{% static 'images/quote2.svg' %}" class="quote_close" />
+                                <p class="author">- Nandini <span id="diff_color" style="color: black;"> Goyal </span></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="splide__slide testimonial_splide__slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-image">
+                                    <img src="{% static 'images/testimonials/rishabh.jpeg' %}" alt="Nandini Goyal">
+                                </div>
+                                <div class="testimonial-wrapper">
+                                    <img src="{% static 'images/quote2.svg' %}" class="quote_open" />
+                                    <p class="testimonial-content">
+                                        "Being a part of team Alcheringa was a beautiful learning experience, and
+learning                                 becomes fun, when people are supportive. Thanks to Siddhant and
+                                        Akshara, two heads of Alcheringa for their support and my friends Arunav and
+                                        Debashish, who made the journey extremely a smooth run, with their hands in
+                                        crisis. Made alot of mistakes, and learnt alot of new things. A journey, worth
+                                        remembering, a journey with it's own ups and downs to be cherished. Also,
+                                        huge thanks to all the participants for cooperating in making the event
+                                        successful."
+                                    </p>
+                                <img src="{% static 'images/quote2.svg' %}" class="quote_close" />
+                                <p class="author">- Rishabh <span id="diff_color" style="color: black;"> Dhar </span></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>  
+
+            <div class="splide__arrows splide__arrows--ltr">
+                <button class="splide__arrow splide__arrow--prev testimonial_splide__arrow t_prev" type="button"
+                    aria-label="Previous slide" aria-controls="splide01-track">
+                    <img src="{% static 'images/assets/arrow_prev.jpg' %}" />
+                </button>
+                <button class="splide__arrow splide__arrow--next testimonial_splide__arrow t_next" type="button"
+                    aria-label="Next slide" aria-controls="splide01-track">
+                    <img src="{% static 'images/assets/arrow.jpg' %}" />
+                </button>
+            </div>
+            <div id="faq1"></div>
+        </section>
+    </div>
+</div>
+
+
+
+<section id="faq" >
+    <div style ="text-align: center;display: flex;justify-content: center;">
+        <p class="joining"><img src="{% static 'images/faqimg.svg' %} " alt="FAQs "></p>
+    </div>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+
+        <!-- <p>
+            <div class="accordian-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseOne">
+                Who can apply?
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                Students from all colleges across the globe are welcome to apply. </div>
+        </div>
+    </div>
+        </p> -->
+        <p>
+            <div class="accordion-item ">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Who can apply?
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        Students from all colleges across the globe are welcome to apply.
+                    </div>
+                </div>
+            </div>
+            </p>
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTwo">
+                    How and when can I apply? What happens after I apply?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    You can apply through our website as soon as the portal is active. You will be notified after you
+                    successfully register. Then you can start contributing and working immediately on your tasks.
+                </div>
+            </div>
+        </div>
+        </p>
+
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseThree">
+                    What is my responsibility being a part of the program?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                    As a part of the program, you start at Novice level and complete various tasks such as Submitting
+                    contacts of individuals or groups of participants, increasing social media engagement, strategizing
+                    and branding on campus. </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseFour">
+                    What are the different levels & how does one go to the next levels? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingFour">
+                <div class="accordion-body">
+                    There are 4 levels in total (Bronze, Silver, Gold and Platinum), after successful completion of
+                    tasks in each level and earning enough points you would get upgraded to the next level </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseFive">
+                    Can there be multiple members from one college? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                    Yes, multiple students can join the Campus Ambassador program from one college. You can join and
+                    work as a team consisting of one senior and a junior. </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseSix">
+                    Is there a cost to participate?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingSix">
+                <div class="accordion-body">
+                    There is no fee to participate in the Campus Ambassador Program; it's entirely free! </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseSeven">
+                    How much time will I have to dedicate? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingSeven">
+                <div class="accordion-body">
+                    On average, you should put in 2 hours every week. The core aspects are commitment and consistency.
+                </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseEight">
+                    What does being a campus ambassador imply? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingEight">
+                <div class="accordion-body">
+                    You will be the Alcheringa'25 spokesperson at your institution and the first point of contact for
+                    any concerns that your college students may have </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseNine">
+                    What advantages do I gain from this? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingNine">
+                <div class="accordion-body">
+                    In addition to the incentives, awards, and the certification, it aids in the expansion of your
+                    network both on and off campus, as well as the improvement of your management and communication
+                    abilities. </div>
+            </div>
+        </div>
+        </p>
+        <p>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTen">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseTen">
+                        What are City eliminations?</button>
+                </h2>
+                <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-headingTen">
+                    <div class="accordion-body">
+                        City eliminations are basically Alcher Prelims conducted in major cities such as Delhi, Lucknow, Bhubaneswar, etc, to bring out the best talent in these regions. The winners of these city eliminations will be getting travel reimbursement and exciting prizes to come participate in North East’s biggest Cultural Fest Alcheringa.
+                    </div>
+                </div>
+            </div>
+            </p>
+    </div>
+
+    </div>
+</section>
+</section>
+{%include 'dashboard/components/contact.html'%}
+{%include 'dashboard/components/Footer.html' %}
+{%include 'users/login.html' %}
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
+<script>
+    
+
+            var movie_splide = new Splide('#movie_splide', {
+                  type: 'loop',
+                  perPage: 1,
+                  arrows: true,
+                  pagination: true,
+                  focus: 'center',
+                  speed: '1000',
+                  gap: "2rem",
+                  autowidth: true,
+              }).mount();
+
+            var testimonial_splide = new Splide('#testimonials_splide', {
+               type: 'loop',
+               perPage: 1,
+               arrows: true,
+               pagination: true,
+               focus: 'center',
+               speed: '1000',
+               gap: "10rem",
+               autowidth: true,
+            }).mount();
+
+
+            var goody_splide = new Splide('#goody_splide', {
+                type: "loop",
+                perPage: 1,
+                perMove: 1,
+                pagination: false,
+                arrows: true,
+                gap: "0rem",
+                autoplay:true,
+                interval:3000,
+                pauseOnHover: false,
+                width: "100%",
+                autoWidth: true,
+                focus: "center",
+                trimSpace: true,
+            }).mount();
+
+
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        document.getElementById('navcross').style.display="block";
+        navLinks.style.right = "0 ";
+    }
+
+    function hideMenu() {
+        document.getElementById('navcross').style.display="none";
+        navLinks.style.right = "-200px ";
+    }
+
+    function switchVisible1() {
+            if (document.getElementById('teamT')) {
+                    document.getElementById('teamT').style.display = 'none';
+                    document.getElementById('soloimage').style.display='block'
+                    document.getElementById('teamimage').style.display='none'
+                    document.getElementById('teamH').style.borderBottomWidth = '0px';
+                    document.getElementById('teamH').style.color = '#90A0B7';
+                    document.getElementById('soloT').style.display = 'block';
+                    document.getElementById('soloH').style.color = '#B542FB';
+                    document.getElementById('soloH').style.borderColor = '#B542FB';
+                    document.getElementById('soloH').style.borderBottomWidth = '4px';       
+                }
+            }
+            function switchVisible2() {
+                if (document.getElementById('soloT')) {
+                    document.getElementById('soloimage').style.display='none'
+                    document.getElementById('teamimage').style.display='block'
+                    document.getElementById('soloT').style.display = 'none';
+                    document.getElementById('soloH').style.borderBottomWidth = '0px';
+                    document.getElementById('soloH').style.color = '#90A0B7';
+                    document.getElementById('teamT').style.display = 'block';
+                    document.getElementById('teamH').style.color = '#B542FB';
+                    document.getElementById('teamH').style.borderColor = '#B542FB';
+                    document.getElementById('teamH').style.borderBottomWidth = '4px'; 
+            }
+    }
+    const swiper = new Swiper('.swiper', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: true,
+        centeredSlides:true,
+        centeredSlidesBounds:true,
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    });
+</script>
+<script src="{% static 'js/home_main.js' %} "></script>
+<script src="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+" rel="stylesheet">
+
+</body>
+
+{%endblock%}
