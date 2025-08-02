@@ -203,25 +203,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.log(isTouchDevice());
 
-  // Handle mouseover event
-  function handleMouseOver(event) {
-    const cityMarker = event.target.closest(".city-marker");
-    if (!cityMarker) return;
-
-    const cityId = cityMarker.getAttribute("data-city-id");
-    const cityData = cities.find((city) => city.id === cityId);
-    if (!cityData) return;
-
+  function showTooltip(cityData, event) {
     const customMessage = `
-      <div style="text-align: left; line-height: 1.4;">
-        <strong>${cityData.name}</strong><br>
-        Colleges: ${cityData.colleges}<br>
-        Ambassadors: ${cityData.ambassadors}
-      </div>
-    `;
+        <div style="text-align: left; line-height: 1.4;">
+          <strong>${cityData.name}</strong><br>
+          Colleges: ${cityData.colleges}<br>
+          Ambassadors: ${cityData.ambassadors}
+        </div>
+      `;
     tooltip.innerHTML = customMessage;
 
-    const rect = cityMarker.getBoundingClientRect();
+    const targetElement = event.target.closest(".city-marker");
+    if (!targetElement) return;
+
+    const rect = targetElement.getBoundingClientRect();
     const x = rect.left + window.scrollX + rect.width / 2;
     const y = rect.top + window.scrollY;
 
@@ -232,23 +227,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Handle mouseout event
-  function handleMouseOut() {
-    if (!isTouchDevice()) {
-      tooltip.classList.remove("visible");
-      tooltip.classList.add("hidden");
-    }
+  function hideTooltip() {
+    tooltip.classList.remove("visible");
+    tooltip.classList.add("hidden");
+  }
+   function handleDesktopMouseOver(event) {
+    const cityMarker = event.target.closest(".city-marker");
+    if (!cityMarker) return;
+    const cityId = cityMarker.getAttribute("data-city-id");
+    const cityData = cities.find((city) => city.id === cityId);
+    if (!cityData) return;
+    showTooltip(cityData, event);
   }
 
-  // Handle click event for mobile
-  function handleMarkerClick(event) {
-    handleMouseOver(event);
+  function handleDesktopMouseOut() {
+    hideTooltip();
+  }
 
-    if (isTouchDevice()) {
-      setTimeout(() => {
-        tooltip.classList.remove("visible");
-        tooltip.classList.add("hidden");
-      }, 2500); // Hide tooltip after 2.5 seconds
+  function handleMobileClick(event) {
+    const cityMarker = event.target.closest(".city-marker");
+    if (!cityMarker) return;
+    const cityId = cityMarker.getAttribute("data-city-id");
+    const cityData = cities.find((city) => city.id === cityId);
+    if (!cityData) return;
+    
+    // Toggle tooltip visibility on click
+    if (tooltip.classList.contains("visible")) {
+      hideTooltip();
+    } else {
+      showTooltip(cityData, event);
     }
+
+    // Hide after a timeout
+    setTimeout(() => {
+      hideTooltip();
+    }, 2500);
   }
 
   // Create city markers on the map
@@ -276,10 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
       svg.appendChild(path);
 
       svg.setAttribute("data-city-id", city.id);
-      svg.addEventListener("mouseover", handleMouseOver);
-      svg.addEventListener("mouseout", handleMouseOut);
-      svg.addEventListener("click", handleMarkerClick);
 
+      if (isTouchDevice()) {
+        svg.addEventListener("click", handleMobileClick);
+      } else {
+        svg.addEventListener("mouseover", handleDesktopMouseOver);
+        svg.addEventListener("mouseout", handleDesktopMouseOut);
+      }
       map.appendChild(svg);
     });
   }
