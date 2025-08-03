@@ -25,7 +25,6 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('', include('dashboard.urls')),
     path('submissions/', include('submissions.urls')),
-    path('newPage/', main_views.new_page_1_view, name='test_page_1')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)

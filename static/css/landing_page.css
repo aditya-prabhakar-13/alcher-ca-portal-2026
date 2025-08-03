@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+html,body{
+  height: 100%;
+}
 body {
   font-family: sans-serif;
 }
@@ -29,11 +32,14 @@ body {
   position: relative;
 }
 .grid-container {
-  width: 100%;
+ width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, #000000 1px, transparent 1px),
-    linear-gradient(to bottom, #000000 1px, transparent 1px);
-  background-size: 25% 25%;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.15) 1px, transparent 1px);
+  background-size: 80px 80px; /* or use 100px based on your design */
+  background-repeat: repeat;
+  background-position: top left;
 }
 .less {
   margin-right: 0px;
@@ -86,7 +92,7 @@ body {
   cursor: pointer;
   border: 2px solid black;
 }
-.rightbox1btn.active {
+.rightbox1btn.act {
   background-color: #009e77;
   color: white;
   border: 2px solid white;
@@ -99,9 +105,20 @@ body {
   margin-top: 10px;
 }
 .box2animation {
+  margin-top: 53px;
   position: relative;
   /* animation: floatUpDown 3s ease-in-out infinite alternate; */
 }
+.rightarrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the arrow inside an active button */
+.rightbox1btn.act .rightarrow {
+  transform: rotate(45deg);
+}
+
 .mainContent {
   margin: auto;
   width: 70vw;
@@ -119,7 +136,7 @@ body {
   margin-top: 60px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 4px;
 }
 .steps .material-symbols-outlined {
   cursor: pointer;
@@ -133,6 +150,27 @@ body {
   font-size: 48px;
   font-weight: bold;
 }
+.step-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-top: 0.5rem;
+}
+
+/* Shown state */
+.step-details.show {
+  max-height: 300px; /* Adjust as needed */
+  opacity: 1;
+  padding: 1rem;
+  border-color: #4caf50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .box3 {
   background-color: #222121;
 }
@@ -143,7 +181,7 @@ body {
   border-radius: 24px;
 }
 .more {
-  display: none;
+  transition: all 0.6s ease;
 }
 .box3first {
   position: relative;
@@ -198,7 +236,13 @@ body {
   display: block;
   margin: 0 auto;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 912px) {
+  .box1{
+    height: 50vh;
+  }
+  .temp{
+    width: 100%;
+  }
   .mainContImg img,
   .box3first img {
     height: 50px;
@@ -213,6 +257,7 @@ body {
   .box3secondleft,
   .box3secondright {
     height: 170px;
+    gap: 0px;
   }
   .box3secondleft {
     margin-left: 15px;
@@ -224,10 +269,12 @@ body {
     width: 450px;
   }
 }
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 540px) {
+  .leftboximg img{
+    width: 60%;
+  }
   .box1 {
     display: block;
-    height: 120vh;
   }
   .temp {
     width: 75%;
@@ -263,6 +310,7 @@ body {
   .box3secondright {
     margin: auto;
     width: 65%;
+    gap: 0;
   }
   .bfl {
     display: none;
@@ -315,4 +363,10 @@ body {
   border-radius: 6px;
   pointer-events: none;
   transition: opacity 0.3s ease; /* Add a smooth transition */
+}
+@media screen and (max-width:375px) {
+  .box1{
+    height: 120vh;
+  }
+  
 }
