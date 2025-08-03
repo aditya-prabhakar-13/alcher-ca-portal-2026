@@ -1,48 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/contact.css' %}"
-    />
-  </head>
-  <body>
-    <div class="mainbox">
-      <div class="upper">
-        <img
-          src="{% static 'images/contactus.svg' %}"
-          alt="phone"
-          class="flyer"
-        />
-        <img
-          src="{% static 'images/contactmobile.svg' %}"
-          alt=""
-          class="mobile"
-        />
-      </div>
-      <div class="down1">
-        <div class="part1">
-          <img src="{% static 'images/Person.svg' %}" alt="" class="one" />
-          <div class="details1">
-            <div class="h">Sudhanshu Raj</div>
-            <div class="p">PR head</div>
-            <div class="ph">+91 82929 67325</div>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+</head>
+<body>
+  <div class="mainbox">
+    <div class="upper">
+      <h2 class="help-heading">Need any help?</h2>
+      <div class="contact-btn">Contact Us</div>
+    </div>
+    <div class="down1">
+      <div class="part1 green">
+        <img src="{% static 'images/trump.png' %}" alt="Khushi Gupta"/>
+        <div class="details1">
+          <div class="h">Khushi<br>Gupta</div>
+          <div class="p">PR Head</div>
+          <div class="ph">999XXXX999</div>
         </div>
-        <div class="part1">
-          <img src="{% static 'images/Person.svg' %}" alt="" class="one" />
-          <div class="details1">
-            <div class="h">Siddharth Shukla</div>
-            <div class="p">PR head</div>
-            <div class="ph">+91 73546 47811</div>
-          </div>
+      </div>
+      <div class="part1 blue">
+        <img src="{% static 'images/tyson.png' %}" alt="Shashank Daga"/>
+        <div class="details1">
+          <div class="h">Shashank<br>Daga</div>
+          <div class="p">PR Head</div>
+          <div class="ph">999XXXX999</div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
