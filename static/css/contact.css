@@ -1,39 +1,31 @@
-/*FONT*/
+/*Fonts*/
 @font-face {
-  font-family: "VastagoGrotesk";
-  src: url(../Fonts/VastagoGrotesk-Regular.otf) format("opentype");
-  font-style: normal;
-  font-weight: normal;
+  font-family: 'VastagoGrotesk';
+  src: url("/static/Fonts/VastagoGrotesk-Regular.otf") format("opentype");
 }
 
 @font-face {
-  font-family: "VastagoGroteskBold";
-  src: url(../Fonts/VastagoGrotesk-Bold.otf) format("opentype");
-  font-style: normal;
-  font-weight: bold;
+  font-family: 'VastagoGrotesk-Bold';
+  src: url("/static/Fonts/VastagoGrotesk-Bold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Poppins";
-  src: url(../Fonts/Poppins-Regular.ttf) format("truetype");
-  font-weight: 400;
-  font-style: normal;
+  src: url("/static/Fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("/static/Fonts/Poppins-Bold.ttf") format("truetype");
 }
 
 
-/*Body Styles*/
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-
-}
-
+/* Contacts */
 .mainbox {
   padding: 4rem 2rem;
   text-align: center;
   font-family: 'VastagoGrotesk',  sans-serif;
-  background-color: #fef8ee;
+  background-color: #fef8e7;
 }
 
 .upper {
@@ -63,7 +55,7 @@ body {
   margin-bottom: 2rem;
 }
 
-/*CONTACT CARDS*/
+/*Contact Cards*/
 .down1 {
   display: flex;
   justify-content: center;
@@ -72,7 +64,6 @@ body {
   flex-wrap: wrap;
 }
 
-/*CONTACT CARDS*/
 .part1 {
   display: flex;
   align-items: flex-end;
@@ -88,7 +79,6 @@ body {
   position: relative;
   padding-left: 220px;
 }
-
 
 .part1.green {
   border-color: #07a05f;
