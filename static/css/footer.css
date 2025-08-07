@@ -38,7 +38,7 @@
 
 .footer-top {
   display: flex;
-  margin-left: 20px;
+  margin-left: 30px;
   justify-content: space-between;
   align-items: flex-start;
   padding: 80px 90px;
@@ -91,44 +91,26 @@
   height: 24px;
 }
 
-.contact-blocks {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.3rem;
-}
-
-.contact-blocks p {
-  margin: 2px 0; 
-  gap:0.8px;
-}
-
-.contact-name {
-  font-weight: 500;
-}
-
 .footer-right {
   display: flex;
   justify-content: flex-end;
-  gap: 50px;
+  gap: 55px;
   flex: 2;
 }
 
-.links a,
-.contact .contact-phone,
-.contact .contact-name,
-.contact .contact-role {
+.section-title {
+  font-weight: 600;
+  font-size: 1rem;
+  text-underline-offset: 6px;
+  margin-bottom: 2px;
+}
+
+.links a{
   text-decoration: none;
   color: white;
-  font-size: 1.1rem;
-  line-height: 0.8;
-}
-
-.contact .contact-role{
-  font-size: 0.8rem;
-}
-
-.links{
-  font-weight: 400;
+  font-size: 1rem;
+  line-height: 0.65;
+  font-weight: 450;
 }
 
 .links a:hover {
@@ -141,11 +123,36 @@
   flex-direction: column;
 }
 
-.section-title {
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-underline-offset: 6px;
-  margin-bottom: 2px;
+.contact-blocks {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-blocks p {
+  margin: 2px 0; 
+}
+
+.one{
+  margin-bottom: 0.3rem;
+}
+
+
+.contact .contact-phone,
+.contact .contact-name{
+  text-decoration: none;
+  color: white;
+  font-weight: 450;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.contact .contact-role{
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: 0.8rem;
+  padding-bottom: 0.12rem;
 }
 
 .footer-bottom {
@@ -165,10 +172,10 @@
   .footer-top {
     flex-direction: column;
     align-items: center;
+    text-align: center;
     padding: 32px 20px;
     padding-bottom: 12px;
-    gap: 24px;
-    text-align: center;
+    gap: 12px;  
   }
 
   .logo-social {
@@ -189,19 +196,11 @@
     gap: 16px;
   }
 
-  .contacts{
-    gap: 10rem;
-  }
-
   .footer-right {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 26px;
-  }
-
-  .links{
-    font-weight: 400;
+    gap: 24px;
   }
 
   .footer-section {
@@ -210,30 +209,41 @@
     width: 100%;
     gap: 6px;
   }
-
+  
   .section-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 1px;
   }
 
+  .links {
+    font-weight: 350;
+  }
+ 
+  .links a {
+    line-height: 0.9;
+  }
+
   .contact .comtact-phone,
-.contact .contact-role{
-  font-size: 0.8rem;
-}
+  .contact .contact-role {
+    font-size: 0.8rem;
+  }
 
   .contact-blocks {
     align-items: center;
-    gap: 10px;
+  }
+
+  .one {
+    margin-top: -0.4rem;
+    margin-bottom: -0.15rem;
   }
 
   .footer-bottom {
     font-size: 0.6rem;
     padding: 16px;
-    margin-top: 24px;
-    line-height: 1.2;
+    margin-top: 18px;
     padding-bottom:24px;
-    padding-top:12px;
-    line-height:0.1;
+    padding-top:8px;
+    line-height:0;
   }
 }
 
