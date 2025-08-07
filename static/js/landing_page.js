@@ -97,8 +97,6 @@ document
   });
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("raj script is running");
-
   const map = document.getElementById("india-map");
   const tooltip = document.getElementById("map-tooltip");
 
