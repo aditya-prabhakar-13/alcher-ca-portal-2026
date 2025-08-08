@@ -9,6 +9,7 @@
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 " rel="stylesheet">
  <link rel="stylesheet" href={% static 'css/carousel.css' %}>
+ <link rel="stylesheet" href={% static 'css/landingpage_styles.css' %}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
 {% endblock %} {% block body %}
 
@@ -100,73 +101,40 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     </div>
 </div>
 
-<div class="flex flex-col items-center justify-center relative mb-12" id="about">
-    <img src="{% static 'images/assets/whoca.png' %}" style="max-height:30%" class="who"/>
-    <p id="res">
-        <span id="diff_color">Who</span>&nbsp;is a Campus Ambassador?
-    </p>
-    <p style="width:90%; text-align:center; font-family:GeneralSans; font-weight:300; font-size:1.5vmax ">Campus Ambassadors are the key players of IIT Guwahati's Alcheringa capacity building and youth outreach programme. With the insight of bringing out the
-        essence of an authentic leader within you . Along with a host of valuable experiences and reassurance from Team Alcheringa, come forward and take up the
-        opportunity to plan , organise and execute exciting events. Join a community that engulfs you with moments that refines your managerial and
-        communicative skills.</p>
-</div>
 
 
-
-<div class="goody_heading" style="display:flex; justify-content: center; align-items: center; margin-bottom: 3rem;" id="benefits">
-    <img src="{% static 'images/assets/goody_arrow.svg' %}" class="leftgood" />
-    <p id="res">
-        Why Should you <span id="diff_color">&nbsp;Join?</span>
-    </p>
-    <img src="{% static 'images/assets/goody_arrow.svg' %}" class="rightgood"/>
-</div>
-
-<div class="goody_splide_component_wrapper">
-    <div class="goody_splide_component">
-        <section id="goody_splide" class="splide" aria-label="Splide Basic HTML Example">
-            <div class="splide__track goody_splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/a.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/b.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/c.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/d.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/e.png' %}" alt="">
-                        </div>
-                    </li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Section - Who is a Campus Ambassador? -->
+    <div class="top-section">
+        <div class="container">
+            <div class="content-left">
+                <h1 class="main-title">
+                    Who is a
+                    <span class="highlight-yellow">Campus Ambassador?</span>
+                </h1>
+                <ul class="description-list">
+                    <li>Campus Ambassadors are the key players of IIT Guwahati's Alcheringa capacity building and youth outreach programme.</li>
+                    <li>With the insight of bringing out the essence of an authentic leader within you.</li>
+                    <li>Along with a host of valuable experiences and reassurance from Team Alcheringa, come forward and take up the opportunity to plan, organise and execute exciting events.</li>
+                    <li>Join a community that engulfs you with moments that refines your managerial and communicative skills.</li>
                 </ul>
             </div>
-
-            <div class="splide__arrows splide__arrows--ltr">
-                <button class="splide__arrow splide__arrow--prev goody_splide__arrow" type="button"
-                    aria-label="Previous slide" aria-controls="splide01-track">
-                    <img src="{% static 'images/assets/arrow_prev.jpg' %}" />
-                </button>
-                <button class="splide__arrow splide__arrow--next goody_splide__arrow" type="button"
-                    aria-label="Next slide" aria-controls="splide01-track">
-                    <img src="{% static 'images/assets/arrow.jpg' %}" />
-                </button>
+            <div class="illustration-right">
+                <img src="media/image-uploads/friendship-illustration.png" alt="img" class="friendship-illustration">
             </div>
-        </section>
-        <divi id="responsibility"></div>
+        </div>
     </div>
+
 </div>
 
 <section id="responsibility1">
@@ -182,46 +150,133 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <h3>College Branding</h3>
                     <p style="font-family:GeneralSans; font-weight:300;">Lead Alcheringa promotion at your <br> college. Present to key clubs and <br> social groups.</p>
                 </div>
+
+    <!-- Bottom Section - Why become a Campus Ambassador? -->
+<!--     <div class="bottom-section">
+        <div class="container">
+            <h2 class="section-title">
+                Why become a
+            </h2>
+            <div class="green-box-container">
+                <span class="highlight-green">Campus Ambassador?</span>
+                <span class="asterisk">*</span> -->
+
             </div>
-            <div class="city_eliminations">
-                <img src="{% static 'images/city_eliminations.png' %}" alt="city_eliminations">
-                <div class="roles_details">
-                    <h3>City Eliminations</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Lead your city's top performer <br> search and help organize <br> Alcheringa's city elimination.</p>
+            <div class="cards-container">
+                <div class="card" data-card="1">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
+                </div>
+                <div class="card" data-card="2">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
+                </div>
+                <div class="card" data-card="3">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
+                </div>
+                <div class="card" data-card="4">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
+                </div>
+                <div class="card" data-card="5">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
                 </div>
             </div>
-            <div class="increasing_reach">
-                <img src="{% static 'images/increasing_reach.png' %}" alt="increasing_reach">
-                <div class="roles_details">
-                    <h3>Increasing Reach</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Expand Alcheringa by connecting <br> with college societies.</p>
+        </div>
+    </div>
+     <!-- Roles & Responsibilities Section -->
+    <div class="roles-section">
+        <div class="container">
+            <div class="roles-header">
+                <h2 class="roles-title">
+                    Roles &
+                </h2>
+                <div class="responsibilities-container">
+                    <span class="highlight-yellow-roles">Responsibilities</span>
+                    <span class="roles-asterisk">*</span>
                 </div>
             </div>
-            <div class="complete_tasks">
-                <img src="{% static 'images/complete_tasks.png' %}" alt="complete_tasks">
-                <div class="roles_details">
-                    <h3>Complete Tasks</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Complete all tasks promptly to <br> effectively promote and represent <br> Alcheringa</p>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img  src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
                 </div>
             </div>
-            <div class="get_registerations">
-                <img src="{% static 'images/get_registerations.png' %}" alt="get_registerations">
-                <div class="roles_details">
-                    <h3>Get Registrations</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Drive registrations by actively <br> engaging with students and promoting <br> the event in campus.</p>
-                </div>
-            </div>
-            <div class="suggest_ideas">
-                <img src="{% static 'images/suggest_ideas.png' %}" alt="suggest_ideas">
-                <div class="roles_details">
-                    <h3>Suggest Ideas</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Suggest creative ideas to <br> enhance event visibility and <br> engagement across campus.</p>
-                </div>
-            </div>
-        </div> -->
--->
+
+        </div> 
 <!-- </div> -->
 <!-- </section> -->
+
+        </div>
+    </div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
 
 <!--<section id="faq">
         <div>
