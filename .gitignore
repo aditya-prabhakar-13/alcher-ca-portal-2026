@@ -3,4 +3,7 @@
 .env
 /myenv
 /myvenv
-alcheridhaa
+
+venv/
+/venv
+

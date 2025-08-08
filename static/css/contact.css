@@ -1,140 +1,212 @@
+/*Fonts*/
+@font-face {
+  font-family: 'VastagoGrotesk';
+  src: url("/static/Fonts/VastagoGrotesk-Regular.otf") format("opentype");
+}
 
 @font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
+  font-family: 'VastagoGrotesk-Bold';
+  src: url("/static/Fonts/VastagoGrotesk-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/static/Fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("/static/Fonts/Poppins-Bold.ttf") format("truetype");
+}
+
+
+/* Contacts */
+.mainbox {
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'VastagoGrotesk',  sans-serif;
+  background-color: #fef8e7;
+}
+
+.upper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.help-heading {
+  font-size: 3rem;
   font-weight: 700;
-  font-display: swap;
-  font-style: normal;
+  color: #222121;
 }
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Extralight.ttf) format("truetype");
-  font-weight: 200;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Light.ttf) format("truetype");
-  font-weight: 300;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Regular.ttf) format("truetype");
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Medium.ttf) format("truetype");
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Semibold.ttf) format("truetype");
-  font-weight: 600;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
+
+.contact-btn {
+  background-color: #FFC548;
+  color: #222121;
+  font-size: 2.5rem;
   font-weight: 700;
-  font-display: swap;
-  font-style: normal;
+  padding: 0.8rem 2.8rem;
+  border-radius: 30px;
+  transform: rotate(-3deg);
+  display: flex;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+/*Contact Cards*/
+.down1 {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
 }
 
 .part1 {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding: 2rem;
+  min-height: 230px;
+  width: 420px;
+  border: 3px solid;
+  border-radius: 28px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  transition: transform 0.3s ease, border 0.3s ease;
+  position: relative;
+  padding-left: 220px;
 }
-.down1 {
-  display: flex;
-  gap: 2rem;
-  font-family: 'GeneralSans';
-  margin: 2rem 0;
-  justify-content: center;
+
+.part1.green {
+  border-color: #07a05f;
 }
-.upper{
-    display: flex;
-    justify-content: center;
+
+.part1.blue {
+  border-color: #1f61e1;
 }
-.flyer {
-  width: 40rem;
-  transform: translateX(-13%);
+
+.part1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  pointer-events: none;
+  z-index: -1;
+  transition: box-shadow 0.3s ease;
 }
-.h {
-  font-size: 1.3rem;
-  font-weight: 600;
+
+.part1 img {
+  border-radius: 0%;
+  width: 160px;
+  height: 90%;
+  object-fit: contain;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 1.5rem;
 }
-.ph{
-    font-weight: 600;
+
+.part1.green:hover::after {
+  box-shadow: 10px 10px 0 #07a05f;
 }
+
+.part1.blue:hover::after {
+  box-shadow: 10px 10px 0 #1f61e1;
+}
+
+.part1:hover {
+  transform: scale(1.08);
+  z-index: 1;
+  position: relative;
+}
+
 .details1 {
+  text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  margin-left: 0;
 }
-.mobile{
-    display: none;
+
+.h {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
 }
-@media screen and (max-width: 850px) {
-  /* .part1 {
-    flex-direction: column;
-  } */
-  .flyer {
-    width: 30rem;
-  }
+
+.p {
+  font-size: 1.2rem;
+  color: #555;
 }
-@media screen and (max-width: 700px) {
-  .mobile{
-    display: block;
-  }
-  .flyer{
-    display: none;
-  }
-  .down1{
-    scale: 0.9;
-  }
-  /* .down1{
-    flex-direction: column;
-  } */
+
+.ph {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666;
 }
-@media screen and (max-width: 650px) {
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .upper {
+    gap: 0.2rem;
+    margin-bottom: 0.5rem; 
+  }
+
+  .contact-btn {
+    font-size: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .help-heading {
+    font-size: 2rem;
+  }
+
   .down1 {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 1rem;
+    gap: 1rem;
+    margin-top: 1.2rem; 
   }
-  .mobile{
-    width: 40vw;
+
+  .part1 {
+    width: 90vw;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 1rem 1rem 140px; 
+    min-height: auto;
+    margin-left: -0.5rem;
   }
-  .part1{
-    width: 62vw;
+
+  .part1 img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 120px;
+    height: auto;
+    object-fit: contain;
   }
-  .one{
-    width: 18vw;
+  
+  .details1 {
+    margin: 0;
+    text-align: left;
+    gap: 6px;
+    margin-left: 2.5rem;
   }
-  .h{
-    font-size:4vw;
+
+  .h {
+    font-size: 1.5rem;
   }
-  .p{
-    font-size: 3vw;
+
+  .p,
+  .ph {
+    font-size: 1rem;
   }
-  .ph{
-    font-size: 3vw;
-  }
-  /* .flyer {
-    width: 20rem;
-  } */
 }
+
