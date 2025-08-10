@@ -1485,13 +1485,13 @@ opacity: 1;
 /* ALCHER 2026 STYLES*/
 @font-face {
   font-family: "Vastago Grotesk";
-  src: url("Fonts/VastagoGrotesk-Bold.otf") format("truetype");
+  src: url("../Fonts/VastagoGrotesk-Bold.otf") format("truetype");
   font-weight: 700;
   font-style: bold;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("Fonts/Poppins-Medium.ttf") format("truetype");
+  src: url("../Fonts/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
 }
 
@@ -1515,10 +1515,11 @@ header {
   flex-direction: column;
   align-items: center;
   font-family: "Vastago Grotesk";
+  font-weight: 600;
 }
 .lets_hear_some {
   /* position: relative; */
-  margin-top: 65px;
+  margin-top: 30px;
   /* margin-bottom: 0px; */
   /* text-align: center; */
   font-size: 60px;
@@ -1529,14 +1530,14 @@ header {
 .testimonials {
   /* position: relative;
   top: 40px; */
-  margin-top: -25px;
+  margin-top: -20px;
   width: fit-content;
   height: fit-content;
   border-radius: 24px;
   font-size: 60px;
   background-color: #009e77;
   color: white;
-  padding: 20px 30px;
+  padding: 15px 30px;
   /* gap: 10px; */
   rotate: 3.08;
   transform: rotate(-3.08deg);
@@ -1551,6 +1552,7 @@ header {
 }
 
 main {
+  position: relative;
   flex: 1;
   width: 100%;
   display: flex;
@@ -1558,7 +1560,13 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+.page1 main {
+  position: relative;
+  /* change here */
+}
 .frame1 {
+  position: relative; /* change here */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1576,6 +1584,7 @@ main {
 .frame2 {
   width: 780px;
   height: 385px;
+
   background: #f8f1e7;
   border: 1px solid #ffc548;
   border-radius: 24px;
@@ -1617,7 +1626,7 @@ main {
   align-self: flex-end;
   margin-top: auto;
   margin-bottom: 30px;
-  margin-right: 20px;
+  margin-right: 100px;
   /* margin: auto; */
 
   /* padding-right: 40px;
@@ -1702,6 +1711,7 @@ main {
   /* width: 96px;
   height: 96px; */
   cursor: pointer;
+  z-index: 2; /* change here */
 }
 
 .pfp img {
@@ -1728,7 +1738,7 @@ main {
   box-shadow: 0 0 0 16px rgba(255, 197, 72, 0.2),
     0 0 0 9px rgba(255, 197, 72, 0.6);
 }
-.pfp-1 {
+/* .pfp-1 {
   top: 33%;
   left: 81%;
 }
@@ -1751,8 +1761,35 @@ main {
 .pfp-6 {
   top: 35.389%;
   left: 12.62%;
+} */
+
+/* change here */
+.pfp-1 {
+  top: 0px;
+  right: -50px;
 }
-.pfp-1 img {
+.pfp-2 {
+  top: 120px;
+  right: -110px;
+}
+.pfp-3 {
+  bottom: 10px;
+  right: -50px;
+}
+.pfp-4 {
+  bottom: 0px;
+  left: -180px;
+}
+.pfp-5 {
+  top: 150px;
+  left: -100px;
+}
+.pfp-6 {
+  top: 0px;
+  left: -200px;
+}
+
+/* .pfp-1 img {
   width: 70px;
   height: 70px;
 }
@@ -1775,6 +1812,24 @@ main {
 .pfp-6 img {
   width: 70px;
   height: 70px;
+} */
+
+/* change here */
+.pfp-1 img,
+.pfp-4 img,
+.pfp-6 img,
+.pfp-3 img {
+  width: 70px;
+  height: 70px;
+}
+.pfp-2 img {
+  width: 120px;
+  height: 120px;
+}
+
+.pfp-5 img {
+  width: 90px;
+  height: 90px;
 }
 .hover-text {
   position: absolute;
@@ -1784,7 +1839,7 @@ main {
   background: #ffc548;
   color: #000;
   text-align: center;
-  font-size: 17px;
+  font-size: 14px;
   font-family: "Poppins";
   font-weight: 500;
   padding: 8px 10px;
@@ -1848,7 +1903,7 @@ main {
   font-weight: 700;
   font-style: bold;
   background-color: #2a6acb;
-  /* padding: 20px; */
+  padding: 15 25px;
   width: fit-content;
   top: 100px;
   border-radius: 24px;
@@ -1885,6 +1940,7 @@ main {
 }
 
 .faq-icon {
+  width: 30px;
   transition: transform 0.3s ease;
 }
 
