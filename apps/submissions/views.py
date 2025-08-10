@@ -143,7 +143,7 @@ class POCCreateView(CreateView):
             sum+=1
         if self.request.user.interested_modules:
             sum+=1
-        if profile.fb_handle:
+        if profile and profile.fb_handle:
             sum+=1
         if sum==0:
             comp = [60, 40]
@@ -329,7 +329,7 @@ def tasks(request):
         sum+=1
     if request.user.interested_modules:
         sum+=1
-    if profile.fb_handle:
+    if profile and profile.fb_handle:
         sum+=1
     if sum==0:
         comp = [60, 40]
@@ -437,7 +437,7 @@ def quiz(request, quiz_id):
         sum+=1
     if request.user.interested_modules:
         sum+=1
-    if profile.fb_handle:
+    if profile and profile.fb_handle:
         sum+=1
     if sum==0:
         comp = [60, 40]

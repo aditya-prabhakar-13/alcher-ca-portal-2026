@@ -30,7 +30,7 @@
     }
 </style>
 <div class="bg-white rounded-md shadow-xd pb-1 w-full taskss gen">
-    <div class="py-3 pl-6 font-medium text-lg border-b" style="font-size: 1.2rem;font-weight: 750;">Tasks</div>
+    <div class="py-3 pl-6 font-medium text-lg border-b" style="font-size: 1.2rem;font-weight: 750;">Pending Tasks</div>
 
     {% for quiz in quizzes %}
     <div class="task rounded-md shadow-xd flex justify-between">
@@ -89,7 +89,7 @@
                 <div class="text-gray-500 font-medium text-base"></div>
             </div>
             <a href="{% url 'poc-create' %}"><button
-                    class=" bg-pur text-white inline-block py-2 px-4 rounded shadow-sm font-semibold text-base">
+                    class=" bg-pur text-white inline-block py-2 px-4 rounded shadow-sm font-semibold text-base" style="background-color:greenyellow">
                     Submit
                 </button></a>
         </div>
