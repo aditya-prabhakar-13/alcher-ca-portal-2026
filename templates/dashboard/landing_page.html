@@ -1,4 +1,4 @@
-{% extends '../basicbootstrap.html'%} {% load static %} {%block title%}Alcheringa{%endblock%} {% block style %}
+<!-- {% extends '../basicbootstrap.html'%} {% load static %} {%block title%}Alcheringa{%endblock%} {% block style %}
 
 <link rel="stylesheet" href="{% static 'css/landing_style.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
@@ -9,6 +9,7 @@
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 " rel="stylesheet">
  <link rel="stylesheet" href={% static 'css/carousel.css' %}>
+ <link rel="stylesheet" href={% static 'css/landingpage_styles.css' %}>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
         <link
       rel="stylesheet"
@@ -111,78 +112,45 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     </div>
 </div>
 
-<div class="flex flex-col items-center justify-center relative mb-12" id="about">
-    <img src="{% static 'images/assets/whoca.png' %}" style="max-height:30%" class="who"/>
-    <p id="res">
-        <span id="diff_color">Who</span>&nbsp;is a Campus Ambassador?
-    </p>
-    <p style="width:90%; text-align:center; font-family:GeneralSans; font-weight:300; font-size:1.5vmax ">Campus Ambassadors are the key players of IIT Guwahati's Alcheringa capacity building and youth outreach programme. With the insight of bringing out the
-        essence of an authentic leader within you . Along with a host of valuable experiences and reassurance from Team Alcheringa, come forward and take up the
-        opportunity to plan , organise and execute exciting events. Join a community that engulfs you with moments that refines your managerial and
-        communicative skills.</p>
-</div>
 
 
-
-<div class="goody_heading" style="display:flex; justify-content: center; align-items: center; margin-bottom: 3rem;" id="benefits">
-    <img src="{% static 'images/assets/goody_arrow.svg' %}" class="leftgood" />
-    <p id="res">
-        Why Should you <span id="diff_color">&nbsp;Join?</span>
-    </p>
-    <img src="{% static 'images/assets/goody_arrow.svg' %}" class="rightgood"/>
-</div>
-
-<div class="goody_splide_component_wrapper">
-    <div class="goody_splide_component">
-        <section id="goody_splide" class="splide" aria-label="Splide Basic HTML Example">
-            <div class="splide__track goody_splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/a.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/b.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/c.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/d.png' %}" alt="">
-                        </div>
-                    </li>
-                    <li class="splide__slide goody_splide">
-                        <div class="goody_img_div">
-                            <img src="{% static 'images/assets/e.png' %}" alt="">
-                        </div>
-                    </li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Section - Who is a Campus Ambassador? -->
+    <div class="top-section">
+        <div class="container">
+            <div class="content-left">
+                <h1 class="main-title">
+                    Who is a
+                    <span class="highlight-yellow">Campus Ambassador?</span>
+                </h1>
+                <ul class="description-list">
+                    <li>Campus Ambassadors are the key players of IIT Guwahati's Alcheringa capacity building and youth outreach programme.</li>
+                    <li>With the insight of bringing out the essence of an authentic leader within you.</li>
+                    <li>Along with a host of valuable experiences and reassurance from Team Alcheringa, come forward and take up the opportunity to plan, organise and execute exciting events.</li>
+                    <li>Join a community that engulfs you with moments that refines your managerial and communicative skills.</li>
                 </ul>
             </div>
-
-            <div class="splide__arrows splide__arrows--ltr">
-                <button class="splide__arrow splide__arrow--prev goody_splide__arrow" type="button"
-                    aria-label="Previous slide" aria-controls="splide01-track">
-                    <img src="{% static 'images/assets/arrow_prev.jpg' %}" />
-                </button>
-                <button class="splide__arrow splide__arrow--next goody_splide__arrow" type="button"
-                    aria-label="Next slide" aria-controls="splide01-track">
-                    <img src="{% static 'images/assets/arrow.jpg' %}" />
-                </button>
+            <div class="illustration-right">
+                <img src="media/image-uploads/friendship-illustration.png" alt="img" class="friendship-illustration">
             </div>
-        </section>
-        <divi id="responsibility"></div>
+        </div>
     </div>
+
 </div>
 
 <section id="responsibility1">
     <!-- <div id="blue"> -->
-        <p id="res">
+<!-- <p id="res">
             Roles<span id="diff_color">&nbsp;And&nbsp;</span>Responsibilities
             <img src="{% static 'images/Punctuation_3.svg' %}" class="hidden md:block"  />
         </p>
@@ -193,45 +161,123 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
                     <h3>College Branding</h3>
                     <p style="font-family:GeneralSans; font-weight:300;">Lead Alcheringa promotion at your <br> college. Present to key clubs and <br> social groups.</p>
                 </div>
+
+    <!-- Bottom Section - Why become a Campus Ambassador? -->
+<!--     <div class="bottom-section">
+        <div class="container">
+            <h2 class="section-title">
+                Why become a
+            </h2>
+            <div class="green-box-container">
+                <span class="highlight-green">Campus Ambassador?</span>
+                <span class="asterisk">*</span> -->
+
             </div>
-            <div class="city_eliminations">
-                <img src="{% static 'images/city_eliminations.png' %}" alt="city_eliminations">
-                <div class="roles_details">
-                    <h3>City Eliminations</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Lead your city's top performer <br> search and help organize <br> Alcheringa's city elimination.</p>
+            <div class="cards-container">
+                <div class="card" data-card="1">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
                 </div>
-            </div>
-            <div class="increasing_reach">
-                <img src="{% static 'images/increasing_reach.png' %}" alt="increasing_reach">
-                <div class="roles_details">
-                    <h3>Increasing Reach</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Expand Alcheringa by connecting <br> with college societies.</p>
+                <div class="card" data-card="2">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
                 </div>
-            </div>
-            <div class="complete_tasks">
-                <img src="{% static 'images/complete_tasks.png' %}" alt="complete_tasks">
-                <div class="roles_details">
-                    <h3>Complete Tasks</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Complete all tasks promptly to <br> effectively promote and represent <br> Alcheringa</p>
+                <div class="card" data-card="3">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
                 </div>
-            </div>
-            <div class="get_registerations">
-                <img src="{% static 'images/get_registerations.png' %}" alt="get_registerations">
-                <div class="roles_details">
-                    <h3>Get Registrations</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Drive registrations by actively <br> engaging with students and promoting <br> the event in campus.</p>
+                <div class="card" data-card="4">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
                 </div>
-            </div>
-            <div class="suggest_ideas">
-                <img src="{% static 'images/suggest_ideas.png' %}" alt="suggest_ideas">
-                <div class="roles_details">
-                    <h3>Suggest Ideas</h3>
-                    <p style="font-family:GeneralSans; font-weight:300;">Suggest creative ideas to <br> enhance event visibility and <br> engagement across campus.</p>
+                <div class="card" data-card="5">
+                    <div class="card-illustration">
+                        <img src="media/image-uploads/team-illustration.png" alt="Team collaboration illustration" class="team-image">
+                    </div>
+                    <h3 class="card-title">Join The Team</h3>
                 </div>
             </div>
         </div>
-    <!-- </div> -->
-</section>
+    </div>
+     <!-- Roles & Responsibilities Section -->
+    <div class="roles-section">
+        <div class="container">
+            <div class="roles-header">
+                <h2 class="roles-title">
+                    Roles &
+                </h2>
+                <div class="responsibilities-container">
+                    <span class="highlight-yellow-roles">Responsibilities</span>
+                    <span class="roles-asterisk">*</span>
+                </div>
+            </div>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img  src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+                <div class="role-card">
+                    <div class="role-illustration">
+                        <img src="media/image-uploads/role-image.png" class="role-image">
+                    </div>
+                    <h3 class="role-card-title">College Branding</h3>
+                    <p class="role-description">Lead Alcheringa promotion at your college. Present to key clubs and social groups.</p>
+                    <span class="role-asterisk">*</span>
+                </div>
+            </div>
+
+        </div> 
+<!-- </div> -->
+<!-- </section> -->
+
+        </div>
+    </div>
+
+</body>
 
 
 
@@ -324,6 +370,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     </div>
 
 </section> -->
+
     <div class="first-container">
 
       <div class="box1 jsh">
@@ -361,6 +408,234 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
               <button class="rightbox1btn">Solo
                 <span class="rightarrow">&rarr;</span>
               </button>
+
+<!-- Testimonials starts 2026 alcher -->
+<div class="page1">
+  <header>
+    <div class="lets_hear_some">Let's hear some</div>
+    <div class="testimonials">Testimonials</div>
+  </header>
+  <div class="dots-container">
+    <span class="dot active" onclick="showTestimonial(0)"></span>
+    <span class="dot" onclick="showTestimonial(1)"></span>
+    <span class="dot" onclick="showTestimonial(2)"></span>
+    <span class="dot" onclick="showTestimonial(3)"></span>
+    <span class="dot" onclick="showTestimonial(4)"></span>
+    <span class="dot" onclick="showTestimonial(5)"></span>
+  </div>
+  <main>
+    <div class="frame1">
+      <div class="elements">
+        <div class="up-apos">
+          <img src="{% static 'images/apos_up.png' %}" alt="quote" />
+        </div>
+        <button class="left-arrow"></button>
+      </div>
+      <div class="frame2">
+        <div>
+          <img
+            src="{% static 'images/3ee368d4a7a993e89d89166a4e32811355fc46da.png' %}"
+            alt="person_image"
+          />
+        </div>
+        <div class="content">
+          <p class="text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus
+            esse ullam veritatis quod provident? Natus porro quod culpa,
+            consequatur distinctio cumque magnam itaque, asperiores id, odio
+            dicta adipisci obcaecati fuga.
+          </p>
+          <div class="name">-Unknown</div>
+        </div>
+      </div>
+      <div class="elements">
+        <button class="right-arrow"></button>
+        <div class="down-apos">
+          <img src="{% static 'images/apos_down.png' %}" alt="quote" />
+        </div>
+      </div>
+    </div>
+    <div class="pfp pfp-1">
+      <img
+        src="{% static 'images/pfp1.png %}"
+        alt="testimonial_pfp_1"
+        class="pfp-1"
+      />
+      <div class="hover-text">Click to read my story</div>
+    </div>
+    <div class="pfp pfp-2">
+      <img
+        src="{% static 'images/pfp2.png %}"
+        alt="testimonial_pfp_2"
+        class="pfp-2"
+      />
+      <div class="hover-text">Click to read my story</div>
+    </div>
+    <div class="pfp pfp-3">
+      <img
+        src="{% static 'images/pfp3.png %}"
+        alt="testimonial_pfp_3"
+        class="pfp-3"
+      />
+      <div class="hover-text">Click to read my story</div>
+    </div>
+    <div class="pfp pfp-4">
+      <img
+        src="{% static 'images/pfp4.png %}"
+        alt="testimonial_pfp_4"
+        class="pfp-4"
+      />
+      <div class="hover-text">Click to read my story</div>
+    </div>
+    <div class="pfp pfp-5">
+      <img
+        src="{% static 'images/pfp5.png %}"
+        alt="testimonial_pfp_5"
+        class="pfp-5"
+      />
+      <div class="hover-text">Click to read my story</div>
+    </div>
+    <div class="pfp pfp-6">
+      <img
+        src="{% static 'images/pfp6.png %}"
+        alt="testimonial_pfp_6"
+        class="pfp-6"
+      />
+      <div class="hover-text">Click to read my story</div>
+    </div>
+  </main>
+</div>
+
+<!-- Testimonials ends 2026 alcher -->
+
+<!-- alcher 2026 FAQ STARTS -->
+<div class="page2">
+  <header>
+    <div class="freq-asked">Frequently asked</div>
+    <div class="questions">Questions</div>
+  </header>
+  <div class="faq-section">
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+        The question comes here The question comes here The question comes here?
+        <img
+          class="faq-icon"
+          src="{% static 'images/Arrow Dropdown Caret Sort Select Arrow.png' %}"
+          alt="Dropdown"
+        />
+      </div>
+      <div class="faq-answer">
+        The answer comes here The answer comes here The answer comes here.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ ENDS -->
+
+<!-- <section class="join_team_solo">
+    <div class="flex flex-row" style="justify-content: center;">
+        <p id="res">
+            Join as a Team <span id="diff_color">&nbsp;Or&nbsp;</span> Solo
+        </p>
+    </div>
+
+    <div class="join " style=" padding-bottom: 10vh;">
+        <!-- <img class="ml-0.5 mr-0.5" id="fly" src="{% static 'images/team.svg' %}" /> -->
+<!-- <div class="join_card ">
+            <div class="min_join_card">
+
 
             </div>
 
@@ -1406,9 +1681,9 @@ learning                                 becomes fun, when people are supportive
     <div style ="text-align: center;display: flex;justify-content: center;">
         <p class="joining"><img src="{% static 'images/faqimg.svg' %} " alt="FAQs "></p>
     </div>
-    <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion" id="accordionPanelsStayOpenExample"> -->
 
-        <!-- <p>
+<!-- <p>
             <div class="accordian-item">
         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -1424,7 +1699,7 @@ learning                                 becomes fun, when people are supportive
         </div>
     </div>
         </p> -->
-        <p>
+<!-- <p>
             <div class="accordion-item ">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -1706,4 +1981,5 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
 </body>
 
-{%endblock%}
+{%endblock%} -->
+-->
