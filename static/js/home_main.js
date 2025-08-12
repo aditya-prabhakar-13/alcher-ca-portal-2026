@@ -1,6 +1,8 @@
 
 
 
+document.addEventListener("DOMContentLoaded",() => {
+
 
 
 // var navbar = document.querySelector("nav");
@@ -39,38 +41,38 @@ window.onscroll = function () {
 /*alcher 2026 js*/
      const testimonials = [
   {
-    pfp: "IMAGES/pfp1.png",
-    image: "IMAGES/pfp1.png",
+    pfp: "/static/images/pfp1.png",
+    image: "/static/images/pfp1.png",
     name: "- John Doe",
     text: "John's testimonial goes here. Amazing stuff!  John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff!   ",
   },
   {
-    pfp: "IMAGES/pfp2.png",
-    image: "IMAGES/pfp2.png",
+    pfp: "/static/images/pfp2.png",
+    image: "/static/images/pfp2.png",
     name: "- Jane Smith",
     text: "Jane loved the experience. So should you!",
   },
   {
-    pfp: "IMAGES/pfp3.png",
-    image: "IMAGES/pfp3.png",
+    pfp: "/static/images/pfp3.png",
+    image: "/static/images/pfp3.png",
     name: "- Max Turner",
     text: "This platform is insanely good. Kudos!",
   },
   {
-    pfp: "IMAGES/pfp4.png",
-    image: "IMAGES/pfp4.png",
+    pfp: "/static/images/pfp4.png",
+    image: "/static/images/pfp4.png",
     name: "- Alicia Belarus",
     text: "Alicia's feedback is glowing, just like this UI.",
   },
   {
-    pfp: "IMAGES/pfp5.png",
-    image: "IMAGES/pfp5.png",
+    pfp: "/static/images/pfp5.png",
+    image: "/static/images/pfp5.png",
     name: "- Rajiv Gandhi",
     text: "Great testimonials, smooth experience!",
   },
   {
-    pfp: "IMAGES/pfp6.png",
-    image: "IMAGES/pfp6.png",
+    pfp: "/static/images/pfp6.png",
+    image: "/static/images/pfp6.png",
     name: "- Angel Priya",
     text: "Clean design, and I loved the flow!",
   },
@@ -210,7 +212,4 @@ document.querySelector(".frame2").addEventListener("touchend", (e) => {
     });
   });
 /*Alcher 2026 end*/
-  
-
- 
-  
+})
