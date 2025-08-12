@@ -1,20 +1,13 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Footer</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/landingpage_styles.css' %}">
-</head>
-<body>
-
   <footer class="footer">
     <div class="footer-top">
 
       <!-- Column 1: Logo + Social -->
       <div class="footer-section logo-social">
+         <link rel="stylesheet" type="stylesheet" href="{% static 'css/footer.css' %}">
+         <link rel="stylesheet" type="stylesheet" href="{% static 'css/landingPage_styles.css' %}">
+
         <img src="{% static 'images/alcher-footer-logo.svg' %}" alt="Alcheringa Logo" class="footer-logo" />
         <div class="follows">
           <p class="follow-head">Follow Us</p>
@@ -65,5 +58,3 @@
     </div>
   </footer>
 
-</body>
-</html>
