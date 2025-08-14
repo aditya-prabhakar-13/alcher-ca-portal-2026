@@ -75,7 +75,7 @@ def dashboard(request):
             sum+=1
         if request.user.interested_modules:
             sum+=1
-        if profile.fb_handle:
+        if profile and profile.fb_handle:
             sum+=1
         if sum==0:
             comp = [60, 40]
@@ -301,7 +301,7 @@ def leaderboard(request):
         sum+=1
     if request.user.interested_modules:
         sum+=1
-    if profile.fb_handle:
+    if profile and profile.fb_handle:
         sum+=1
     if sum==0:
         comp = [60, 40]

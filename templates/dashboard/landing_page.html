@@ -33,10 +33,12 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+
 <nav style="width:100%;" class="scrolled">
     <a href="/"><img src="{% static 'images/Logomain.svg' %}" alt="Logo" /></a>
     <div class="nav-links" id="navLinks">
-        {% comment %} <i class="fa fa-times" id="navcross" style="display:none;color:white" onclick="hideMenu()"></i> {% endcomment %}
+        <i class="fa fa-times" id="navcross" onclick="hideMenu()"></i>
         <ul>
             <li><a href="#about" id="navlink1">About</a></li>
             <li><a href="#responsibility" id="navlink3">Responsibilities</a></li>
@@ -44,15 +46,15 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
             <li><a href="#testimonials_" id="navlink2">Testimonials</a></li>
             <li><a id="navlink5">Login</a></li>
             <li>
-                <a href="{% url 'register_single' %}" class="navhero-btn">Join Now</a>
-            </li>
-            <li>
                 <button class="navhero-btn" onclick="hideMenu()" style="font-weight: 600 !important; display:none; " id="navcross" >Close</button>
             </li>
         </ul>
+        <div class="join-now-btn"><a href="{% url 'register_single' %}" class="navhero-btn">Join Now</a></div>
     </div>
-    <i class="fa fa-bars" style="color: white;" onclick="showMenu()"></i>
+    
+    <i class="fa fa-bars" style="color: rgb(0, 0, 0);" onclick="showMenu()"></i>
 </nav>
+
 {%include 'dashboard/components/heroSection.html'%} 
 <head>
     <meta charset="UTF-8">
@@ -183,6 +185,7 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
             </div>
         </div> 
     </div>
+    
 </body>
 <!-- Map Starts here-->
 {% include 'newpage1.html' %}
@@ -401,7 +404,21 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
   </div>
 </div>
 
+
 <!-- FAQ ENDS -->
 {% include 'dashboard/components/contact.html' %}
 {% include 'dashboard/components/Footer.html' %}
+{%include 'users/login.html' %}
+<script>
+    // Change "navlinks" to "navLinks" to match your HTML id
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+</script>
 {%endblock%}

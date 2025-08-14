@@ -79,8 +79,9 @@ nav {
   font-family: "GeneralSans", sans-serif;
 }
 nav.scrolled {
+  border-bottom: 1px solid #C8C8C8;
   backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #F8F1E7;
   z-index: 100;
 }
 
@@ -91,20 +92,21 @@ nav img {
 .nav-links {
   flex: 1;
   text-align: right;
+  padding-right: 13%;
 }
 
 .nav-links ul li {
   list-style: none;
   display: inline-block;
-  padding: 8px 28px;
+  padding: 8px 28px ;
   position: relative;
   cursor: pointer;
 }
 
 .nav-links ul li a {
-  color: #ffffff;
+  color: #222121;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 #navlink5 {
@@ -593,7 +595,7 @@ nav .fa {
     top: 0;
     right: -200px;
     text-align: left;
-    z-index: 2;
+    z-index: 101;
     transition: 0.5s;
   }
   nav .fa {
@@ -789,6 +791,7 @@ nav img {
 .nav-links {
   display: flex;
   justify-content: flex-end;
+  
   text-align: right;
 }
 
@@ -801,14 +804,14 @@ nav img {
 }
 
 .nav-links ul li a {
-  color: #ffffff;
+  color: #121212;
   text-decoration: none;
   border-radius: 5px;
   font-family: GeneralSans;
 }
 
 #navlink5 {
-  color: #ffffff;
+  color: #222121;
   text-decoration: none;
   border-radius: 20px;
   font-family: GeneralSans;
@@ -824,7 +827,7 @@ nav img {
 #navlink3.scroll,
 #navlink4.scroll,
 #navlink5.scroll {
-  color: #fff;
+  color: black;
 }
 
 .nav-links ul li a:hover,
@@ -903,15 +906,16 @@ nav img {
 
 .navhero-btn,
 .hero-btn {
-  border: 1px solid #b542fb;
+  
+  border: 1px solid #1460D2;
   font-weight: 400 !important;
   display: inline-block;
   text-decoration: none;
   padding: 8px 28px;
   box-sizing: border-box;
-  border-radius: 4px;
-  background-color: #b542fb;
-  color: #ffffff;
+  border-radius: 10px;
+  background-color: #1460D2;
+  color: #ffffff !important;
   position: relative;
   cursor: pointer;
 }
@@ -1160,7 +1164,7 @@ opacity: 1;
     box-sizing: border-box;
     border-radius: 0;
     background-color: initial;
-    color: #ffffff;
+    color: #000000;
     position: relative;
     cursor: pointer;
   }
@@ -2087,3 +2091,62 @@ main {
   }
 }
 /* Alcher 2026 styles ends */
+@media only screen and (max-width: 1100px) {
+    
+    /* Show the hamburger icon */
+    nav .fa-bars {
+        display: block;
+        color: #222121; /* Make it visible */
+        font-size: 22px;
+        cursor: pointer;
+    }
+    
+    /* Hide the normal inline links */
+    .nav-links ul {
+        display: none;
+    }
+
+    /* This is your sliding menu container */
+.nav-links {
+    position: fixed;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: -200px;
+    background: #f8f1e7;
+    z-index: 2000;
+    transition: right 0.5s ease;
+
+    /* --- NEW FLEXBOX RULES --- */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    justify-content: center; /* Center items vertically */
+    padding: 0 20px; /* Add horizontal padding only */
+}
+
+    /* Inside the slide-out menu, show the links as a vertical list */
+    .nav-links ul {
+        display: block;
+    }
+
+    .nav-links ul li {
+        display: block; /* Each link on its own line */
+        padding: 15px 0;
+    }
+
+    .join-now-btn{
+      display: none;
+    }
+
+    /* Show the close icon (X) inside the menu */
+    .nav-links .fa-times {
+        display: block;
+        color: #222121;
+        font-size: 24px;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+}

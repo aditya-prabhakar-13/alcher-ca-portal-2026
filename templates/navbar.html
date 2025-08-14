@@ -80,8 +80,8 @@
 <!-- left_nav -->
 <nav class="hidden sm:block bg-white border-gray-400 sidebar">
 
-  <div style="align-items: center;" class="flex flex-col h-screen bg-white border-gray-400 rounded  sticky top-0">
-    <div style="margin-top:2vh; width: 21vh;"><a href="/"><img src="{% static 'images/dashlogo.svg' %}" class="border-b" width="100%" alt="logo"/></a></div>
+  <div style="width: 18rem;align-items: center;" class="flex flex-col h-screen bg-white border-gray-400 rounded  sticky top-0">
+    <div style="margin-top:2vh; width: 21vh; padding-bottom:20px"><a href="/"><img src="{% static 'images/dashlogo.svg' %}" class="border-b" width="100%" alt="logo"/></a></div>
     {% comment %} profile {% endcomment %}
     <div style="justify-content: space-between; align-items: center;margin: 1rem 4rem;" class="flex flex-col justify-center" style="margin:0;align-items: center;">
 
@@ -108,11 +108,11 @@
     <div class="navcontent" >
       <div style="width: 100%;" >
         <a href="{% url 'dashboard_page' %}"
-          class="navlink nav-links" style="width: 100%;">
+          class="navlink nav-links" style="width: 100%;color:#767676">
           {% if heading == 'Dashboard' %}
-          <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+          <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
           <img src="{% static 'icons/dashboard-active.svg' %}" class="sideicon"/>
-          <p class="hover:no-underline" style="color: #b452fb; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Dashboard</p>
+          <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Dashboard</p>
           </div>
           {% else %}
           <img src="{% static 'icons/dashboard.svg' %}" class="sideicon icon" />
@@ -123,11 +123,11 @@
       <!-- tasks -->
       <div style="width: 100%;" >
         <a href="{% url 'tasks' %}"
-          class="navlink nav-links" style="width: 100%;">
+          class="navlink nav-links" style="width: 100%;color:#767676">
           {% if heading == 'Tasks' %}
-          <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+          <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
           <img  src="{% static 'icons/tasks-active.svg' %}" class="sideicon"/>
-          <p class=" hover:no-underline" style="color: #B452FB; margin-left:1vw;font-weight: 600;font-size: 1rem;">Tasks</p>
+          <p class=" hover:no-underline" style="color: #444444; margin-left:1vw;font-weight: 600;font-size: 1rem;">Tasks</p>
           </div>
           {% else %}
           <img src="{% static 'icons/tasks.svg' %}" class="sideicon iconup" />
@@ -137,11 +137,11 @@
       </div>
       <!-- leaderboard -->
       <div style="width: 100%;">
-        <a href="{% url 'leaderboard' %}" class="navlink nav-links" style="width: 100%;">
+        <a href="{% url 'leaderboard' %}" class="navlink nav-links" style="width: 100%; color:#767676">
           {% if heading == 'Leaderboard' %}
-          <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+          <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 1vw;" >
             <img src="{% static 'icons/leaderboard-active.svg' %}" class="sideicon"/>
-            <p class="hover:no-underline" style="color: #B452FB; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Leaderboard</p>
+            <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 550;font-size: 1rem;">Leaderboard</p>
           </div>
           {% else %}
           <img src="{% static 'icons/leaderboard.svg' %}" class="sideicon iconup" />
@@ -150,11 +150,11 @@
         </a>
       </div>
       <div style="width: 100%;">
-        <a href="{% url 'profile' %}" class="navlink nav-links" style="width: 100%;">
+        <a href="{% url 'profile' %}" class="navlink nav-links" style="width: 100%;color:#767676">
           {% if heading == 'Profile' %}
-          <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+          <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
             <img  src="{% static 'icons/profile-active.svg' %}" class="sideicon"/>
-            <p class="hover:no-underline" style="color: #B452FB; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Profile</p>
+            <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Profile</p>
           </div>
           {% else %}
           <img src="{% static 'icons/profile.svg' %}" class="sideicon upicon"/>
@@ -164,11 +164,11 @@
       </div>
       <hr style="width: 100%;">
       <div style="width: 100%;">
-        <a href="{% url 'guidelines' %}" class="navlink nav-links" style="width: 100%;">
+        <a href="{% url 'guidelines' %}" class="navlink nav-links" style="width: 100%;color:#767676">
           {% if heading == 'Guidelines' %}
-          <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+          <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
             <img src="{%static 'icons/guidelines-active.svg'%}" class="sideicon"/>
-            <p class="hover:no-underline" style="color: #B452FB; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Guidelines</p>
+            <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Guidelines</p>
           </div>
           {% else %}
           <img  src="{%static 'icons/guidelines.svg'%}" class="sideicon downicon"/>
@@ -177,11 +177,11 @@
         </a>
       </div>
       <div style="width: 100%;">
-        <a href="{% url 'scoring' %}" class="navlink nav-links" style="width: 100%;">
+        <a href="{% url 'scoring' %}" class="navlink nav-links" style="width: 100%;color:#767676">
           {% if heading == 'Point System' %}
-          <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+          <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
             <img src="{% static 'icons/pointsystem-active.svg' %}" class="sideicon">
-            <p class="hover:no-underline" style="color: #B452FB; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Point System</p>
+            <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Point System</p>
           </div>
           {% else %}
           <div style="display: flex;">
@@ -202,11 +202,11 @@
       </a>
       </div>
     <div style="width: 100%;">
-      <a href="{% url 'contactus' %}" class="navlink nav-links" style="width: 100%;">
+      <a href="{% url 'contactus' %}" class="navlink nav-links" style="width: 100%;color:#767676">
       {% if heading == 'Contact us' %}
-      <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+      <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
         <img src="{% static 'icons/contactus-active.svg' %}" class="sideicon"/>
-        <p class="hover:no-underline" style="color: #B452FB; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Contact Us</p>
+        <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Contact Us</p>
       </div>
       {% else %}
       <img  src="{% static 'icons/contactus.svg' %}" class="sideicon"/>
@@ -215,9 +215,9 @@
     </a>
     </div>
     <div style="width: 100%;">
-      <a href="{% url 'logout' %}" class="navlink nav-links" style="width: 100%;">
+      <a href="{% url 'logout' %}" class="navlink nav-links" style="width: 100%;color:#767676">
         {% if heading == 'Logout' %}
-      <div class="tabs" style="padding: 1vh 0vh;background-color: #F6EBFF; display: flex; width: 100%;border-radius: 3vw;" >
+      <div class="tabs" style="padding: 1vh 0vh;background-color: #FFC548; display: flex; width: 100%;border-radius: 3vw;" >
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="sideicon">
           <path fill-rule="evenodd" clip-rule="evenodd"
             d="M2.8531 15.7972C2.44895 15.3425 2.44895 14.6574 2.8531 14.2027L9.51976 6.7027C9.96006 6.20736 10.7186 6.16275 11.2139 6.60305C11.7092 7.04335 11.7538 7.80183 11.3135 8.29717L6.4222 13.7999L21.25 13.7999C21.9127 13.7999 22.45 14.3372 22.45 14.9999C22.45 15.6627 21.9127 16.1999 21.25 16.1999L6.4222 16.1999L11.3135 21.7027C11.7538 22.198 11.7092 22.9565 11.2139 23.3968C10.7186 23.8371 9.96006 23.7925 9.51976 23.2972L2.8531 15.7972Z"
@@ -226,7 +226,7 @@
             d="M20.05 27.5C20.05 26.8372 20.5872 26.3 21.25 26.3L25.05 26.3L25.05 3.69995L21.25 3.69995C20.5872 3.69995 20.05 3.16269 20.05 2.49995C20.05 1.83721 20.5872 1.29995 21.25 1.29995L26.25 1.29995C26.9127 1.29995 27.45 1.83721 27.45 2.49995L27.45 27.5C27.45 28.1627 26.9127 28.7 26.25 28.7L21.25 28.7C20.5872 28.7 20.05 28.1627 20.05 27.5Z"
             fill="#C2CFE0" />
         </svg>
-        <p class="hover:no-underline" style="color: #B452FB; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Logout</p>
+        <p class="hover:no-underline" style="color: #444444; transform: translate(-2px,0); margin-left:1vw;font-weight: 600;font-size: 1rem;">Logout</p>
       </div>
       {% else %}
       <div style="display: flex;">
@@ -272,7 +272,7 @@
 </nav>
 <div x-data="{ dropdownOpen: false }" style="width: -webkit-fill-available;"\>
   <!-- top_nav-all_screens -->
-  <nav class=" px-6 py-3 flex sm:bg-color-[#eff6ff] -mx-4 mx-0 sticky top-0 justify-end navi" style="background-color: #ffffff; z-index: 100;">
+  <nav class=" px-6 py-3 flex sm:bg-color-[#eff6ff] -mx-4 mx-0 sticky top-0 justify-end navi" style="border-bottom : 1px solid black;background-color: #ffffff; z-index: 100;">
     <a href="/" class=" block sm:hidden">
       <img src="{% static 'images/dashlogo.svg' %}" alt="profile-pic" width="110px"  border="0" />
     </a>
