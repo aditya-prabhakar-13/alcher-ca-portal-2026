@@ -18,6 +18,60 @@
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
 </script>
 
+<style>
+@media screen and (max-width: 768px) {
+
+    .img-div {
+        display: none !important;
+    }
+
+    form {
+        width: 100% !important;
+    }
+
+    #form1 {
+        padding: 1rem 0.5rem !important;
+    }
+
+	.cform {
+		padding: 1rem 0.8rem;
+	}
+
+	.GoBack {
+		margin-top: 4rem;
+		margin-left: 1rem !important;
+	}
+	.main {
+        flex-direction: column;
+        align-items: center;}
+
+   .guidelines {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+		padding-bottom:0.5vh !important;
+        margin: 1rem 0 !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .guidelines ul {
+        padding-left: 1rem !important;
+		margin-top:0;
+    }
+
+    .guidelines h2,
+    .guidelines h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.25rem !important;
+    }
+
+}
+</style>
+
 {% if request.session.show_alert %}
 
     <script>
@@ -26,164 +80,158 @@
     
 {% endif %}
 
-<nav class="navbar navbar-light" style="background-color: #F6EBFF; padding: 1vh 4.5vh">
-	<div class="ccontainer-fluid" style="width: 100%; height:100%">
+<nav class="navbar navbar-light" style="background-color: #F8F1E7; padding: 3vh 4%; border-bottom: solid #C8C8C8 1px; position: fixed; width:100%;">
+	<div class="ccontainer-fluid" style="width: 100%; height:100%; padding-left: 2rem;">
 		<a class="cnavbar-brand" href="/">
-			<img src="{% static 'images/alcherlogopurple.svg' %}" alt="">
+			<img src="{% static 'images/Logoblack.svg' %}" alt="">
 		</a>
 	</div>
 </nav>
-<style>
-	@media only screen and (max-width:950px) {
-		.img-div {
-			display: none;
-		}
-		.ccol{
-			width: 100%;
-		}
-	}
-	.bg-pur{
-        background-color: #B542FB;
-    }
-    .bg-pur:hover{
-        background-color: #a715ff;
-    }
-	.crow{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 5vh;
-		gap: 5px;
-	}
-</style>
+
+<div>
+  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; border: solid black 1.5px; border-radius: 4px; padding: 0.4rem 1rem; margin-top: 8rem; margin-left: 5%;">Back</button>
+</div>
+
 <div class="crow">
 	<div class="ccol form-div">
 		<div class="ccontainer form-wrapper">
-			<h2>Registration</h2>
+			<h2 style="font-weight: 700; margin-top:2rem;">Registration</h2>
 
+			<br>
+
+			<div style="background-color:#009E77; height:6rem; margin:0; padding:1rem; padding-top:1.35rem; border-radius:16px; border-bottom-right-radius:0; border-bottom-left-radius: 0;">
+					<img style="background-color: #009E77; height:4rem;"src={%static 'images/details_ca.png' %}/>
+			</div>
 
 			<div class="cform">
 				<div class="cform-head my-2 mb-4">
-					<div class="row1" style="display: flex; justify-content:space-evenly; background-color: #F6EBFF;padding: 1.5vh 1vh; gap:10px;">
-						<div >
+					<p style="font-size: 1rem; color: #90A0B7">Join as a<span style="color:red">*</span></p>
+					<div class="row1" style="display: flex; justify-content:flex-start; background-color: #f8f1e7; gap:10px;">
+						<br>
+						<div class="join">
 							<a href="{% url 'register_single' %}" type="button" class="register-top"
-								style="text-decoration: none;font-weight: 500;color:rgb(141, 141, 141)">Solo
-								Registration</a>
-
+								style="text-decoration: none; font-weight: 500; color: black;">
+								Solo
+							</a>
 						</div>
-						<div >
+						<div class="join">
 							<a href="{% url 'register_group' %}" type="button" class="register-top"
-								style="text-decoration: none;font-weight: 500;color:#B542FB;">Team
-								Registration</a>
-
+								style="text-decoration: none; font-weight: 500; color: black; background-color: #FFC548; border:none;">
+								Team
+							</a>
 						</div>
 					</div>
 				</div>
+				
+				<div class="guidelines" style="padding: 1.5vh 3vh;">
+					<h6 style="color: #4C5862">Guidelines</h6>
+					<ul style="color: #707683">
 
-				<!-- <div class="progress-bar-container">
-					<i type="button" class="fa fa-chevron-circle-left" id="GoBack" style="color: #B542FB;"></i>
-					<div class="step step1"style="background-color: #B542FB;">1</div>
-					<div class="connector connector1"></div>
-					<div class="step step2">2</div>
-					<div class="connector connector2"></div>
-					<div class="step step3">3</div>
-				</div> -->
-				<div class="accordion-item" style="background-color: white;">
-					<h2 class="accordion-header" id="flush-headingOne">
-						<button id="guidelinesButton" class="accordion-button collapsed btn-primary" type="button"
-							data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-							aria-controls="flush-collapseOne" style="background-color: white;">
-							<a href="#" class="guidelinesTag" style="background-color: #B542FB;">
-								Guidelines</a>
-						</button>
-					</h2>
-					<div class="overlay_grp" id="overlay_grp">
-						<div id="flush-collapseOne" class="accordion-collapse collapse"
-							style="background-color: #F3F6F8; padding: 10px; border-radius: 6px; color: #616C74; margin: 15px;"
-							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-							<div class="accordion-body">
-								<div class="content" style="height:55vh; overflow-y:scroll; padding: 1% 5%;">
-									<br> 1) For the first time in Alcheringa, we bring you the ease of showing as a Team
-									of two
-									for the Campus Ambassador programme.
-									<br> 2) Terms and conditions to show as a team:
-									<br> &nbsp;&nbsp;&nbsp;&nbsp;a) The team should consist of a Leader and executive.
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;b) There must be a minimum gap of one academic year between
-									the lead and executive,
-									making the leader by minimum a one year senior to the executive in respective
-									fields.
-									<br> 3) Fill out CA’s Alcheringa’s details, from your name to
-									password,
-									as part of the process to complete registration.
-									<br> 4) Text fields marked with a red asterisk mark (*) makes them mandatory to
-									fill.
-									<br> 5) Fill up the Position of Responsibility (POR) field with your role in your
-									organisation or university. For instance:
-									<br>&nbsp;&nbsp;&nbsp;&nbsp;a) Student.
-									<br> &nbsp;&nbsp;&nbsp;&nbsp;b) Secretary of the Music/Arts Club
-									<br> &nbsp;&nbsp;&nbsp;&nbsp;c) Fill up the role you serve.
-									<br> 6) Fill in the interested module(s) field with the performing arts, practices,
-									and
-									activities that interest you. As an example:
-									<br> &nbsp;&nbsp;&nbsp;&nbsp;a) Music.
-									<br> &nbsp;&nbsp;&nbsp;&nbsp;b) Dance, photography, sports etc.
-									<br> 7)Kudos; you are just a click away from showing up as a team. Click the submit
-									button
-									and finish the email-based verification to dive into the Dashboard.
-									<br> 8)Email verification:
-									<br> &nbsp;&nbsp;&nbsp;&nbsp;a) After pressing the submit button, Alcheringa will
-									send two verification mails
-									to both leader and executive.
-									<br> &nbsp;&nbsp;&nbsp;b) After completing the verification, both the leader and
-									executive should use the
-									same password to get into Dashboard, provided email is their username.
-									<br> &nbsp;&nbsp;&nbsp;c) After getting into the Dashboard, we recommend both leader
-									and executive change
-									their common password by going into the profile section.
-									<br>
-									<br>
-								</div>
-								<button class="btn btn-primary" style="background-color: #B542FB; border: none; margin:3%; padding: 1% 5%;"
-									id="backBtn" >Back</button>
-							</div>
-						</div>
-					</div>
+						<li> a. Conditions to register as a team:
+							<ul style="list-style-type: disc;">
+								<li style="margin-bottom: 1rem;">The team should consist of a Leader and Executive.</li>
+								<li>There must be a minimum gap of one academic year between the Leader and Executive, making the Leader a one year senior to the executive at minimum.</li>
+							</ul>
+						</li>
+						<br>
+						<li> b. Fill in the Position of Responsibility (POR) field with your role in your organisation or college. 
+						For example:
+						Student, Secretary/Core Team member etc of the cultural/technical clubs or any similar roles.
+						</li>
+						<br>
+						<li> c. Fill in the Interested Module(s) with the modules and activities that you are interested in.
+						For example:
+						Music, dance, photography, sports etc.
+						</li>
+						<br>
+						<li> d. Email Verification: 
+							<ul style="list-style-type: disc; margin-bottom:-1rem;">
+								<li style="margin-bottom: 1rem;">After pressing the submit button, Alcheringa will send two verification mails to both the leader and executive.</li>
+								<li style="margin-bottom: 1rem;">After completing the verification, both the leader and executive can use their respective email IDs and the same password to log in to the Dashboard.</li>
+								<li>After logging into the Dashboard, we recommend both the Leader and Executive to change their common password to individual passwords by going into the profile section.</li><br>		
+							</ul>
+						</li>
+					</ul>
 				</div>
-				<form method="POST">
+
+				<div class="main" id="main1" style="display:block;">
+					<form method="POST">
 					{% csrf_token %}
-
-
-					<div id="form1" style="overflow-y:scroll;">
-						<p class="my-1">Field marked * are mandatory</p>
-						<h3>Team Leader</h3>
-						<ul class="errorlist">
-							{% if single_user_register_form_1.non_field_errors %}
-							<li>{{ single_user_register_form_1.non_field_errors }}</li>
-							{% endif %}
-							{% for field in single_user_register_form_1 %}
-							{% if field.errors %}
+						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
+							<h6 style="color: #000000">For Team Leader</h6>
+							<br/>
+							<h6 class="my-1" style="color: #4C5862">Field marked<span style="color:red"> * </span>are mandatory</h6>
 							<ul class="errorlist">
-								{% for error in field.errors %}
-								{{ error }}
+								{% if single_user_register_form_1.non_field_errors %}
+								<li>{{ single_user_register_form_1.non_field_errors }}</li>
+								{% endif %}
+								{% for field in single_user_register_form_1 %}
+								{% if field.errors %}
+								<ul class="errorlist">
+									{% for error in field.errors %}
+									{{ error }}
+									{% endfor %}
+								</ul>
+								{% endif %}
 								{% endfor %}
 							</ul>
-							{% endif %}
-							{% endfor %}
-						</ul>
-						
-						{{ single_user_register_form_1.firstname }}
-						{{ single_user_register_form_1.email }}
-						{{ single_user_register_form_1.phone }}
-						{{ single_user_register_form_1.graduation_year }}
-						<!-- {{ single_user_register_form.college_state }}
-					{{ single_user_register_form.college_city }}
-					{{ single_user_register_form.college_name }} -->
-						{{ single_user_register_form_1.position_of_responsibility }}
-						{{ single_user_register_form_1.interested_modules }}
-						{% comment %} <p class="my-1">Field marked * are mandatory</p> {% endcomment %}
-						<h3>Team Executive</h3>
-						<ul class="errorlist">
+							
+							{{ single_user_register_form_1.firstname }}
+							{{ single_user_register_form_1.phone }}
+							{{ single_user_register_form_1.email }}
+
+							<input type="password" name="password1" class="input_field" placeholder="Set Password*"
+								required id="id_password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+							<input type="password" name="password2" class="input_field" placeholder="Confirm Password*"
+								required id="id_password2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>							
+
+							{{ single_user_register_form_1.graduation_year }}
+
+							<div id="connect-social" style="color: #707683;">
+								Connect social media 
+								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
+									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
+									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
+								</div>
+							</div>
+							<br>
+							<button type="button" id="nextBtn1"
+								class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
+								style="background-color: #009E77; margin-top:2.5rem; border:none;" />Next
+							</button>
+						</div>
+					</form>
+					<div class="img-div" style = "width: 100%;">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="background: none; width: 40%; margin-top:-45rem; ">
+					</div>
+				</div>	
+
+
+				<div class="main" id="main2" style="display:none;">
+					<form method="POST">
+					{% csrf_token %}
+						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
+							<h6 style="color: #000000">For Team Executive</h6>
+							<br/>
+							<h6 class="my-1" style="color: #4C5862">Field marked<span style="color:red"> * </span>are mandatory</h6>
+							<ul class="errorlist">
+								{% if single_user_register_form_1.non_field_errors %}
+								<li>{{ single_user_register_form_1.non_field_errors }}</li>
+								{% endif %}
+								{% for field in single_user_register_form_1 %}
+								{% if field.errors %}
+								<ul class="errorlist">
+									{% for error in field.errors %}
+									{{ error }}
+									{% endfor %}
+								</ul>
+								{% endif %}
+								{% endfor %}
+							</ul>
+                		<ul class="errorlist">
 							{% if single_user_register_form_2.non_field_errors %}
 							<li>{{ single_user_register_form_2.non_field_errors }}</li>
 							{% endif %}
@@ -198,15 +246,10 @@
 							{% endfor %}
 						</ul>
 						{{ single_user_register_form_2.firstname }}
-						{{ single_user_register_form_2.email }}
 						{{ single_user_register_form_2.phone }}
+						{{ single_user_register_form_2.email }}
 						{{ single_user_register_form_2.graduation_year }}
 
-						{{ single_user_register_form_2.position_of_responsibility }}
-						{{ single_user_register_form_2.interested_modules }}
-
-						{% comment %} <p class="my-1">Field marked * are mandatory</p> {% endcomment %}
-						<h3>Other Fields</h3>
 						<ul class="errorlist">
 							{% if group_user_register_form.non_field_errors %}
 							<li>{{ group_user_register_form.non_field_errors }}</li>
@@ -220,135 +263,149 @@
 							</ul>
 							{% endif %}
 							{% endfor %}
-						</ul>
-						{{ group_user_register_form.college_name }}
-						<div class="StateAndCity" >
-							<div style="width:100%">
-								<input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off"
-							 placeholder="College State*">
+						</ul>       
 
-						<div id="state-suggestions"></div>
+							<div id="connect-social" style="color: #707683; margin-top: 0.5rem;">
+								Connect social media 
+								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
+									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
+									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
+								</div>
 							</div>
-						<div style="width:100%">
-							<input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off"
-							placeholder="College City*">
-						<div id="city-suggestions"></div>
+							<br>
+							<button type="button" id="nextBtn2"
+								class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
+								style="background-color: #009E77; margin-top:2.5rem; border:none;" />Next  
+							</button>
 						</div>
-						
+					</form>
+					<div class="img-div" style = "width: 100%; height: 135%;">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="background: none; width: 40%; margin-top:-37rem;">
+					</div>
+				</div>
+				
+
+
+				<div class="main" id="main3" style="display:none;"> 
+
+					<form method="POST">
+					{% csrf_token %}
+						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
+							<h6 style="color: #000000">College Details</h6>
+							<br/>
+							<h6 class="my-1" style="color: #4C5862">Field marked<span style="color:red"> * </span>are mandatory</h6>
+							
+							<ul class="errorlist">
+								{% if single_user_register_form_1.non_field_errors %}
+								<li>{{ single_user_register_form_1.non_field_errors }}</li>
+								{% endif %}
+								{% for field in single_user_register_form_1 %}
+								{% if field.errors %}
+								<ul class="errorlist">
+									{% for error in field.errors %}
+									{{ error }}
+									{% endfor %}
+								</ul>
+								{% endif %}
+								{% endfor %}
+							</ul>
+
+							<div style="display:flex; width:100%; gap: 1rem; flex:1; border:0; justify-content:space-between; margin-bottom:1.5rem; margin-top:2.5rem;">
+								<input style="width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;" placeholder="College State*" />
+								<input style="width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;" placeholder="College City*"/>
+							</div>
+							{{ group_user_register_form.college_name }}
+							<br>
+							<div style="display: flex; gap:1rem;">
+								<button type="button" id="backBtn"
+									style="background-color:#f8f1e7; border:solid black 1px; margin-top:1rem; color: #009E77; border-radius:6px; padding: 0.2rem 0.8rem;">←
+								</button>
+								<button type="button" id="submitBtn"
+									class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
+									style="background-color: #009E77; margin-top:1rem; border:none;">Submit
+								</button>
+							</div>
 						</div>
-						
-						{{ group_user_register_form.referred_by }}
-						<input type="password" name="password1" class="input_field" placeholder="Set Password *"
-							required id="id_password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-
-						<input type="password" name="password2" class="input_field" placeholder="Confirm Password *"
-							required id="id_password2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-							title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-
-						<input type="submit" id="form-submit-btn"
-							class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-							style="background-color: #B542FB;" />
-						<!-- <button type="button" id="nextButton" class="btn btn-primary"
-							style="background-color:#B542FB ; border: none;">Next Page</button> -->
+					</form>
+					<div class="img-div" style = "width: 100%;">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="background: none; width: 40%; margin-top:-30rem;">
 					</div>
+				</div>
 
-					<!-- <div id="form2" style="display: none;">
 
-						
-						<button type="button" id="nextButton2" class="btn btn-primary"
-							style="background-color:#B542FB ;border: none;">Next Page</button>
-					</div>
-					<div id="form3" style="display: none;">
 
-						
-					</div> -->
-					<p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
-				</form>
-				<br />
-				Registered already? <a id="navlink5" style="cursor:pointer; color:#B542FB;">Login</a>
-				<br /><br />
+				<p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
+				<br>
 			</div>
-
 		</div>
-	</div>
-	<div class="ccol img-div" style = "width: 40%">
-		<img src="{% static 'images/registergroup.jpg' %}" alt="" style="width: 30%; position:fixed; left:90%; top:50%; transform:translate(-90%,-50%);">
 	</div>
 </div>
 
-
-
+<div id="bottom-connect" style="display:flex; align-items:center; gap:1rem; align-self:center;justify-content:center; padding-top: 8rem; padding-bottom: 16rem;">
+	<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.4rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
+	<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.5rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
+</div>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-		const guidelinesButton = document.getElementById("guidelinesButton");
-		const overlay_grp = document.getElementById("overlay_grp");
-		const backBtn = document.getElementById("backBtn");
-		const form1 = document.getElementById("form1");
-		const form2 = document.getElementById("form2");
-		const form3 = document.getElementById("form3");
-		const nextButton = document.getElementById("nextButton");
+
+		const step1 = document.getElementById("main1");
+    	const step2 = document.getElementById("main2");
+    	const step3 = document.getElementById("main3");
+
+		const form1 = step1.querySelector("form");
+    	const form2 = step2.querySelector("form");
+    	const form3 = step3.querySelector("form");
+
+		const nextButton1 = document.getElementById("nextBtn1");
+		const nextButton2 = document.getElementById("nextBtn2");
+		const submitButton = document.getElementById("submitBtn");
 		const GoBack = document.getElementById("GoBack");
-		guidelinesButton.addEventListener("click", function () {
-			const popupContainer = document.getElementById("flush-collapseOne");
-			if (popupContainer.classList.contains("show")) {
-				popupContainer.classList.remove("show");
-				overlay_grp.style.display = "none";
-			} else {
-				popupContainer.classList.add("show");
-				overlay_grp.style.display = "block";
-			}
-		});
-		backBtn.addEventListener("click", function () {
-			const popupContainer = document.getElementById("flush-collapseOne");
-			if (popupContainer.classList.contains("show")) {
-				popupContainer.classList.remove("show");
-				overlay_grp.style.display = "none";
-			}
-		})
+		const backBtn = document.getElementById("backBtn");
 
-		//form next button
-		nextButton.addEventListener("click", function () {
-			form1.style.display = "none";
-			form2.style.display = "block";
-			document.querySelector(".connector1").classList.add("completed");
-			document.querySelector(".step2").classList.add("completed");
+		const bottom = document.getElementById("bottom-connect");
 
-		});
+		//form next buttons
+		nextButton1.addEventListener("click", function () {
+			if (form1.reportValidity()) {  
+            step1.style.display = "none";
+            step2.style.display = "block";
+			bottom.style.display = "none";
+        }
+        }
+		);
+
 		nextButton2.addEventListener("click", function () {
-			form2.style.display = "none";
-			form3.style.display = "block";		
-			document.querySelector(".connector2").classList.add("completed");
-			document.querySelector(".step3").classList.add("completed");
-
+			if (form2.reportValidity()) {
+            step2.style.display = "none";
+            step3.style.display = "block";
+			bottom.style.display ="none";
+        }
 		});
+
+		//form submit button
+		submitButton.addEventListener("click", function showloading() {
+		if (form3.reportValidity()) {
+            document.getElementById("showload").style.display = "block";
+            form3.submit();
+        }
+	});
+
 		//form back button
 		GoBack.addEventListener("click", function () {
-			if (form2.style.display == "none"&&form3.style.display=="none") {
-				var previousURL ="/";
-				window.location.href = previousURL;
-			}
-			else if (form2.style.display == "block") {
-				form1.style.display = "block";
-				form2.style.display = "none";
-				document.querySelector(".step2").classList.remove("completed");
-				document.querySelector(".connector1").classList.remove("completed");
-			} else if (form3.style.display == "block") {
-				form2.style.display = "block";
-				form3.style.display = "none";
-				document.querySelector(".step3").classList.remove("completed");
-				document.querySelector(".connector2").classList.remove("completed");
-			}
+			if (step2.style.display === "block") {
+            step1.style.display = "block";
+            step2.style.display = "none";
+        } else if (step3.style.display === "block") {
+            step2.style.display = "block";
+            step3.style.display = "none";
+        } else {
+            window.location.href = "/";
+        }
 		})
 	});
 
 
-	document.getElementById("form-submit-btn").addEventListener("click", showloading);
-
-	function showloading() {
-		document.getElementById("showload").style.display = "block"
-	}
 </script>
 {% include 'users/login.html' %}
 {% endblock %}
