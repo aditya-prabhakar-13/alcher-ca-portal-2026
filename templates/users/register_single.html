@@ -9,11 +9,7 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 <!-- CSS only -->
-<link rel="stylesheet" href="{% static 'css/solo_form.css' %}" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-/>
+
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
   rel="stylesheet"
@@ -21,12 +17,16 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
   crossorigin="anonymous"
 />
 <!-- JavaScript Bundle with Popper -->
+
 {% if request.session.show_alert %}
+
 <script>
   // alert('Registration successful. Check your mail for the link to activate your account.');
   window.location.href = "{% url 'successfull' %}";
 </script>
+
 {% endif %}
+
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
@@ -42,283 +42,200 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
     </a>
   </div>
 </nav>
-<div class="rj_form_container">
-  <!-- Header Section -->
-  <div class="rj_header_section">
-    <!-- Back button -->
-    <button id="guidelinesBackBtn" class="rj_guidelines_back_btn">
-      &larr; Back
-    </button>
-  </div>
-  <!-- Main Form Content -->
-  <div class="rj_main_content">
-    <!-- Title and Step Indicators -->
-    <h1 class="rj_title">Registration</h1>
-    <div class="rjcontent">
-    <div class="rj_step_indicator_container">
-      <!-- Step 1 Indicator -->
-      <div id="step1" class="rj_step_item">
-        <div class="rj_step_indicator active">1</div>
-        <span class="rj_step_label">Personal Details</span>
-      </div>
-      <!-- Connector Line -->
-      <div class="rj_connector"></div>
-      <!-- Step 2 Indicator -->
-      <div id="step2" class="rj_step_item">
-        <div class="rj_step_indicator">2</div>
-        <span class="rj_step_label">CA Details</span>
+<style>
+  .rj-body {
+    width: 80vw;
+    margin: auto;
+  }
+  .rj-back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    background-color: #f7f1e3;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-top: 30px;
+  }
+
+  .rj-arrow {
+    font-size: 16px;
+    margin-right: 8px;
+    line-height: 1;
+  }
+  .rj-progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 16px 16px 0px 0px;
+    background-color: #009e77;
+  }
+
+  .rj-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rj-step-circle {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #008080;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+  }
+
+  .rj-step-text {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .rj-progress-line {
+    width: 100px;
+    height: 2px;
+    background-color: white;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+
+  .rj-step.rj-active {
+    opacity: 1;
+  }
+
+  .rj-step.rj-active .rj-step-circle {
+    background-color: #eee;
+    border-color: #eee;
+  }
+
+  .rj-step.rj-inactive {
+    opacity: 0.5;
+  }
+
+  .rj-button-container {
+    margin-top: 50px;
+  }
+
+  .rj-nav-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #008080;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .rj-nav-button:hover {
+    background-color: #e0e0e0;
+  }
+</style>
+<div class="rj-body">
+  <button class="rj-back-button"><span class="rj-arrow">←</span> Back</button>
+  <div class="rj-head">Registration</div>
+  <div class="rj-form-container">
+    <div class="rj-form-first">
+      <div class="rj-progress-container">
+        <!-- Step 1 -->
+        <div class="rj-step rj-active" data-step="1">
+          <div class="rj-step-circle">1</div>
+          <div class="rj-step-text">Personal details</div>
+        </div>
+
+        <!-- Connecting Line -->
+        <div class="rj-progress-line"></div>
+
+        <!-- Step 2 -->
+        <div class="rj-step rj-inactive" data-step="2">
+          <div class="rj-step-circle">2</div>
+          <div class="rj-step-text">CA Details</div>
+        </div>
       </div>
     </div>
-    <div style="margin-left: 20px;">Join as <span style="color: red;">*</span></div>
-    <!-- Form Body - Pages are swapped here -->
-    <div id="form-content" class="rj_form_body">
-      <!-- Left Side: Form Inputs -->
-      <div class="rj_form_inputs">
-        <!-- Solo/Team Toggle and Guidelines -->
-        <div class="rj_solo_team_section">
-          <div class="rj_solo_team_toggle">
-            <button id="soloBtn" class="rj_solo_btn">Solo</button>
-            <button id="teamBtn" class="rj_team_btn">Team</button>
-          </div>
-          <!-- Guidelines Accordion -->
-          <div class="rj_guidelines_accordion">
-            <div class="rj_guidelines_header">
-              <button id="guidelinesToggle" class="rj_guidelines_button">
-                <div class="rj_guidelines_tag">Guidelines</div>
-                <svg
-                  id="guidelinesIcon"
-                  class="rj_guidelines_icon"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div id="guidelinesContent" class="rj_guidelines_content hidden">
-                <div class="rj_guidelines_text">
-                  <p>
-                    1) Following the usual method to complete registration, fill
-                    up all the details from your name to modules.
-                  </p>
-                  <p>
-                    2) Text fields marked with a red asterisk mark (*) makes
-                    them mandatory to fill.
-                  </p>
-                  <p>
-                    3) Fill up the Position of Responsibility (POR) field with
-                    your role in your organisation or university. For instance:
-                  </p>
-                  <ul class="rj_guidelines_list">
-                    <li>a) Student.</li>
-                    <li>b) Secretary of the Music/Arts Club</li>
-                    <li>
-                      c) Fill up the role you serve in your respective college
-                    </li>
-                  </ul>
-                  <p>
-                    4) Fill up the interested module(s) field with the
-                    performing - arts, practices, activities that interest you.
-                    For instance, Music, Dance, Photography, sports etc.
-                  </p>
-                  <p>
-                    5) Give a pat to yourself; you are just a click away from
-                    being a CA of Alcheringa. Click the submit button and finish
-                    the email-based verification to dive into the Dashboard.
-                  </p>
-                  <p>6) Welcome to Alcheringa.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Page 1: Personal Details -->
-        <div id="personal-details" class="rj_form_section">
-          <form action="#" method="post">
-            <!-- In a live environment, a CSRF token would be placed here to protect against cross-site request forgery. -->
-            <!-- <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"> -->
-            <p class="rj_mandatory_note">Fields marked * are mandatory</p>
-            <!-- Form Fields -->
-            <div class="rj_form_fields">
-              <div class="rj_input_group">
-                <label for="fullName" class="rj_label">Enter Full Name*</label>
-                <input type="text" id="fullName" class="rj_input" />
-              </div>
-              <div class="rj_input_group">
-                <label for="phoneNumber" class="rj_label"
-                  >Enter Phone Number*</label
-                >
-                <input type="tel" id="phoneNumber" class="rj_input" />
-              </div>
-              <div class="rj_input_group">
-                <label for="emailId" class="rj_label">Enter Email ID*</label>
-                <input type="email" id="emailId" class="rj_input" />
-              </div>
-              <div class="rj_input_group">
-                <label for="password" class="rj_label">Set Password*</label>
-                <input type="password" id="password" class="rj_input" />
-              </div>
-              <div class="rj_input_group">
-                <label for="confirmPassword" class="rj_label"
-                  >Confirm Password*</label
-                >
-                <input type="password" id="confirmPassword" class="rj_input" />
-              </div>
-            </div>
-            <button id="nextBtn" type="button" class="rj_primary_btn">
-              Next
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="rj_button_icon"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </button>
-          </form>
-        </div>
-        <!-- Page 2: CA Details -->
-        <div id="ca-details" class="rj_form_section rj_hidden_section">
-          <form action="#" method="post">
-            <!-- <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"> -->
-            <p class="rj_mandatory_note">Fields marked * are mandatory</p>
-            <div class="rj_form_fields">
-              <!-- Dropdown for College State -->
-              <div class="rj_input_group">
-                <label for="collegeState" class="rj_label"
-                  >College State*</label
-                >
-                <select id="collegeState" class="rj_input">
-                  <option value="">Select State</option>
-                  <option value="assam">Assam</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="maharashtra">Maharashtra</option>
-                </select>
-              </div>
-              <!-- Dropdown for College City -->
-              <div class="rj_input_group">
-                <label for="collegeCity" class="rj_label">College City*</label>
-                <select id="collegeCity" class="rj_input">
-                  <option value="">Select City</option>
-                  <option value="guwahati">Guwahati</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">New Delhi</option>
-                </select>
-              </div>
-              <!-- Input for College Name -->
-              <div class="rj_input_group">
-                <label for="collegeName" class="rj_label">College Name*</label>
-                <input type="text" id="collegeName" class="rj_input" />
-              </div>
-              <!-- Dropdown for Graduation Year -->
-              <div class="rj_input_group">
-                <label for="graduationYear" class="rj_label"
-                  >Graduation Year*</label
-                >
-                <select id="graduationYear" class="rj_input">
-                  <option value="">Select Year</option>
-                  <option value="2024">2024</option>
-                  <option value="2025">2025</option>
-                  <option value="2026">2026</option>
-                </select>
-              </div>
-              <!-- Position of Responsibility -->
-              <div class="rj_input_group">
-                <label for="por" class="rj_label"
-                  >Position of Responsibility</label
-                >
-                <div class="rj_input_with_tooltip">
-                  <input type="text" id="por" class="rj_input" />
-                  <div class="rj_tooltip_container">
-                    <svg
-                      class="rj_tooltip_icon"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <div class="rj_tooltip_text">
-                      Your role in your organization or college.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Interested Modules -->
-              <div class="rj_input_group">
-                <label for="modules" class="rj_label"
-                  >Interested Module(s)</label
-                >
-                <div class="rj_input_with_tooltip">
-                  <input type="text" id="modules" class="rj_input" />
-                  <div class="rj_tooltip_container">
-                    <svg
-                      class="rj_tooltip_icon"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <div class="rj_tooltip_text">
-                      Modules and activities you are interested in.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button id="submitBtn" type="submit" class="rj_primary_btn">
-              Submit
-              <svg
-                class="rj_button_icon"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </form>
-        </div>
+    <div class="rj-form-second">
+      <div class="rj-button-container">
+        <button class="rj-nav-button" id="nextButton">Next</button>
       </div>
-      <!-- Right Side: Illustration -->
-      <div class="rj_illustration_container">
-        <img
-          src="https://placehold.co/400x300/e2e8f0/000000?text=Registration+Illustration"
-          alt="Registration Illustration"
-          class="rj_illustration_img"
-        />
-      </div>
-    </div>     
     </div>
   </div>
 </div>
-<script src="{%static 'js/solo_form.js'%}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const steps = document.querySelectorAll(".rj-step");
+    const buttonContainer = document.querySelector(".rj-button-container");
+
+    let currentStepIndex = 0;
+
+    const updateUI = () => {
+      // Remove all state classes from steps
+      steps.forEach((s) => {
+        s.classList.remove("rj-active", "rj-inactive");
+      });
+
+      // Set the correct state for each step
+      steps.forEach((s, index) => {
+        if (index === currentStepIndex) {
+          s.classList.add("rj-active");
+        } else {
+          s.classList.add("rj-inactive");
+        }
+      });
+
+      // Update the button based on the current step
+      if (currentStepIndex === 0) {
+        buttonContainer.innerHTML =
+          '<button class="rj-nav-button" id="nextButton">Next</button>';
+      } else {
+        buttonContainer.innerHTML =
+          '<button class="rj-nav-button" id="backButton">Back</button>';
+      }
+
+      // Re-add event listeners to the new buttons
+      document
+        .getElementById("nextButton")
+        ?.addEventListener("click", handleNext);
+      document
+        .getElementById("backButton")
+        ?.addEventListener("click", handleBack);
+    };
+
+    const handleNext = () => {
+      if (currentStepIndex < steps.length - 1) {
+        currentStepIndex++;
+        updateUI();
+      }
+    };
+
+    const handleBack = () => {
+      if (currentStepIndex > 0) {
+        currentStepIndex--;
+        updateUI();
+      }
+    };
+
+    // Initial UI setup
+    updateUI();
+  });
+</script>
+
 {% include 'users/login.html' %} {% endblock %}
