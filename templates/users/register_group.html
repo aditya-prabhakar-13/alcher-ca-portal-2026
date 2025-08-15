@@ -4,7 +4,7 @@
 {% block style %}
 <link rel="stylesheet" href={% static "css/register_login.css" %}>
 <link rel="stylesheet" href={% static "css/autoFill.css" %}>
-<script src="{% static 'js/autoFill.js' %}"></script>
+
 
 {% endblock %}
 {% block body %}
@@ -89,7 +89,7 @@
 </nav>
 
 <div>
-  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; border: solid black 1.5px; border-radius: 4px; padding: 0.4rem 1rem; margin-top: 8rem; margin-left: 5%;">Back</button>
+  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; border: solid black 1.5px; border-radius: 4px; padding: 0.4rem 1rem; margin-top: 6rem; margin-left: 5%;">Back</button>
 </div>
 
 <div class="crow">
@@ -179,14 +179,24 @@
 							{{ single_user_register_form_1.firstname }}
 							{{ single_user_register_form_1.phone }}
 							{{ single_user_register_form_1.email }}
-
-							<input type="password" name="password1" class="input_field" placeholder="Set Password*"
-								required id="id_password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-
-							<input type="password" name="password2" class="input_field" placeholder="Confirm Password*"
-								required id="id_password2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>							
+							
+							<input type="password" 
+								name="password1" 
+								class="input_field" 
+								placeholder="Set Password*" 
+								required
+								id="id_password1"
+								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+								title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+							
+								<input type="password" 
+								name="password2" 
+								class="input_field" 
+								placeholder="Confirm Password*" 
+								required
+								id="id_password2"
+								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+								title="Must match the password above">
 
 							{{ single_user_register_form_1.graduation_year }}
 
@@ -197,7 +207,9 @@
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
 								</div>
 							</div>
+
 							<br>
+
 							<button type="button" id="nextBtn1"
 								class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
 								style="background-color: #009E77; margin-top:2.5rem; border:none;" />Next
@@ -285,9 +297,7 @@
 				</div>
 				
 
-
 				<div class="main" id="main3" style="display:none;"> 
-
 					<form method="POST">
 					{% csrf_token %}
 						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
@@ -310,19 +320,30 @@
 								{% endfor %}
 							</ul>
 
-							<div style="display:flex; width:100%; gap: 1rem; flex:1; border:0; justify-content:space-between; margin-bottom:1.5rem; margin-top:2.5rem;">
-								<input style="width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;" placeholder="College State*" />
-								<input style="width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;" placeholder="College City*"/>
+							<div class="StateAndCity" style="display:flex; width:100%; gap: 1rem; flex:1; border:0; justify-content:space-between; margin-bottom:1.5rem; margin-top:2.5rem;">
+									
+								 <div style="flex: 1; display: flex; flex-direction: column;">
+									<input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off"
+										placeholder="College State*"  style=" width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;">
+									<div style="display: flex; flex-direction: column;"id="state-suggestions"></div>
+								 </div>
+								  <div style="flex: 1; display: flex; flex-direction: column;">
+									<input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off"
+									 	placeholder="College City*" style="width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;">
+									<div id="city-suggestions"></div>
+								  </div>
 							</div>
 							{{ group_user_register_form.college_name }}
+						</div>	
+
 							<br>
 							<div style="display: flex; gap:1rem;">
 								<button type="button" id="backBtn"
-									style="background-color:#f8f1e7; border:solid black 1px; margin-top:1rem; color: #009E77; border-radius:6px; padding: 0.2rem 0.8rem;">←
+									style="background-color:#f8f1e7; border:solid black 1px; margin-top: -2rem; color: #009E77; border-radius:6px; padding: 0.2rem 0.8rem; margin-bottom: 3rem;">←
 								</button>
 								<button type="button" id="submitBtn"
 									class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-									style="background-color: #009E77; margin-top:1rem; border:none;">Submit
+									style="background-color: #009E77; border:none; margin-top: -2rem; margin-bottom: 3rem;">Submit
 								</button>
 							</div>
 						</div>
@@ -332,8 +353,6 @@
 					</div>
 				</div>
 
-
-
 				<p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
 				<br>
 			</div>
@@ -341,10 +360,14 @@
 	</div>
 </div>
 
-<div id="bottom-connect" style="display:flex; align-items:center; gap:1rem; align-self:center;justify-content:center; padding-top: 8rem; padding-bottom: 16rem;">
+<div id="bottom-connect1" style="display:flex; align-items:center; gap:1rem; align-self:center;justify-content:center; padding-top: 8rem; padding-bottom: 16rem;">
 	<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.4rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
 	<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.5rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
 </div>
+
+<div id="bottom-connect2" style="display: none; padding-top: 12rem; "></div>
+
+<div id="bottom-connect3" style="display: none; padding-top: 18rem;"></div>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
@@ -363,15 +386,32 @@
 		const GoBack = document.getElementById("GoBack");
 		const backBtn = document.getElementById("backBtn");
 
-		const bottom = document.getElementById("bottom-connect");
+		const bottom1 = document.getElementById("bottom-connect1");
+		const bottom2 = document.getElementById("bottom-connect2");
+		const bottom3 = document.getElementById("bottom-connect3");
 
 		//form next buttons
 		nextButton1.addEventListener("click", function () {
+			bottom1.style.display ="none";
+			bottom2.style.display ="block";
+			bottom3.style.display ="none";
+
 			if (form1.reportValidity()) {  
-            step1.style.display = "none";
-            step2.style.display = "block";
-			bottom.style.display = "none";
-        }
+            	step1.style.display = "none";
+           	 	step2.style.display = "block";
+				//password check 
+				const pwd1 = document.getElementById('id_password1');
+				const pwd2 = document.getElementById('id_password2');
+    
+				if (!pwd1.checkValidity() || !pwd2.checkValidity()) 
+					return;
+				if (pwd1.value !== pwd2.value) {
+					pwd2.setCustomValidity("Passwords must match");
+					pwd2.reportValidity();
+					e.preventDefault();
+				} else
+					pwd2.setCustomValidity("");
+			}
         }
 		);
 
@@ -379,7 +419,9 @@
 			if (form2.reportValidity()) {
             step2.style.display = "none";
             step3.style.display = "block";
-			bottom.style.display ="none";
+			bottom1.style.display ="none";
+			bottom2.style.display ="none";
+			bottom3.style.display ="block";
         }
 		});
 
@@ -393,19 +435,20 @@
 
 		//form back button
 		GoBack.addEventListener("click", function () {
-			if (step2.style.display === "block") {
-            step1.style.display = "block";
-            step2.style.display = "none";
-        } else if (step3.style.display === "block") {
-            step2.style.display = "block";
-            step3.style.display = "none";
-        } else {
             window.location.href = "/";
-        }
 		})
 	});
 
-
+	//back button on form3
+	backBtn.addEventListener("click", function () {
+			step3.style.display = "none";
+			bottom3.style.display = "none";
+            step2.style.display = "block";
+			bottom2.style.display = "block";
+        }
+		);
 </script>
+<script src="{% static 'js/autoFill.js' %}"></script>
+
 {% include 'users/login.html' %}
 {% endblock %}

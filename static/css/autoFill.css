@@ -22,13 +22,15 @@ input {
     margin-top: 5px;
     max-height: 120px;
     overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    position: absolute;
+    background: white;
+    scrollbar-width: auto;  
 }
 
 #state-suggestions div, #city-suggestions div {
     padding: 8px;
     cursor: pointer;
+    overflow-y: auto;
 }
 
 #state-suggestions div:hover, #city-suggestions div:hover {

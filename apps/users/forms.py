@@ -46,16 +46,54 @@ class SingleUserRegisterForm(UserCreationForm):
 
 
 class GroupUserRegisterFormForSingle(forms.ModelForm):
-    email = forms.EmailField(widget=forms.TextInput(
-        attrs={'class': 'input_field', 'placeholder': 'Enter Email ID*'}), required=True)
     firstname = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'Enter Full Name*'}), required=True)
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'input_field',
+                'placeholder': 'Enter Full Name*',
+                'pattern': '^[A-Za-z ]+$',
+                'title': 'Full name can only contain letters and spaces'
+            }
+        )
+    )
+    
+    phone = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+        attrs={
+            'class': 'input_field',
+            'type': 'tel',
+            'pattern': '^[0-9]{10}$',
+            'title': 'Enter a valid 10-digit phone number',
+            'placeholder': 'Enter Phone Number*'
+        }
+    )
+    )
 
-    phone = forms.CharField(widget=forms.TextInput(attrs={
-                             'class': 'input_field', 'placeholder': 'Enter Phone Number*'}), label="Phone number", required=True )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(
+        attrs={
+            'class': 'input_field',
+            'placeholder': 'Enter Email*',
+            'title': 'Enter a valid email address'
+        }
+    )   
+    )
 
-    graduation_year = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'Graduation Year*'}), required=True)
+    graduation_year = forms.IntegerField(
+        required=True,
+        widget=forms.NumberInput(
+        attrs={
+            'class': 'input_field',
+            'min': '2025',
+            'max': '2035',
+            'title': 'Enter a graduation year between 2020 and 2035',
+            'placeholder': 'Graduation Year*'
+        }
+    )
+    )
 
     class Meta:
         model = User
@@ -65,11 +103,11 @@ class GroupUserRegisterFormForSingle(forms.ModelForm):
 # incomplete
 class GroupUserRegisterForm(forms.ModelForm):
     college_city = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College City *'}), required=True)
+        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College City*'}), required=True)
     college_state = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College State *'}), required=True)
+        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College State*'}), required=True)
     college_name = forms.CharField(
-        label="Full Name", widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College Name *'}), required=True)
+        label="Full Name", widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College Name*'}), required=True)
     referred_by = forms.CharField(required=False, widget=forms.TextInput(
         attrs={'class': 'input_field', 'placeholder': 'Enter referral id'}))
 
