@@ -1,0 +1,421 @@
+/* Import Google Fonts and Font Awesome */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* General Body and Layout */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Light gray background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Main Form Container */
+.rj_form_container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 1.5rem; /* Rounded corners */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+}
+
+/* Header and Back Button */
+.rj_header_section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.rjcontent{
+    border: 2px solid #059669;
+    border-top: none;
+}
+.rj_back_button {
+    display: flex;
+    align-items: center;
+    color: #4b5563; /* Tailwind's gray-600 */
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.rj_back_button:hover {
+    color: #1f2937; /* Tailwind's gray-800 */
+}
+
+.rj_back_icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+/* Main Form Content and Title */
+.rj_main_content {
+    padding: 2rem 3rem;
+}
+
+.rj_title {
+    font-size: 1.875rem; /* 3xl */
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+/* Step Indicators */
+.rj_step_indicator_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    background-color: #009E77;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.rj_step_item {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rj_step_item:nth-child(2) {
+    margin-left: 6rem;
+}
+
+.rj_step_indicator {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px; /* full rounded */
+    background-color: #e5e7eb; /* gray-200 */
+    color: #6b7280; /* gray-500 */
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: none;
+}
+
+.rj_step_indicator.active {
+    background-color: #B542FB; /* Custom purple color */
+    color: #ffffff;
+    border: none;
+}
+
+.rj_step_label {
+    color: #374151; /* gray-700 */
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.rj_connector {
+    position: absolute;
+    top: 1.25rem;
+    left: 19.5rem;
+    width: 6rem;
+    height: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+
+/* Form Body Layout */
+.rj_form_body {
+    margin-left: 20px;
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .rj_form_body {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .rj_form_body {
+        gap: 4rem;
+    }
+}
+
+/* Form Inputs */
+.rj_form_section {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.rj_hidden_section {
+    opacity: 0;
+    display: none;
+}
+
+/* Solo/Team Toggle and Guidelines */
+.rj_solo_team_section {
+    margin-bottom: 1.5rem;
+}
+
+.rj_solo_team_toggle {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+    padding-left: 0px;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+}
+
+.rj_solo_btn, .rj_team_btn {
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+.rj_solo_btn.active {
+    background-color: #fefcbf; /* yellow-100 */
+    color: #92400e; /* yellow-800 */
+    border: 1px solid #fcd34d;
+}
+
+.rj_team_btn.active {
+    background-color: #fefcbf; /* yellow-100 */
+    color: #92400e; /* yellow-800 */
+    border: 1px solid #fcd34d;
+}
+
+.rj_solo_btn {
+    background-color: #FFC548;
+}
+
+.rj_team_btn {
+    color: #9ca3af;
+}
+
+/* Guidelines Accordion */
+.rj_guidelines_accordion {
+    margin-bottom: 1.5rem;
+}
+
+.rj_guidelines_header {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+.rj_guidelines_button {
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.rj_guidelines_tag {
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.rj_guidelines_icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-in-out;
+}
+
+.rj_guidelines_icon.rotated {
+    transform: rotate(-180deg);
+}
+
+.rj_guidelines_content {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+    display: none;
+}
+
+.rj_guidelines_content.visible {
+    display: block;
+}
+
+.rj_guidelines_text {
+    background-color: #F3F6F8;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    color: #616C74;
+    max-height: 14rem;
+    overflow-y: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.rj_guidelines_text p, .rj_guidelines_text ul {
+    margin-bottom: 0.5rem;
+}
+
+.rj_guidelines_list {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-left: 1rem;
+}
+
+.rj_guidelines_back_btn {
+    background-color: #B542FB;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.rj_mandatory_note {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* Form Fields */
+.rj_form_fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rj_input_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.rj_label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.rj_input {
+    width: 100%;
+    margin-top: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    outline: none;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+}
+
+.rj_input:focus {
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5); /* emerald-500 ring */
+}
+
+.rj_input_with_tooltip {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.rj_tooltip_container {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    cursor: pointer;
+}
+
+.rj_tooltip_container:hover .rj_tooltip_text {
+    opacity: 1;
+}
+
+.rj_tooltip_icon {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.rj_tooltip_text {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    color: #ffffff;
+    background-color: #1f2937;
+    border-radius: 0.375rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* Buttons */
+.rj_primary_btn {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    background-color: #10b981; /* emerald-500 */
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s;
+}
+
+.rj_primary_btn:hover {
+    background-color: #059669; /* emerald-600 */
+}
+
+.rj_button_icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-left: 0.5rem;
+}
+
+/* Illustration */
+.rj_illustration_container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .rj_illustration_container {
+        display: flex;
+    }
+}
+
+.rj_illustration_img {
+    border-radius: 0.5rem;
+    max-width: 100%;
+    height: auto;
+}

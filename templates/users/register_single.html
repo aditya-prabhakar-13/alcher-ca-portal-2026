@@ -1,258 +1,324 @@
-{% extends '../basicbootstrap.html'%}
-{% load static %}
-{%block title%}Register | Alcheringa {%endblock%}
-{% block style %}
-<link rel="stylesheet" href={% static "css/register_login.css" %}>
-<link rel="stylesheet" href={% static "css/autoFill.css" %}>
+{% extends '../basicbootstrap.html'%} {% load static %} {%block title%}Register
+| Alcheringa {%endblock%} {% block style %} <link rel="stylesheet" href={%
+static "css/register_login.css" %}> <link rel="stylesheet" href={% static
+"css/autoFill.css" %}>
 <script src="{% static 'js/autoFill.js' %}"></script>
-{% endblock %}
-{% block body %}
-{% load crispy_forms_tags %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %} {% block body %} {% load crispy_forms_tags %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <!-- CSS only -->
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/solo_form.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+  crossorigin="anonymous"
+/>
 <!-- JavaScript Bundle with Popper -->
-
 {% if request.session.show_alert %}
-	
-    <script>
-        // alert('Registration successful. Check your mail for the link to activate your account.');
-        window.location.href = "{% url 'successfull' %}";
-    </script>
-    
-{% endif %}
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-</script>
-<nav class="navbar navbar-light" style="background-color: #F6EBFF; padding: 1vh 4.5vh">
-	<div class="ccontainer-fluid" style="width: 100%; height:100%">
-		<a class="cnavbar-brand" href="/">
-			<img src="{% static 'images/alcherlogopurple.svg' %}" alt="">
-		</a>
-	</div>
-</nav>
-<style>
-	@media only screen and (max-width:950px) {
-		.img-div {
-			display: none;
-		}
-		.ccol{
-			width: 100%;
-		}
-	}
-	.bg-pur{
-        background-color: #B542FB;
-    }
-    .bg-pur:hover{
-        background-color: #a715ff;
-    }
-	.crow{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 5vh;
-	}
-</style>
-
-<div class="crow">
-	<div class="ccol form-div">
-		<div class="ccontainer form-wrapper">
-			<h2 >Registration</h2>
-
-			<div class="cform">
-				<div class="cform-head my-2 mb-4">
-					<div class="row1" style="display: flex; justify-content:space-evenly ; background-color: #F6EBFF; padding: 1.5vh 0.75vh; gap:10px;" >
-						<div>
-							<a href="{% url 'register_single' %}" type="button" class="register-top"
-								style="text-decoration: none;font-weight: 500;color:#B542FB">Solo
-								Registration</a>
-						</div>
-						<div>
-							<a href="{% url 'register_group' %}" type="button" class="register-top"
-								style="text-decoration: none;font-weight: 500;color:rgb(141, 141, 141)">Team
-								Registration</a>
-						</div>
-					</div>
-				</div>
-				
-				
-				<!-- <div class="progress-bar-container">
-					<i type="button" class="fa fa-chevron-circle-left" style="color: #B542FB;" id="GoBack" ></i>
-					<div class="step step1" style="background-color: #B542FB;">1</div>
-					<div class="connector connector1" ></div>
-					<div class="step step2">2</div>
-				</div> -->
-				<div class="accordion-item" style="background-color: white;">
-					<h2 class="accordion-header" id="flush-headingOne">
-						<button id="guidelinesButton" class="accordion-button collapsed btn-primary" type="button"
-							data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
-							aria-controls="flush-collapseOne" style="background-color: white;">
-							<a href="#" class="guidelinesTag" style="background-color: #B542FB;">
-								Guidelines</a>
-						</button>
-					</h2>
-					<div class="overlay" id="overlay">
-						<div id="flush-collapseOne" class="accordion-collapse collapse"
-							style="background-color: #F3F6F8; padding: 10px; border-radius: 6px; color: #616C74; margin-bottom: 15px;"
-							aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-							<div class="accordion-body">
-								<div class="content" style="padding: 1% 5%; height:55vh; overflow-y: scroll;">
-									<br> 1) Following the usual method to complete registration, fill up all the details
-									from
-									your name to modules.
-
-									<br> 2) Text fields marked with a red asterisk mark (*) makes them mandatory to
-									fill.
-
-									<br> 3) Fill up the Position of Responsibility (POR) field with your role in your
-									organisation or university. For instance:
-
-									<br> &nbsp;&nbsp;&nbsp;&nbsp; a) Student. <br>
-									&nbsp;&nbsp;&nbsp;&nbsp; b) Secretary of the Music/Arts Club <br>
-									&nbsp;&nbsp;&nbsp;&nbsp; c) Fill up the role you serve in your respective college
-									<br> 4) Fill up the interested module(s) field with the performing - arts,
-									practices,
-									activities that interest you. For instance, Music, Dance, Photography, sports etc.
-									<br> 5) Give a pat to yourself; you are just a click away from being a CA of
-									Alcheringa.
-									Click the submit button and finish the email-based verification to dive into the
-									Dashboard.
-									<br> 6) Welcome to Alcheringa.
-									<br>
-								</div>
-								<br>
-								<button class="btn btn-primary" style="background-color: #B542FB; border:none"
-									id="backBtn">Back</button>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				<form id="form" method="POST">
-					{% csrf_token %}
-					<ul class="errorlist">
-						{% if single_user_register_form.non_field_errors %}
-						<li>{{ single_user_register_form.non_field_errors }}</li>
-						{% endif %}
-						{% for field in single_user_register_form %}
-						{% if field.errors %}
-						<ul class="errorlist">
-							{% for error in field.errors %}
-							{{ error }}
-							{% endfor %}
-						</ul>
-						{% endif %}
-						{% endfor %}
-					</ul>
-					<div id="form1" style="overflow-y:scroll;">
-
-						<p class="my-1">Field marked * are mandatory</p>
-
-
-						{{ single_user_register_form.firstname }}
-						{{ single_user_register_form.email }}
-						{{ single_user_register_form.phone }}
-						{{ single_user_register_form.password1 }}
-						{{ single_user_register_form.password2 }}
-						{% comment %} <p class="my-1">Field marked * are mandatory</p> {% endcomment %}
-
-						{{ single_user_register_form.graduation_year }}
-						{{ single_user_register_form.college_name }}
-						<div class="StateAndCity">
-							<div style="width:100%">
-								<input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off"
-							 placeholder="College State*">
-
-						<div id="state-suggestions"></div>
-							</div>
-						<div style="width:100%">
-							<input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off"
-							 placeholder="College City*">
-						<div id="city-suggestions"></div>
-						</div>
-						</div>	
-						
-						{{ single_user_register_form.referred_by }}
-						<input type="submit" id="form-submit-btn"
-							class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm text-base"
-							style="background-color: #B542FB;" />
-						<!-- <button type="button" id="nextButton" class="btn btn-primary"
-							style="background-color:#B542FB ; border: none">Next Page</button> -->
-					</div>
-					<p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
-				</form>
-				<br />
-				Registered already? <a id="navlink5" style="cursor:pointer; color:#B542FB;">Login</a>
-				<br /><br />
-			</div>
-
-		</div>
-	</div>
-	<div class="ccol img-div " style = "width: 40%">
-		<!-- <img src="{% static 'images/man.svg' %}" alt="" style="width: 25vw; margin-left: 5%;"> -->
-		<img src="{% static 'images/registersingle.svg' %}" alt="" style="width: 30%; position:fixed; left:90%; top:50%; transform:translate(-90%,-50%);">
-
-	</div>
-</div>
-
-
 <script>
-	document.addEventListener("DOMContentLoaded", function () {
-		const guidelinesButton = document.getElementById("guidelinesButton");
-		const overlay = document.getElementById("overlay");
-		const backBtn = document.getElementById("backBtn");
-		const form1 = document.getElementById("form1");
-		const form2 = document.getElementById("form2");
-		const nextButton = document.getElementById("nextButton");
-		const GoBack = document.getElementById("GoBack");
-		guidelinesButton.addEventListener("click", function () {
-			const popupContainer = document.getElementById("flush-collapseOne");
-			if (popupContainer.classList.contains("show")) {
-				popupContainer.classList.remove("show");
-				overlay.style.display = "none";
-			} else {
-				popupContainer.classList.add("show");
-				overlay.style.display = "block";
-				
-			}
-		});
-		backBtn.addEventListener("click", function () {
-			const popupContainer = document.getElementById("flush-collapseOne");
-			if (popupContainer.classList.contains("show")) {
-				popupContainer.classList.remove("show");
-				overlay.style.display = "none";
-			}
-		})
-
-		//form next button
-		nextButton.addEventListener("click", function () {
-			form1.style.display = "none";
-			form2.style.display = "block";
-			document.querySelector(".connector").classList.add("completed");
-			document.querySelector(".step2").classList.add("completed");
-
-		});
-		//form back button
-		GoBack.addEventListener("click", function () {
-			if (form2.style.display == "none") {
-				var previousURL = "/";
-				window.location.href = previousURL;
-			} else if (form2.style.display == "block") {
-				form1.style.display = "block";
-				form2.style.display = "none";
-				document.querySelector(".step2").classList.remove("completed");
-				document.querySelector(".connector1").classList.remove("completed");
-			}
-		})
-	});
-	document.getElementById("form-submit-btn").addEventListener("click", showloading);
-
-	function showloading() {
-		document.getElementById("showload").style.display = "block"
-	}
+  // alert('Registration successful. Check your mail for the link to activate your account.');
+  window.location.href = "{% url 'successfull' %}";
 </script>
-{% include 'users/login.html' %}
-{% endblock %}
+{% endif %}
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+  crossorigin="anonymous"
+></script>
+<nav
+  class="navbar navbar-light"
+  style="background-color: #f6ebff; padding: 1vh 4.5vh"
+>
+  <div class="ccontainer-fluid" style="width: 100%; height: 100%">
+    <a class="cnavbar-brand" href="/">
+      <img src="{% static 'images/alcherlogopurple.svg' %}" alt="" />
+    </a>
+  </div>
+</nav>
+<div class="rj_form_container">
+  <!-- Header Section -->
+  <div class="rj_header_section">
+    <!-- Back button -->
+    <button id="guidelinesBackBtn" class="rj_guidelines_back_btn">
+      &larr; Back
+    </button>
+  </div>
+  <!-- Main Form Content -->
+  <div class="rj_main_content">
+    <!-- Title and Step Indicators -->
+    <h1 class="rj_title">Registration</h1>
+    <div class="rjcontent">
+    <div class="rj_step_indicator_container">
+      <!-- Step 1 Indicator -->
+      <div id="step1" class="rj_step_item">
+        <div class="rj_step_indicator active">1</div>
+        <span class="rj_step_label">Personal Details</span>
+      </div>
+      <!-- Connector Line -->
+      <div class="rj_connector"></div>
+      <!-- Step 2 Indicator -->
+      <div id="step2" class="rj_step_item">
+        <div class="rj_step_indicator">2</div>
+        <span class="rj_step_label">CA Details</span>
+      </div>
+    </div>
+    <div style="margin-left: 20px;">Join as <span style="color: red;">*</span></div>
+    <!-- Form Body - Pages are swapped here -->
+    <div id="form-content" class="rj_form_body">
+      <!-- Left Side: Form Inputs -->
+      <div class="rj_form_inputs">
+        <!-- Solo/Team Toggle and Guidelines -->
+        <div class="rj_solo_team_section">
+          <div class="rj_solo_team_toggle">
+            <button id="soloBtn" class="rj_solo_btn">Solo</button>
+            <button id="teamBtn" class="rj_team_btn">Team</button>
+          </div>
+          <!-- Guidelines Accordion -->
+          <div class="rj_guidelines_accordion">
+            <div class="rj_guidelines_header">
+              <button id="guidelinesToggle" class="rj_guidelines_button">
+                <div class="rj_guidelines_tag">Guidelines</div>
+                <svg
+                  id="guidelinesIcon"
+                  class="rj_guidelines_icon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div id="guidelinesContent" class="rj_guidelines_content hidden">
+                <div class="rj_guidelines_text">
+                  <p>
+                    1) Following the usual method to complete registration, fill
+                    up all the details from your name to modules.
+                  </p>
+                  <p>
+                    2) Text fields marked with a red asterisk mark (*) makes
+                    them mandatory to fill.
+                  </p>
+                  <p>
+                    3) Fill up the Position of Responsibility (POR) field with
+                    your role in your organisation or university. For instance:
+                  </p>
+                  <ul class="rj_guidelines_list">
+                    <li>a) Student.</li>
+                    <li>b) Secretary of the Music/Arts Club</li>
+                    <li>
+                      c) Fill up the role you serve in your respective college
+                    </li>
+                  </ul>
+                  <p>
+                    4) Fill up the interested module(s) field with the
+                    performing - arts, practices, activities that interest you.
+                    For instance, Music, Dance, Photography, sports etc.
+                  </p>
+                  <p>
+                    5) Give a pat to yourself; you are just a click away from
+                    being a CA of Alcheringa. Click the submit button and finish
+                    the email-based verification to dive into the Dashboard.
+                  </p>
+                  <p>6) Welcome to Alcheringa.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Page 1: Personal Details -->
+        <div id="personal-details" class="rj_form_section">
+          <form action="#" method="post">
+            <!-- In a live environment, a CSRF token would be placed here to protect against cross-site request forgery. -->
+            <!-- <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"> -->
+            <p class="rj_mandatory_note">Fields marked * are mandatory</p>
+            <!-- Form Fields -->
+            <div class="rj_form_fields">
+              <div class="rj_input_group">
+                <label for="fullName" class="rj_label">Enter Full Name*</label>
+                <input type="text" id="fullName" class="rj_input" />
+              </div>
+              <div class="rj_input_group">
+                <label for="phoneNumber" class="rj_label"
+                  >Enter Phone Number*</label
+                >
+                <input type="tel" id="phoneNumber" class="rj_input" />
+              </div>
+              <div class="rj_input_group">
+                <label for="emailId" class="rj_label">Enter Email ID*</label>
+                <input type="email" id="emailId" class="rj_input" />
+              </div>
+              <div class="rj_input_group">
+                <label for="password" class="rj_label">Set Password*</label>
+                <input type="password" id="password" class="rj_input" />
+              </div>
+              <div class="rj_input_group">
+                <label for="confirmPassword" class="rj_label"
+                  >Confirm Password*</label
+                >
+                <input type="password" id="confirmPassword" class="rj_input" />
+              </div>
+            </div>
+            <button id="nextBtn" type="button" class="rj_primary_btn">
+              Next
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="rj_button_icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <!-- Page 2: CA Details -->
+        <div id="ca-details" class="rj_form_section rj_hidden_section">
+          <form action="#" method="post">
+            <!-- <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"> -->
+            <p class="rj_mandatory_note">Fields marked * are mandatory</p>
+            <div class="rj_form_fields">
+              <!-- Dropdown for College State -->
+              <div class="rj_input_group">
+                <label for="collegeState" class="rj_label"
+                  >College State*</label
+                >
+                <select id="collegeState" class="rj_input">
+                  <option value="">Select State</option>
+                  <option value="assam">Assam</option>
+                  <option value="delhi">Delhi</option>
+                  <option value="maharashtra">Maharashtra</option>
+                </select>
+              </div>
+              <!-- Dropdown for College City -->
+              <div class="rj_input_group">
+                <label for="collegeCity" class="rj_label">College City*</label>
+                <select id="collegeCity" class="rj_input">
+                  <option value="">Select City</option>
+                  <option value="guwahati">Guwahati</option>
+                  <option value="mumbai">Mumbai</option>
+                  <option value="delhi">New Delhi</option>
+                </select>
+              </div>
+              <!-- Input for College Name -->
+              <div class="rj_input_group">
+                <label for="collegeName" class="rj_label">College Name*</label>
+                <input type="text" id="collegeName" class="rj_input" />
+              </div>
+              <!-- Dropdown for Graduation Year -->
+              <div class="rj_input_group">
+                <label for="graduationYear" class="rj_label"
+                  >Graduation Year*</label
+                >
+                <select id="graduationYear" class="rj_input">
+                  <option value="">Select Year</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                </select>
+              </div>
+              <!-- Position of Responsibility -->
+              <div class="rj_input_group">
+                <label for="por" class="rj_label"
+                  >Position of Responsibility</label
+                >
+                <div class="rj_input_with_tooltip">
+                  <input type="text" id="por" class="rj_input" />
+                  <div class="rj_tooltip_container">
+                    <svg
+                      class="rj_tooltip_icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <div class="rj_tooltip_text">
+                      Your role in your organization or college.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Interested Modules -->
+              <div class="rj_input_group">
+                <label for="modules" class="rj_label"
+                  >Interested Module(s)</label
+                >
+                <div class="rj_input_with_tooltip">
+                  <input type="text" id="modules" class="rj_input" />
+                  <div class="rj_tooltip_container">
+                    <svg
+                      class="rj_tooltip_icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <div class="rj_tooltip_text">
+                      Modules and activities you are interested in.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button id="submitBtn" type="submit" class="rj_primary_btn">
+              Submit
+              <svg
+                class="rj_button_icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- Right Side: Illustration -->
+      <div class="rj_illustration_container">
+        <img
+          src="https://placehold.co/400x300/e2e8f0/000000?text=Registration+Illustration"
+          alt="Registration Illustration"
+          class="rj_illustration_img"
+        />
+      </div>
+    </div>     
+    </div>
+  </div>
+</div>
+<script src="{%static 'js/solo_form.js'%}"></script>
+{% include 'users/login.html' %} {% endblock %}
