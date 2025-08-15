@@ -80,7 +80,7 @@
     
 {% endif %}
 
-<nav class="navbar navbar-light" style="background-color: #F8F1E7; padding: 3vh 4%; border-bottom: solid #C8C8C8 1px; position: fixed; width:100%;">
+<nav class="navbar navbar-light" style="background-color: #F8F1E7; padding: 3vh 4%; border-bottom: solid #C8C8C8 1px; position: fixed; width:100%; z-index: 1000;">
 	<div class="ccontainer-fluid" style="width: 100%; height:100%; padding-left: 2rem;">
 		<a class="cnavbar-brand" href="/">
 			<img src="{% static 'images/Logoblack.svg' %}" alt="">
@@ -89,7 +89,7 @@
 </nav>
 
 <div>
-  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; border: solid black 1.5px; border-radius: 4px; padding: 0.4rem 1rem; margin-top: 6rem; margin-left: 5%;">Back</button>
+  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; padding: 0.4rem 1rem; margin-top: 6rem; margin-left: 4%;"><img src= {%static 'images/backButton.png'%}/></button>
 </div>
 
 <div class="crow">
@@ -124,7 +124,10 @@
 				</div>
 				
 				<div class="guidelines" style="padding: 1.5vh 3vh;">
-					<h6 style="color: #4C5862">Guidelines</h6>
+					<div style="gap:0.8rem; display: flex; align-items:center;">
+						<h6 style="color: #4C5862">Guidelines</h6>
+						<img style="background:none; align-self: flex-start; position: relative; top: -3px;" src="{%static 'images/DropdownArrow.png'%}"/>
+					</div>
 					<ul style="color: #707683">
 
 						<li> a. Conditions to register as a team:
@@ -212,12 +215,13 @@
 
 							<button type="button" id="nextBtn1"
 								class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-								style="background-color: #009E77; margin-top:2.5rem; border:none;" />Next
+								style="background-color: #009E77; margin-top:2.5rem; border:none;" />
+								<img style="background-color: #009E77; color:white;" src="{%static 'images/NextBtn.png'%}"/>
 							</button>
 						</div>
 					</form>
 					<div class="img-div" style = "width: 100%;">
-						<img src="{% static 'images/register_group.png' %}" alt="" style="background: none; width: 40%; margin-top:-45rem; ">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="position:absolute; background: none; width: 45%; bottom:38%; left:58%; ">
 					</div>
 				</div>	
 
@@ -277,7 +281,7 @@
 							{% endfor %}
 						</ul>       
 
-							<div id="connect-social" style="color: #707683; margin-top: 0.5rem;">
+							<div id="connect-social" style="color: #707683; margin-top: 0.8rem;">
 								Connect social media 
 								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
@@ -287,12 +291,13 @@
 							<br>
 							<button type="button" id="nextBtn2"
 								class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-								style="background-color: #009E77; margin-top:2.5rem; border:none;" />Next  
+								style="background-color: #009E77; margin-top:2.5rem; border:none;" />
+								<img style="background-color: #009E77; color:white;" src="{%static 'images/NextBtn.png'%}"/> 
 							</button>
 						</div>
 					</form>
 					<div class="img-div" style = "width: 100%; height: 135%;">
-						<img src="{% static 'images/register_group.png' %}" alt="" style="background: none; width: 40%; margin-top:-37rem;">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="position:absolute; background:none; width:45%; bottom:30%; left:58%;">
 					</div>
 				</div>
 				
@@ -322,12 +327,13 @@
 
 							<div class="StateAndCity" style="display:flex; width:100%; gap: 1rem; flex:1; border:0; justify-content:space-between; margin-bottom:1.5rem; margin-top:2.5rem;">
 									
-								 <div style="flex: 1; display: flex; flex-direction: column;">
+								 <div style="position: relative; flex: 1; display: flex; flex-direction: column;">
 									<input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off"
 										placeholder="College State*"  style=" width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;">
 									<div style="display: flex; flex-direction: column;"id="state-suggestions"></div>
 								 </div>
-								  <div style="flex: 1; display: flex; flex-direction: column;">
+								 
+								  <div style="position: relative; flex: 1; display: flex; flex-direction: column;">
 									<input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off"
 									 	placeholder="College City*" style="width: 100%; border:0; border-bottom: solid #C2CFE0 1px; border-radius: 0;">
 									<div id="city-suggestions"></div>
@@ -337,19 +343,22 @@
 						</div>	
 
 							<br>
-							<div style="display: flex; gap:1rem;">
-								<button type="button" id="backBtn"
-									style="background-color:#f8f1e7; border:solid black 1px; margin-top: -2rem; color: #009E77; border-radius:6px; padding: 0.2rem 0.8rem; margin-bottom: 3rem;">←
+
+							<div style="display:flex; gap:2rem; padding-left: 2rem;">
+								<button type="button" id="backBtn" style="border:none;">
+									<img style="height:2.5rem; margin-bottom: 3rem;" src="{%static 'images/backB.png' %}"/>
 								</button>
 								<button type="button" id="submitBtn"
 									class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-									style="background-color: #009E77; border:none; margin-top: -2rem; margin-bottom: 3rem;">Submit
+									style="background-color: #009E77; border:none; margin-bottom: 3rem; height: 2.5rem;">Submit
 								</button>
+							</div>
+							
 							</div>
 						</div>
 					</form>
-					<div class="img-div" style = "width: 100%;">
-						<img src="{% static 'images/register_group.png' %}" alt="" style="background: none; width: 40%; margin-top:-30rem;">
+					<div class="img-div" id="form3-image" style="width: 100%; height: 135%; display:none;">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="position:absolute; background:none; top:52rem; width:40%; left:55%;">
 					</div>
 				</div>
 
@@ -367,11 +376,11 @@
 
 <div id="bottom-connect2" style="display: none; padding-top: 12rem; "></div>
 
-<div id="bottom-connect3" style="display: none; padding-top: 18rem;"></div>
+<div id="bottom-connect3" style="display: none; padding-top: 24rem;"></div>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-
+		const form3Image = document.getElementById("form3-image");
 		const step1 = document.getElementById("main1");
     	const step2 = document.getElementById("main2");
     	const step3 = document.getElementById("main3");
@@ -419,6 +428,7 @@
 			if (form2.reportValidity()) {
             step2.style.display = "none";
             step3.style.display = "block";
+			form3Image.style.display = "block";
 			bottom1.style.display ="none";
 			bottom2.style.display ="none";
 			bottom3.style.display ="block";
@@ -437,16 +447,18 @@
 		GoBack.addEventListener("click", function () {
             window.location.href = "/";
 		})
-	});
 
-	//back button on form3
-	backBtn.addEventListener("click", function () {
+		//back button on form3
+		backBtn.addEventListener("click", function () {
 			step3.style.display = "none";
+			form3Image.style.display = "none";
 			bottom3.style.display = "none";
             step2.style.display = "block";
 			bottom2.style.display = "block";
         }
 		);
+	});
+
 </script>
 <script src="{% static 'js/autoFill.js' %}"></script>
 
