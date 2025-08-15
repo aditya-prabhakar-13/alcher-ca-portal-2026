@@ -1,7 +1,7 @@
-{% extends '../basicbootstrap.html'%} {% load static %} {%block title%}Register
-| Alcheringa {%endblock%} {% block style %} <link rel="stylesheet" href={%
-static "css/register_login.css" %}> <link rel="stylesheet" href={% static
-"css/autoFill.css" %}>
+{% extends '../basicbootstrap.html'%} {% load static %} {% load static %}
+{%block title%}Register | Alcheringa {%endblock%} {% block style %} <link
+rel="stylesheet" href={% static "css/register_login.css" %}> <link
+rel="stylesheet" href={% static "css/autoFill.css" %}>
 <script src="{% static 'js/autoFill.js' %}"></script>
 {% endblock %} {% block body %} {% load crispy_forms_tags %}
 <link
@@ -47,6 +47,11 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
     width: 80vw;
     margin: auto;
   }
+  .rj-form-container {
+    border: 2px solid #009e77;
+    border-radius: 16px 16px 0px 0px;
+    background-color: #f8f1e7;
+  }
   .rj-back-button {
     display: flex;
     align-items: center;
@@ -60,7 +65,6 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    margin-left: 50px;
     margin-top: 30px;
   }
 
@@ -70,7 +74,9 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
     line-height: 1;
   }
   .rj-progress-container {
+    position: relative;
     display: flex;
+    gap: 16px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -110,6 +116,8 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
   }
 
   .rj-progress-line {
+    position: absolute;
+    top: 30%;
     width: 100px;
     height: 2px;
     background-color: white;
@@ -132,7 +140,8 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
   }
 
   .rj-button-container {
-    margin-top: 50px;
+    margin-left: 100px;
+    margin-bottom: 50px;
   }
 
   .rj-nav-button {
@@ -149,50 +158,369 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
   .rj-nav-button:hover {
     background-color: #e0e0e0;
   }
+  .rj-button-container-second {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-left: 6rem;
+  }
+
+  .rj-button-second {
+    padding: 6px 40px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    font-weight: 600;
+    background-color: transparent;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border: 1px solid;
+  }
+
+  .rj-button-second:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .rj-act {
+    background-color: #f7d71f; /* Yellow color for active state */
+    color: #1a1a2e; /* Dark text for contrast */
+    box-shadow: 0 0 15px rgba(247, 215, 31, 0.5);
+    border: none;
+  }
+
+  .rj-guideline-box {
+    width: 90%;
+    margin: auto;
+    min-height: 50px; /* Adjusted height */
+    background-color: #f8f1e7;
+    border: 1px solid #c2cfe0;
+    border-radius: 1rem;
+    padding-left: 20px;
+    padding-top: 8px;
+  }
+
+  .rj-guideline-header {
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+  }
+
+  .rj-key-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .rj-key-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .rj-guideline-text {
+    /* Initially hidden with a transition for smooth animation */
+    opacity: 0;
+    transform: translateY(20px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out,
+      max-height 0.5s ease-out;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0;
+  }
+
+  .rj-guideline-text.rj-show {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px; /* A large value to allow the content to show */
+    margin-top: 1rem;
+  }
+
+  .rj-form-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #f8f1e7;
+    padding: 2rem;
+    position: relative;
+  }
+  #rj-form-first,
+  #rj-form-second {
+    width: 50%;
+  }
+  .rj-form-nav,
+  .rj-form-second {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .rj-form-hidden {
+    display: none;
+  }
+
+  .rj-input-group {
+    width: 100%;
+  }
+
+  .rj-input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .rj-input-element {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #5a5a7d;
+    border-radius: 0.5rem;
+    color: #e0e0e0;
+  }
+
+  .rj-form-image {
+    max-width: 400px;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  .rj-form-action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .rj-form-action-button {
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .rj-next-button {
+    background-color: #008080; /* Teal-like color */
+    color: white;
+  }
+
+  .rj-submit-button {
+    background-color: #008080; /* Teal-like color */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  .rj-head {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .rj-btn{
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  .rj-fbc{
+    padding: 10px 24px;
+    border-radius: 8px;
+    background-color: #F8F1E7;
+    font-size: large;
+    font-weight: 700;
+  }
+  @media screen and (max-width:600px) {
+    #rj-image-container,#rj-form-image{
+      display: none;
+    }
+    #rj-form-first,#rj-form-second{
+      width: 100%;
+    }
+    .rj-form-wrapper{
+      display: block;
+      width: 75%;
+    }
+    .rj-guideline-box{
+      width: 90%;
+      margin: auto;
+    }
+    .rj-body{
+      width: 100vw;
+    }
+    .rj-button-container-second,.rj-button-container{
+      margin-left: 2rem;
+    }
+    
+  }
 </style>
 <div class="rj-body">
-  <button class="rj-back-button"><span class="rj-arrow">←</span> Back</button>
+  <div class="rj-btn">
+    <button class="rj-fbc"><span>&larr;</span><span>Back</span></button>
+  </div>
   <div class="rj-head">Registration</div>
   <div class="rj-form-container">
-    <div class="rj-form-first">
-      <div class="rj-progress-container">
-        <!-- Step 1 -->
-        <div class="rj-step rj-active" data-step="1">
-          <div class="rj-step-circle">1</div>
-          <div class="rj-step-text">Personal details</div>
-        </div>
-
-        <!-- Connecting Line -->
-        <div class="rj-progress-line"></div>
-
-        <!-- Step 2 -->
-        <div class="rj-step rj-inactive" data-step="2">
-          <div class="rj-step-circle">2</div>
-          <div class="rj-step-text">CA Details</div>
-        </div>
+    <div class="rj-progress-container">
+      <div class="rj-step rj-active" data-step="1">
+        <div class="rj-step-circle">1</div>
+        <div class="rj-step-text">Personal details</div>
+      </div>
+      <div class="rj-progress-line"></div>
+      <div class="rj-step rj-inactive" data-step="2">
+        <div class="rj-step-circle">2</div>
+        <div class="rj-step-text">CA Details</div>
       </div>
     </div>
-    <div class="rj-form-second">
-      <div class="rj-button-container">
-        <button class="rj-nav-button" id="nextButton">Next</button>
+    <div class="rj-button-container-second">
+      <button class="rj-button-second rj-act" data-mode="solo">Solo</button>
+        <button class="rj-button-second" data-mode="team">Team</button>
+      </div>
+      <div class="rj-guideline-box">
+        <div class="rj-guideline-header">
+          <span>Guideline</span>
+          <span id="rj-key-icon" class="rj-key-icon">&#x25BC;</span>
+        </div>
+        <div class="rj-guideline-text">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+      <div class="rj-form-wrapper">
+      <div class="rj-form-section" id="rj-form-first">
+         <p class="text-sm">Fields marked <span style="color: red;">*</span> are mandatory</p>
+        <div class="rj-input-group">
+          <label for="fullName">Enter Full Name*</label>
+          <input type="text" id="fullName" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="phoneNumber">Enter Phone Number*</label>
+          <input type="tel" id="phoneNumber" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="emailId">Enter Email ID*</label>
+          <input type="email" id="emailId" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="setPassword">Set Password*</label>
+          <input type="password" id="setPassword" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="confirmPassword">Confirm Password*</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="rj-input-element"
+          />
+        </div>
+      </div>
+
+      <div class="rj-form-section rj-form-hidden" id="rj-form-second">
+        <p class="text-sm">Fields marked <span style="color: red;">*</span> are mandatory</p>
+        <div class="rj-input-group">
+          <label for="collegeState">College State*</label>
+          <input type="text" id="collegeState" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="collegeCity">College City*</label>
+          <input type="text" id="collegeCity" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="collegeName">College Name*</label>
+          <input type="text" id="collegeName" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="graduationYear">Graduation Year*</label>
+          <input type="text" id="graduationYear" class="rj-input-element" />
+        </div>
+        <div class="rj-input-group">
+          <label for="positionOfResponsibility"
+            >Position of Responsibility</label
+          >
+          <input
+            type="text"
+            id="positionOfResponsibility"
+            class="rj-input-element"
+          />
+        </div>
+        <div class="rj-input-group">
+          <label for="interestedModules">Interested Module(s)</label>
+          <input type="text" id="interestedModules" class="rj-input-element" />
+        </div>
+      </div>
+
+      <div id="rj-image-container">
+        <img
+          id="rj-form-image"
+          class="rj-form-image"
+          src="{%static 'images/rjimages/form.svg'%}"
+          alt="Form Step 1 Image"
+        />
       </div>
     </div>
+    <div class="rj-button-container"></div>
   </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Get references to the buttons and the guideline text element
+    const rjButtons = document.querySelectorAll(".rj-button-second");
+    const rjGuidelineText = document.querySelector(".rj-guideline-text");
+    const rjKeyIcon = document.getElementById("rj-key-icon");
+
+    // Add a click event listener to each button
+    rjButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Remove the 'rj-active' class from all buttons
+        rjButtons.forEach((btn) => btn.classList.remove("rj-act"));
+        // Add the 'rj-active' class to the clicked button
+        button.classList.add("rj-act");
+      });
+    });
+
+    // Add a click event listener to the key icon
+    rjKeyIcon.addEventListener("click", () => {
+      // Toggle the 'rj-show' class to show/hide the text
+      rjGuidelineText.classList.toggle("rj-show");
+
+      // Change the icon based on the current state
+      if (rjGuidelineText.classList.contains("rj-show")) {
+        rjKeyIcon.innerHTML = "&#x25B2;"; // Up-pointing triangle
+      } else {
+        rjKeyIcon.innerHTML = "&#x25BC;"; // Down-pointing triangle
+      }
+    });
+
+    // --- Multi-Step Form Logic ---
     const steps = document.querySelectorAll(".rj-step");
     const buttonContainer = document.querySelector(".rj-button-container");
+    const formImage = document.getElementById("rj-form-image");
+    const formFirst = document.getElementById("rj-form-first");
+    const formSecond = document.getElementById("rj-form-second");
 
     let currentStepIndex = 0;
 
     const updateUI = () => {
-      // Remove all state classes from steps
       steps.forEach((s) => {
         s.classList.remove("rj-active", "rj-inactive");
       });
-
-      // Set the correct state for each step
       steps.forEach((s, index) => {
         if (index === currentStepIndex) {
           s.classList.add("rj-active");
@@ -201,39 +529,38 @@ static "css/register_login.css" %}> <link rel="stylesheet" href={% static
         }
       });
 
-      // Update the button based on the current step
       if (currentStepIndex === 0) {
+        formFirst.classList.remove("rj-form-hidden");
+        formSecond.classList.add("rj-form-hidden");
+        formImage.src = "{%static 'images/rjimages/form.svg'%}";
+        formImage.alt = "Form Step 1 Image";
         buttonContainer.innerHTML =
           '<button class="rj-nav-button" id="nextButton">Next</button>';
-      } else {
+      } else if (currentStepIndex === 1) {
+        formFirst.classList.add("rj-form-hidden");
+        formSecond.classList.remove("rj-form-hidden");
+        formImage.src = "{%static 'images/rjimages/form.svg'%}";
+        formImage.alt = "Form Step 2 Image";
         buttonContainer.innerHTML =
-          '<button class="rj-nav-button" id="backButton">Back</button>';
-      }
-
-      // Re-add event listeners to the new buttons
-      document
-        .getElementById("nextButton")
-        ?.addEventListener("click", handleNext);
-      document
-        .getElementById("backButton")
-        ?.addEventListener("click", handleBack);
-    };
-
-    const handleNext = () => {
-      if (currentStepIndex < steps.length - 1) {
-        currentStepIndex++;
-        updateUI();
+          '<div class="rj-form-action-buttons"><button class="rj-form-action-button rj-back-button" id="backButton">&larr; Back</button><button class="rj-form-action-button rj-submit-button" id="submitButton">Submit</button></div>';
       }
     };
 
-    const handleBack = () => {
-      if (currentStepIndex > 0) {
-        currentStepIndex--;
-        updateUI();
+    buttonContainer.addEventListener("click", (event) => {
+      const clickedButton = event.target;
+      if (clickedButton.id === "nextButton") {
+        if (currentStepIndex < steps.length - 1) {
+          currentStepIndex++;
+          updateUI();
+        }
+      } else if (clickedButton.id === "backButton") {
+        if (currentStepIndex > 0) {
+          currentStepIndex--;
+          updateUI();
+        }
       }
-    };
+    });
 
-    // Initial UI setup
     updateUI();
   });
 </script>
