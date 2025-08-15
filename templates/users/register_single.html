@@ -32,13 +32,10 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
   integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
   crossorigin="anonymous"
 ></script>
-<nav
-  class="navbar navbar-light"
-  style="background-color: #f6ebff; padding: 1vh 4.5vh"
->
+<nav class="navbar navbar-light">
   <div class="ccontainer-fluid" style="width: 100%; height: 100%">
     <a class="cnavbar-brand" href="/">
-      <img src="{% static 'images/alcherlogopurple.svg' %}" alt="" />
+      <img src="{% static 'images/rjimages/logo.svg' %}" alt="" />
     </a>
   </div>
 </nav>
@@ -328,41 +325,56 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     font-weight: 700;
     margin-bottom: 10px;
   }
-  .rj-btn{
+  .rj-btn {
     display: flex;
     gap: 12px;
     margin-top: 8px;
     margin-bottom: 8px;
   }
-  .rj-fbc{
+  .rj-fbc {
     padding: 10px 24px;
     border-radius: 8px;
-    background-color: #F8F1E7;
+    background-color: #f8f1e7;
     font-size: large;
     font-weight: 700;
   }
-  @media screen and (max-width:600px) {
-    #rj-image-container,#rj-form-image{
+  .rj-button-second {
+  text-decoration: none; 
+  color: black;        
+}
+ .navbar {
+   padding: 1vh 27.5vh;
+ }
+  @media screen and (max-width: 600px) {
+    #rj-image-container,
+    #rj-form-image {
       display: none;
     }
-    #rj-form-first,#rj-form-second{
+    #rj-form-first,
+    #rj-form-second {
       width: 100%;
     }
-    .rj-form-wrapper{
+    .rj-form-wrapper {
       display: block;
       width: 75%;
     }
-    .rj-guideline-box{
+    .rj-guideline-box {
       width: 90%;
       margin: auto;
     }
-    .rj-body{
+    .rj-body {
       width: 100vw;
     }
-    .rj-button-container-second,.rj-button-container{
+    .rj-button-container-second,
+    .rj-button-container {
       margin-left: 2rem;
     }
-    
+ 
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1vh 4.5vh; /* Reduced padding for screens up to 768px wide */
+      }
+    }
   }
 </style>
 <div class="rj-body">
@@ -383,98 +395,133 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
       </div>
     </div>
     <div class="rj-button-container-second">
-      <button class="rj-button-second rj-act" data-mode="solo">Solo</button>
-        <button class="rj-button-second" data-mode="team">Team</button>
+      <a
+        href="{% url 'register_single' %}"
+        class="rj-button-second rj-act"
+        data-mode="solo"
+        >Solo</a
+      >
+      <a
+        href="{% url 'register_group' %}"
+        class="rj-button-second"
+        data-mode="team"
+        >Team</a
+      >
+    </div>
+    <div class="rj-guideline-box">
+      <div class="rj-guideline-header">
+        <span>Guideline</span>
+        <span id="rj-key-icon" class="rj-key-icon">&#x25BC;</span>
       </div>
-      <div class="rj-guideline-box">
-        <div class="rj-guideline-header">
-          <span>Guideline</span>
-          <span id="rj-key-icon" class="rj-key-icon">&#x25BC;</span>
-        </div>
-        <div class="rj-guideline-text">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
+      <div class="rj-guideline-text">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
-      <div class="rj-form-wrapper">
-      <div class="rj-form-section" id="rj-form-first">
-         <p class="text-sm">Fields marked <span style="color: red;">*</span> are mandatory</p>
-        <div class="rj-input-group">
-          <label for="fullName">Enter Full Name*</label>
-          <input type="text" id="fullName" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="phoneNumber">Enter Phone Number*</label>
-          <input type="tel" id="phoneNumber" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="emailId">Enter Email ID*</label>
-          <input type="email" id="emailId" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="setPassword">Set Password*</label>
-          <input type="password" id="setPassword" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="confirmPassword">Confirm Password*</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            class="rj-input-element"
-          />
-        </div>
-      </div>
+    </div>
+<form id="form" method="POST">
+    {% csrf_token %}
+    
+    <ul class="errorlist">
+        {% if single_user_register_form.non_field_errors %}
+            <li>{{ single_user_register_form.non_field_errors }}</li>
+        {% endif %}
+        {% for field in single_user_register_form %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ul>
 
-      <div class="rj-form-section rj-form-hidden" id="rj-form-second">
-        <p class="text-sm">Fields marked <span style="color: red;">*</span> are mandatory</p>
-        <div class="rj-input-group">
-          <label for="collegeState">College State*</label>
-          <input type="text" id="collegeState" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="collegeCity">College City*</label>
-          <input type="text" id="collegeCity" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="collegeName">College Name*</label>
-          <input type="text" id="collegeName" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="graduationYear">Graduation Year*</label>
-          <input type="text" id="graduationYear" class="rj-input-element" />
-        </div>
-        <div class="rj-input-group">
-          <label for="positionOfResponsibility"
-            >Position of Responsibility</label
-          >
-          <input
-            type="text"
-            id="positionOfResponsibility"
-            class="rj-input-element"
-          />
-        </div>
-        <div class="rj-input-group">
-          <label for="interestedModules">Interested Module(s)</label>
-          <input type="text" id="interestedModules" class="rj-input-element" />
-        </div>
-      </div>
+    <div class="rj-form-wrapper">
+        <div class="rj-form-section" id="rj-form-first">
+            <p class="text-sm">
+                Fields marked <span style="color: red">*</span> are mandatory
+            </p>
+            
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.firstname.id_for_label }}">Enter Full Name*</label>
+                {{ single_user_register_form.firstname }}
+            </div>
 
-      <div id="rj-image-container">
-        <img
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.phone.id_for_label }}">Enter Phone Number*</label>
+                {{ single_user_register_form.phone }}
+            </div>
+
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.email.id_for_label }}">Enter Email ID*</label>
+                {{ single_user_register_form.email }}
+            </div>
+
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.password1.id_for_label }}">Set Password*</label>
+                {{ single_user_register_form.password1 }}
+            </div>
+
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.password2.id_for_label }}">Confirm Password*</label>
+                {{ single_user_register_form.password2 }}
+            </div>
+            
+        </div>
+        <div class="rj-form-section rj-form-hidden" id="rj-form-second">
+            <p class="text-sm">
+                Fields marked <span style="color: red">*</span> are mandatory
+            </p>
+
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.graduation_year.id_for_label }}">Graduation Year*</label>
+                {{ single_user_register_form.graduation_year }}
+            </div>
+
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.college_name.id_for_label }}">College Name*</label>
+                {{ single_user_register_form.college_name }}
+            </div>
+
+            <div class="StateAndCity">
+                <div style="width:100%">
+                    <label for="state">College State*</label>
+                    <input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off" placeholder="College State*">
+                    <div id="state-suggestions"></div>
+                </div>
+                <div style="width:100%">
+                    <label for="city">College City*</label>
+                    <input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off" placeholder="College City*">
+                    <div id="city-suggestions"></div>
+                </div>
+            </div>
+
+            <div class="rj-input-group">
+                <label for="{{ single_user_register_form.referred_by.id_for_label }}">Referred by</label>
+                {{ single_user_register_form.referred_by }}
+            </div>
+
+        </div>
+        
+        <!-- <div class="rj-button-container"></div> -->
+        
+        <p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
+        
+        <div id="rj-image-container">
+          <img
           id="rj-form-image"
           class="rj-form-image"
           src="{%static 'images/rjimages/form.svg'%}"
           alt="Form Step 1 Image"
-        />
-      </div>
+          />
+        </div>
     </div>
+  </form>
     <div class="rj-button-container"></div>
   </div>
 </div>
@@ -562,6 +609,14 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     });
 
     updateUI();
+  });
+  // Get a reference to the button
+  const backButton = document.querySelector(".rj-fbc");
+
+  // Add a click event listener
+  backButton.addEventListener("click", () => {
+    // Redirect to the home page
+    window.location.href = "/";
   });
 </script>
 

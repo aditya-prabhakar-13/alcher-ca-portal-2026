@@ -19,50 +19,105 @@ Alcheringa {%endblock%} {% block body %}
 </style>
 
 <body class="bg-blue-50">
-  <div class="body flex" style="background-color: #f6ebff">
+  <div class="body flex" style="background-color: #F1EDE8">
     {% include "../navbar.html" %}
-    <div style="display: flex; gap: 5vw" class="leaderboard-body">
+    <div style="background-color: #F1EDE8;display: flex; gap: 2vw; padding: 5%" class="leaderboard-body">
       <!-- Singles Leaderboard -->
-      <div class="leaderboard1" style="display: flex; flex-direction: column">
-        <div class="ml-4" style="font-size: larger; font-weight: bolder">
-          Singles Leaderboard
+      <div class="leaderboard1" style="display: flex; flex-direction: column;flex:1;">
+        
+        <div class="ml-4" style="text-align: center;font-size: larger; font-weight: bolder;padding-bottom:2%">
+          Solo
         </div>
         <div class="bg-white mt-2 rounded p-6 w-screen w-auto">
+          <div style=" margin-left:5%;
+          margin-right:5%;
+          border-bottom:2px solid #0000001f;
+      
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;">
+          <p class="pr-3">Rank</p>
+          <p class="mx-4 my-2">Name</p>
+          <p class="ml-auto pl-3">Points</p>
+        </div>
           {% for user in users %}
           <div
             class="px-3 my-2"
             style="
-              border: 1px solid rgb(218, 218, 218);
-              border-radius: 8px;
-              display: flex;
-              align-items: center;
-            "
+              padding-bottom: 20px;
+      border-bottom: 1px solid #0000001f;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+{%if  forloop.counter  == 1 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 2 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 3 %}
+                font-weight:bold;
+                   {% endif %}
+      {% if user == request.user %}
+        background-color: #FFE1A0;
+        font-weight: bold;
+      {% endif %}
+    "
           >
             <div
-              class="pr-3"
-              style="border-right: 1px solid rgb(218, 218, 218)"
+              class="pr-3" style="
+              
+
+        width: 4rem; 
+        flex-shrink: 0; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+              
             >
               <div
                 style="
-                  border: 1px solid grey;
-                  border-radius: 20px;
-                  padding: 5px 13px 5px 13px;
+                  {%if  forloop.counter  == 1 %}
+                padding: 0px;
+                {%elif  forloop.counter  == 2 %}
+                padding : 0px;
+                {%elif  forloop.counter  == 3 %}
+                padding: 0px;
+                  {%else%}
+                  padding: 13px 5px 13px;
+                   {% endif %}
                 "
               >
-                {{ forloop.counter }}
+                        {%if  forloop.counter  == 1 %}
+                        <img src="{% static 'icons/Gold.svg' %}" />
+                        {%elif  forloop.counter  == 2 %}
+                        <img src="{% static 'icons/Silver.svg' %}"/>
+                        {%elif  forloop.counter  == 3 %}
+                        <img src="{% static 'icons/Bronze.svg' %}"/>
+                        {%else%}
+                         {{ forloop.counter }}
+                        {% endif %}
               </div>
             </div>
-            <div class="mx-4 my-2">
+            <div class="mx-4 my-2" >
               {{ user.firstname }} {{ user.lastname }}
             </div>
             <div
               class="ml-auto pl-3"
               style="
-                border-left: 1px solid rgb(218, 218, 218);
-                color: rgb(82, 82, 82);
-                width: 60px;
-                text-align: center;
-              "
+                color: rgb(0, 0, 0);
+        width: 4rem; /* Using rem instead of px */
+        text-align: center;
+        font-weight: 500;
+        {%if  forloop.counter  == 1 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 2 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 3 %}
+                font-weight:bold;
+                   {% endif %}
+        {% if user == request.user %}
+        font-weight: bold;
+      {% endif %}"
             >
               {{ user.points }}
             </div>
@@ -73,34 +128,71 @@ Alcheringa {%endblock%} {% block body %}
       <!-- Group Leaderboard -->
       <div
         class="leaderboard1"
-        style="display: flex; flex-direction: column;"
+        style="background-color:#F1EDE8;display: flex; flex-direction: column;flex : 1 ;"
       >
-        <div class="ml-4" style="font-size: larger; font-weight: bolder">
-          Group Leaderboard
+        <div class="ml-4" style="text-align: center;font-size: larger; font-weight: bolder; padding-bottom:2%">
+          Team
         </div>
-        <div class="bg-white mt-2 rounded p-6">
+        <div class="bg-white mt-2 rounded p-6 w-screen w-auto">
+          <div style=" margin-left:5%;
+          margin-right:5%;
+          border-bottom:2px solid #0000001f;
+      
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;">
+          <p class="pr-3">Rank</p>
+          <p class="mx-4 my-2">Name</p>
+          <p class="ml-auto pl-3">Points</p>
+        </div>
           {% for user in grpusers %}
           <div
             class="px-3 my-2"
             style="
-              border: 1px solid rgb(218, 218, 218);
-              border-radius: 8px;
-              display: flex;
-              align-items: center;
+              padding-bottom: 20px;
+      border-bottom: 1px solid #0000001f;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+          {%if  forloop.counter  == 1 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 2 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 3 %}
+                font-weight:bold;
+                   {% endif %}
+              {% if user == request.user %}
+        background-color: #FFE1A0;
+        font-weight: bold;
+      {% endif %}
             "
           >
             <div
               class="pr-3"
-              style="border-right: 1px solid rgb(218, 218, 218)"
+              
             >
               <div
                 style="
-                  border: 1px solid grey;
-                  border-radius: 20px;
-                  padding: 5px 13px 5px 13px;
+                {%if  forloop.counter  == 1 %}
+                padding: 0px;
+                {%elif  forloop.counter  == 2 %}
+                padding : 0px;
+                {%elif  forloop.counter  == 3 %}
+                padding: 0px;
+                  {%else%}
+                  padding: 13px 5px 13px;
+                   {% endif %}
                 "
               >
-                {{ forloop.counter }}
+              {%if  forloop.counter  == 1 %}
+                        <img src="{% static 'icons/Gold-team.svg' %}"  />
+                        {%elif  forloop.counter  == 2 %}
+                        <img src="{% static 'icons/Silver-team.svg' %}" />
+                        {%elif  forloop.counter  == 3 %}
+                        <img src="{% static 'icons/Bronze-team.svg' %}" />
+                        {%else%}
+                         {{ forloop.counter }}
+                        {% endif %}
               </div>
             </div>
             <div class=" my-2 px-4 ">
@@ -110,10 +202,20 @@ Alcheringa {%endblock%} {% block body %}
             <div
               class="ml-auto pl-3"
               style="
-                border-left: 1px solid rgb(218, 218, 218);
-                color: rgb(82, 82, 82);
+                
+                color: rgb(0, 0, 0);
                 width: 60px;
                 text-align: center;
+                {%if  forloop.counter  == 1 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 2 %}
+                font-weight:bold;
+                {%elif  forloop.counter  == 3 %}
+                font-weight:bold;
+                   {% endif %}
+                {% if user == request.user %}
+        font-weight: bold;
+      {% endif %}"
               "
             >
               {{ user.getPoints }}
