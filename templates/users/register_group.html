@@ -124,7 +124,7 @@
 				</div>
 				
 				<div class="guidelines" style="padding: 1.5vh 3vh;">
-					<div style="gap:0.8rem; display: flex; align-items:center;">
+					<div style="padding-bottom: 1rem; gap:0.8rem; display: flex; align-items:center;">
 						<h6 style="color: #4C5862">Guidelines</h6>
 						<img style="background:none; align-self: flex-start; position: relative; top: -3px;" src="{%static 'images/DropdownArrow.png'%}"/>
 					</div>
@@ -160,10 +160,10 @@
 				<div class="main" id="main1" style="display:block;">
 					<form method="POST">
 					{% csrf_token %}
-						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
+						<div id="form1" style="overflow-y:scroll; padding:2rem 2rem;">
 							<h6 style="color: #000000">For Team Leader</h6>
 							<br/>
-							<h6 class="my-1" style="color: #4C5862">Field marked<span style="color:red"> * </span>are mandatory</h6>
+							<h6  class="my-1" style="padding-bottom:1.2rem; color:#4C5862;">Field marked<span style="color:red"> * </span>are mandatory</h6>
 							<ul class="errorlist">
 								{% if single_user_register_form_1.non_field_errors %}
 								<li>{{ single_user_register_form_1.non_field_errors }}</li>
@@ -203,7 +203,7 @@
 
 							{{ single_user_register_form_1.graduation_year }}
 
-							<div id="connect-social" style="color: #707683;">
+							<div id="connect-social" style="color: #707683; padding-top:0.6rem;">
 								Connect social media 
 								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
@@ -229,10 +229,10 @@
 				<div class="main" id="main2" style="display:none;">
 					<form method="POST">
 					{% csrf_token %}
-						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
+						<div id="form1" style="overflow-y:scroll; padding:2rem 2rem;">
 							<h6 style="color: #000000">For Team Executive</h6>
 							<br/>
-							<h6 class="my-1" style="color: #4C5862">Field marked<span style="color:red"> * </span>are mandatory</h6>
+							<h6 class="my-1" style="padding-bottom:1.2rem; color:#4C5862;">Field marked<span style="color:red"> * </span>are mandatory</h6>
 							<ul class="errorlist">
 								{% if single_user_register_form_1.non_field_errors %}
 								<li>{{ single_user_register_form_1.non_field_errors }}</li>
@@ -281,7 +281,7 @@
 							{% endfor %}
 						</ul>       
 
-							<div id="connect-social" style="color: #707683; margin-top: 0.8rem;">
+							<div id="connect-social" style="color: #707683; padding-top:0.6rem;">
 								Connect social media 
 								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
@@ -305,10 +305,10 @@
 				<div class="main" id="main3" style="display:none;"> 
 					<form method="POST">
 					{% csrf_token %}
-						<div id="form1" style="overflow-y:scroll;" "padding: 2rem 2rem;">
+						<div id="form1" style="overflow-y:scroll; padding:2rem 2rem;">
 							<h6 style="color: #000000">College Details</h6>
 							<br/>
-							<h6 class="my-1" style="color: #4C5862">Field marked<span style="color:red"> * </span>are mandatory</h6>
+							<h6 class="my-1" style="color: #4C5862;">Field marked<span style="color:red"> * </span>are mandatory</h6>
 							
 							<ul class="errorlist">
 								{% if single_user_register_form_1.non_field_errors %}
@@ -325,7 +325,7 @@
 								{% endfor %}
 							</ul>
 
-							<div class="StateAndCity" style="display:flex; width:100%; gap: 1rem; flex:1; border:0; justify-content:space-between; margin-bottom:1.5rem; margin-top:2.5rem;">
+							<div class="StateAndCity" style="display:flex; width:100%; gap: 1rem; flex:1; border:0; justify-content:space-between; margin-bottom:1.5rem; margin-top:2rem;">
 									
 								 <div style="position: relative; flex: 1; display: flex; flex-direction: column;">
 									<input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off"
