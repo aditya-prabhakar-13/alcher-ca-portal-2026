@@ -1,75 +1,61 @@
-{% extends '../basicbootstrap.html'%} {% load static %} {% load static %}
-{%block title%}Register | Alcheringa {%endblock%} {% block style %} <link
-rel="stylesheet" href={% static "css/register_login.css" %}> <link
-rel="stylesheet" href={% static "css/autoFill.css" %}>
-<script src="{% static 'js/autoFill.js' %}"></script>
-{% endblock %} {% block body %} {% load crispy_forms_tags %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
-<!-- CSS only -->
+{% extends '../basicbootstrap.html' %}
+{% load static %}
 
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-  crossorigin="anonymous"
-/>
-<!-- JavaScript Bundle with Popper -->
+{% block title %}Register | Alcheringa{% endblock %}
 
-{% if request.session.show_alert %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/register_login.css' %}">
+<link rel="stylesheet" href="{% static 'css/autoFill.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-<script>
-  // alert('Registration successful. Check your mail for the link to activate your account.');
-  window.location.href = "{% url 'successfull' %}";
-</script>
-
-{% endif %}
-
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-  crossorigin="anonymous"
-></script>
-<nav class="navbar navbar-light">
-  <div class="ccontainer-fluid" style="width: 100%; height: 100%">
-    <a class="cnavbar-brand" href="/">
-      <img src="{% static 'images/rjimages/logo.svg' %}" alt="" />
-    </a>
-  </div>
-</nav>
 <style>
+  :root {
+    --primary-color: #009e77;
+    --secondary-color: #008080;
+    --accent-color: #f7d71f;
+    --bg-color: #f8f1e7;
+    --text-color: #000;
+    --border-color: #c2cfe0;
+  }
+
   .rj-body {
     width: 80vw;
     margin: auto;
+    max-width: 1200px;
   }
+
   .rj-form-container {
-    border: 2px solid #009e77;
-    border-radius: 16px 16px 0px 0px;
-    background-color: #f8f1e7;
+    border: 2px solid var(--primary-color);
+    border-radius: 16px 16px 0 0;
+    background-color: var(--bg-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  .rj-back-button {
+
+  .rj-back-button, .rj-fbc {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px 24px;
     border-radius: 12px;
-    border: 2px solid #000;
-    background-color: #f7f1e3;
-    color: #000;
+    border: 2px solid var(--text-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 30px;
+    gap: 8px;
+    transition: all 0.3s ease;
   }
 
-  .rj-arrow {
-    font-size: 16px;
-    margin-right: 8px;
-    line-height: 1;
+  .rj-back-button:hover, .rj-fbc:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
   }
+
   .rj-progress-container {
     position: relative;
     display: flex;
@@ -77,8 +63,9 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    border-radius: 16px 16px 0px 0px;
-    background-color: #009e77;
+    border-radius: 16px 16px 0 0;
+    background-color: var(--primary-color);
+    padding: 20px;
   }
 
   .rj-step {
@@ -87,7 +74,7 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     align-items: center;
     text-align: center;
     cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
   }
@@ -102,114 +89,95 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-    color: #008080;
+    color: var(--secondary-color);
     border: 2px solid white;
     transition: all 0.3s ease;
   }
 
   .rj-step-text {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
   }
 
   .rj-progress-line {
     position: absolute;
-    top: 30%;
+    top: 50%;
+    transform: translateY(-50%);
     width: 100px;
     height: 2px;
-    background-color: white;
-    margin: 0 10px;
-    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.5);
     z-index: 0;
   }
 
-  .rj-step.rj-active {
-    opacity: 1;
-  }
-
   .rj-step.rj-active .rj-step-circle {
-    background-color: #eee;
-    border-color: #eee;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-color);
   }
 
   .rj-step.rj-inactive {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
-  .rj-button-container {
-    margin-left: 100px;
-    margin-bottom: 50px;
-  }
-
-  .rj-nav-button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: #f0f0f0;
-    color: #008080;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .rj-nav-button:hover {
-    background-color: #e0e0e0;
-  }
   .rj-button-container-second {
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    margin-left: 6rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+    justify-content: flex-start;
   }
 
   .rj-button-second {
-    padding: 6px 40px;
+    padding: 8px 40px;
     border-radius: 10px;
-    border: 2px solid transparent;
+    border: 1px solid var(--text-color);
     font-weight: 600;
     background-color: transparent;
-    color: black;
-    transition: all 0.3s ease-in-out;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
     cursor: pointer;
-    border: 1px solid;
   }
 
   .rj-button-second:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    color: var(--text-color);
   }
 
-  .rj-act {
-    background-color: #f7d71f; /* Yellow color for active state */
-    color: #1a1a2e; /* Dark text for contrast */
+  .rj-button-second.rj-act {
+    background-color: var(--accent-color);
+    color: var(--text-color);
     box-shadow: 0 0 15px rgba(247, 215, 31, 0.5);
     border: none;
   }
 
   .rj-guideline-box {
     width: 90%;
-    margin: auto;
-    min-height: 50px; /* Adjusted height */
-    background-color: #f8f1e7;
-    border: 1px solid #c2cfe0;
+    margin: 0 auto 2rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 1rem;
-    padding-left: 20px;
-    padding-top: 8px;
+    padding: 20px;
   }
 
   .rj-guideline-header {
+    display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #e0e0e0;
+    color: var(--text-color);
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   .rj-key-icon {
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
   }
 
   .rj-key-icon:hover {
@@ -217,46 +185,39 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
   }
 
   .rj-guideline-text {
-    /* Initially hidden with a transition for smooth animation */
     opacity: 0;
     transform: translateY(20px);
     max-height: 0;
     overflow: hidden;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out,
-      max-height 0.5s ease-out;
-    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease;
     font-size: 1rem;
     line-height: 1.6;
-    margin-top: 0;
+    color: var(--text-color);
   }
 
   .rj-guideline-text.rj-show {
     opacity: 1;
     transform: translateY(0);
-    max-height: 500px; /* A large value to allow the content to show */
+    max-height: 500px;
     margin-top: 1rem;
   }
 
   .rj-form-wrapper {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     gap: 2rem;
-    background-color: #f8f1e7;
+    background-color: var(--bg-color);
     padding: 2rem;
     position: relative;
   }
-  #rj-form-first,
-  #rj-form-second {
+
+  .rj-form-section {
     width: 50%;
-  }
-  .rj-form-nav,
-  .rj-form-second {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    flex: 1;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease;
   }
 
   .rj-form-hidden {
@@ -270,18 +231,42 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
   .rj-input-group label {
     display: block;
     margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
   }
 
-  .rj-input-element {
+  .rj-input-element,
+  .rj-input-group input,
+  .rj-input-group select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #5a5a7d;
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
-    color: #e0e0e0;
+    color: var(--text-color);
+    background-color: white;
+    transition: border-color 0.3s ease;
+  }
+
+  .rj-input-element:focus,
+  .rj-input-group input:focus,
+  .rj-input-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 158, 119, 0.1);
+  }
+
+  .StateAndCity {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .StateAndCity > div {
+    flex: 1;
   }
 
   .rj-form-image {
     max-width: 400px;
+    width: 100%;
     height: auto;
     border-radius: 1rem;
     object-fit: cover;
@@ -293,331 +278,381 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     margin-top: 1.5rem;
   }
 
-  .rj-form-action-button {
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+  .rj-nav-button,
+  .rj-submit-button {
+    padding: 12px 24px;
+    border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    border: none;
+    transition: all 0.3s ease;
   }
 
-  .rj-next-button {
-    background-color: #008080; /* Teal-like color */
+  .rj-nav-button {
+    background-color: var(--primary-color);
     color: white;
+  }
+
+  .rj-nav-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
   }
 
   .rj-submit-button {
-    background-color: #008080; /* Teal-like color */
+    background-color: var(--secondary-color);
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 24px;
-    border-radius: 12px;
-    font-family: sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 30px;
   }
+
+  .rj-submit-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+
   .rj-head {
-    font-size: 48px;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    color: var(--text-color);
   }
+
   .rj-btn {
     display: flex;
     gap: 12px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin: 1rem 0;
   }
-  .rj-fbc {
-    padding: 10px 24px;
-    border-radius: 8px;
-    background-color: #f8f1e7;
-    font-size: large;
-    font-weight: 700;
+
+  .navbar {
+    padding: 1rem 2rem;
+    background-color: transparent;
   }
-  .rj-button-second {
-  text-decoration: none; 
-  color: black;        
-}
- .navbar {
-   padding: 1vh 27.5vh;
- }
-  @media screen and (max-width: 600px) {
-    #rj-image-container,
-    #rj-form-image {
-      display: none;
+
+  .navbar img {
+    height: 50px;
+  }
+
+  .errorlist {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 1rem 0;
+    list-style: none;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .rj-body {
+      width: 95vw;
     }
-    #rj-form-first,
-    #rj-form-second {
+
+    .navbar {
+      padding: 1rem;
+    }
+
+    .rj-form-wrapper {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rj-form-section,
+    #rj-image-container {
       width: 100%;
     }
-    .rj-form-wrapper {
-      display: block;
-      width: 75%;
+
+    #rj-image-container {
+      order: -1;
     }
+
+    .rj-button-container-second {
+      padding: 0 1rem;
+      justify-content: center;
+    }
+
     .rj-guideline-box {
-      width: 90%;
-      margin: auto;
+      width: 95%;
     }
-    .rj-body {
-      width: 100vw;
+
+    .StateAndCity {
+      flex-direction: column;
+      gap: 1rem;
     }
-    .rj-button-container-second,
-    .rj-button-container {
-      margin-left: 2rem;
+
+    .rj-progress-container {
+      padding: 15px;
     }
- 
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 1vh 4.5vh; /* Reduced padding for screens up to 768px wide */
-      }
+
+    .rj-step-text {
+      font-size: 12px;
+    }
+
+    .rj-progress-line {
+      width: 60px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .rj-head {
+      font-size: 1.5rem;
+    }
+
+    .rj-button-second {
+      padding: 6px 20px;
+      font-size: 14px;
+    }
+
+    .rj-form-wrapper {
+      padding: 1rem;
+    }
+
+    .rj-guideline-box {
+      width: 100%;
+      padding: 15px;
     }
   }
 </style>
+
+<script src="{% static 'js/autoFill.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+
+{% if request.session.show_alert %}
+<script>
+  window.location.href = "{% url 'successfull' %}";
+</script>
+{% endif %}
+
+<nav class="navbar navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'images/rjimages/logo.svg' %}" alt="Logo" />
+    </a>
+  </div>
+</nav>
+
 <div class="rj-body">
   <div class="rj-btn">
-    <button class="rj-fbc"><span>&larr;</span><span>Back</span></button>
+    <button class="rj-fbc" onclick="window.location.href='/'">
+      <span>&larr;</span>
+      <span>Back</span>
+    </button>
   </div>
-  <div class="rj-head">Registration</div>
+  
+  <h1 class="rj-head">Registration</h1>
+  
   <div class="rj-form-container">
     <div class="rj-progress-container">
       <div class="rj-step rj-active" data-step="1">
         <div class="rj-step-circle">1</div>
-        <div class="rj-step-text">Personal details</div>
+        <div class="rj-step-text">Personal Details</div>
       </div>
       <div class="rj-progress-line"></div>
       <div class="rj-step rj-inactive" data-step="2">
         <div class="rj-step-circle">2</div>
-        <div class="rj-step-text">CA Details</div>
+        <div class="rj-step-text">Academic Details</div>
       </div>
     </div>
+
     <div class="rj-button-container-second">
-      <a
-        href="{% url 'register_single' %}"
-        class="rj-button-second rj-act"
-        data-mode="solo"
-        >Solo</a
-      >
-      <a
-        href="{% url 'register_group' %}"
-        class="rj-button-second"
-        data-mode="team"
-        >Team</a
-      >
+      <a href="{% url 'register_single' %}" class="rj-button-second rj-act" data-mode="solo">Solo</a>
+      <a href="{% url 'register_group' %}" class="rj-button-second" data-mode="team">Team</a>
     </div>
+
     <div class="rj-guideline-box">
-      <div class="rj-guideline-header">
-        <span>Guideline</span>
+      <div class="rj-guideline-header" id="rj-guideline-toggle">
+        <span>Guidelines</span>
         <span id="rj-key-icon" class="rj-key-icon">&#x25BC;</span>
       </div>
-      <div class="rj-guideline-text">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+      <div class="rj-guideline-text" id="rj-guideline-text">
+        <p>Please fill out all required fields marked with an asterisk (*). Ensure your email address is valid as you will receive confirmation and updates there. Your password should be at least 8 characters long and contain a mix of letters and numbers for security.</p>
       </div>
     </div>
-<form id="form" method="POST">
-    {% csrf_token %}
-    
-    <ul class="errorlist">
-        {% if single_user_register_form.non_field_errors %}
+
+    <form id="registrationForm" method="POST">
+      {% csrf_token %}
+      
+      {% if single_user_register_form.errors %}
+        <ul class="errorlist">
+          {% if single_user_register_form.non_field_errors %}
             <li>{{ single_user_register_form.non_field_errors }}</li>
-        {% endif %}
-        {% for field in single_user_register_form %}
+          {% endif %}
+          {% for field in single_user_register_form %}
             {% if field.errors %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
             {% endif %}
-        {% endfor %}
-    </ul>
+          {% endfor %}
+        </ul>
+      {% endif %}
 
-    <div class="rj-form-wrapper">
+      <div class="rj-form-wrapper">
         <div class="rj-form-section" id="rj-form-first">
-            <p class="text-sm">
-                Fields marked <span style="color: red">*</span> are mandatory
-            </p>
-            
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.firstname.id_for_label }}">Enter Full Name*</label>
-                {{ single_user_register_form.firstname }}
-            </div>
+          <p class="text-sm">Fields marked <span style="color: red">*</span> are mandatory</p>
+          
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.firstname.id_for_label }}">Full Name*</label>
+            {{ single_user_register_form.firstname }}
+          </div>
 
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.phone.id_for_label }}">Enter Phone Number*</label>
-                {{ single_user_register_form.phone }}
-            </div>
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.phone.id_for_label }}">Phone Number*</label>
+            {{ single_user_register_form.phone }}
+          </div>
 
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.email.id_for_label }}">Enter Email ID*</label>
-                {{ single_user_register_form.email }}
-            </div>
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.email.id_for_label }}">Email ID*</label>
+            {{ single_user_register_form.email }}
+          </div>
 
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.password1.id_for_label }}">Set Password*</label>
-                {{ single_user_register_form.password1 }}
-            </div>
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.password1.id_for_label }}">Password*</label>
+            {{ single_user_register_form.password1 }}
+          </div>
 
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.password2.id_for_label }}">Confirm Password*</label>
-                {{ single_user_register_form.password2 }}
-            </div>
-            
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.password2.id_for_label }}">Confirm Password*</label>
+            {{ single_user_register_form.password2 }}
+          </div>
         </div>
+
         <div class="rj-form-section rj-form-hidden" id="rj-form-second">
-            <p class="text-sm">
-                Fields marked <span style="color: red">*</span> are mandatory
-            </p>
+          <p class="text-sm">Fields marked <span style="color: red">*</span> are mandatory</p>
 
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.graduation_year.id_for_label }}">Graduation Year*</label>
-                {{ single_user_register_form.graduation_year }}
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.graduation_year.id_for_label }}">Graduation Year*</label>
+            {{ single_user_register_form.graduation_year }}
+          </div>
+
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.college_name.id_for_label }}">College Name*</label>
+            {{ single_user_register_form.college_name }}
+          </div>
+
+          <div class="StateAndCity">
+            <div>
+              <label for="state">College State*</label>
+              <input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off" placeholder="Enter your college state" required>
+              <div id="state-suggestions"></div>
             </div>
-
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.college_name.id_for_label }}">College Name*</label>
-                {{ single_user_register_form.college_name }}
+            <div>
+              <label for="city">College City*</label>
+              <input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off" placeholder="Enter your college city" required>
+              <div id="city-suggestions"></div>
             </div>
+          </div>
 
-            <div class="StateAndCity">
-                <div style="width:100%">
-                    <label for="state">College State*</label>
-                    <input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off" placeholder="College State*">
-                    <div id="state-suggestions"></div>
-                </div>
-                <div style="width:100%">
-                    <label for="city">College City*</label>
-                    <input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off" placeholder="College City*">
-                    <div id="city-suggestions"></div>
-                </div>
-            </div>
-
-            <div class="rj-input-group">
-                <label for="{{ single_user_register_form.referred_by.id_for_label }}">Referred by</label>
-                {{ single_user_register_form.referred_by }}
-            </div>
-
+          <div class="rj-input-group">
+            <label for="{{ single_user_register_form.referred_by.id_for_label }}">Referred By</label>
+            {{ single_user_register_form.referred_by }}
+          </div>
         </div>
-        
-        <!-- <div class="rj-button-container"></div> -->
-        
-        <p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
         
         <div id="rj-image-container">
-          <img
-          id="rj-form-image"
-          class="rj-form-image"
-          src="{%static 'images/rjimages/form.svg'%}"
-          alt="Form Step 1 Image"
-          />
+          <img id="rj-form-image" class="rj-form-image" src="{% static 'images/rjimages/form.svg' %}" alt="Registration Form" />
         </div>
-    </div>
-  </form>
+      </div>
+      
+      <p style="color: green; display: none;" id="showload">Please wait, don't refresh the page...</p>
+    </form>
+    
     <div class="rj-button-container"></div>
   </div>
 </div>
+
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Get references to the buttons and the guideline text element
-    const rjButtons = document.querySelectorAll(".rj-button-second");
-    const rjGuidelineText = document.querySelector(".rj-guideline-text");
-    const rjKeyIcon = document.getElementById("rj-key-icon");
+document.addEventListener("DOMContentLoaded", function() {
+  // Initialize variables
+  const steps = document.querySelectorAll(".rj-step");
+  const buttonContainer = document.querySelector(".rj-button-container");
+  const formImage = document.getElementById("rj-form-image");
+  const formFirst = document.getElementById("rj-form-first");
+  const formSecond = document.getElementById("rj-form-second");
+  const guidelineToggle = document.getElementById("rj-guideline-toggle");
+  const guidelineText = document.getElementById("rj-guideline-text");
+  const keyIcon = document.getElementById("rj-key-icon");
+  
+  let currentStepIndex = 0;
 
-    // Add a click event listener to each button
-    rjButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        // Remove the 'rj-active' class from all buttons
-        rjButtons.forEach((btn) => btn.classList.remove("rj-act"));
-        // Add the 'rj-active' class to the clicked button
-        button.classList.add("rj-act");
-      });
-    });
-
-    // Add a click event listener to the key icon
-    rjKeyIcon.addEventListener("click", () => {
-      // Toggle the 'rj-show' class to show/hide the text
-      rjGuidelineText.classList.toggle("rj-show");
-
-      // Change the icon based on the current state
-      if (rjGuidelineText.classList.contains("rj-show")) {
-        rjKeyIcon.innerHTML = "&#x25B2;"; // Up-pointing triangle
-      } else {
-        rjKeyIcon.innerHTML = "&#x25BC;"; // Down-pointing triangle
-      }
-    });
-
-    // --- Multi-Step Form Logic ---
-    const steps = document.querySelectorAll(".rj-step");
-    const buttonContainer = document.querySelector(".rj-button-container");
-    const formImage = document.getElementById("rj-form-image");
-    const formFirst = document.getElementById("rj-form-first");
-    const formSecond = document.getElementById("rj-form-second");
-
-    let currentStepIndex = 0;
-
-    const updateUI = () => {
-      steps.forEach((s) => {
-        s.classList.remove("rj-active", "rj-inactive");
-      });
-      steps.forEach((s, index) => {
-        if (index === currentStepIndex) {
-          s.classList.add("rj-active");
-        } else {
-          s.classList.add("rj-inactive");
-        }
-      });
-
-      if (currentStepIndex === 0) {
-        formFirst.classList.remove("rj-form-hidden");
-        formSecond.classList.add("rj-form-hidden");
-        formImage.src = "{%static 'images/rjimages/form.svg'%}";
-        formImage.alt = "Form Step 1 Image";
-        buttonContainer.innerHTML =
-          '<button class="rj-nav-button" id="nextButton">Next</button>';
-      } else if (currentStepIndex === 1) {
-        formFirst.classList.add("rj-form-hidden");
-        formSecond.classList.remove("rj-form-hidden");
-        formImage.src = "{%static 'images/rjimages/form.svg'%}";
-        formImage.alt = "Form Step 2 Image";
-        buttonContainer.innerHTML =
-          '<div class="rj-form-action-buttons"><button class="rj-form-action-button rj-back-button" id="backButton">&larr; Back</button><button class="rj-form-action-button rj-submit-button" id="submitButton">Submit</button></div>';
-      }
-    };
-
-    buttonContainer.addEventListener("click", (event) => {
-      const clickedButton = event.target;
-      if (clickedButton.id === "nextButton") {
-        if (currentStepIndex < steps.length - 1) {
-          currentStepIndex++;
-          updateUI();
-        }
-      } else if (clickedButton.id === "backButton") {
-        if (currentStepIndex > 0) {
-          currentStepIndex--;
-          updateUI();
-        }
-      }
-    });
-
-    updateUI();
+  // Guideline toggle functionality
+  guidelineToggle.addEventListener("click", function() {
+    guidelineText.classList.toggle("rj-show");
+    keyIcon.innerHTML = guidelineText.classList.contains("rj-show") ? "&#x25B2;" : "&#x25BC;";
   });
-  // Get a reference to the button
-  const backButton = document.querySelector(".rj-fbc");
 
-  // Add a click event listener
-  backButton.addEventListener("click", () => {
-    // Redirect to the home page
-    window.location.href = "/";
+  // Multi-step form functionality
+  function updateUI() {
+    // Update step indicators
+    steps.forEach((step, index) => {
+      step.classList.remove("rj-active", "rj-inactive");
+      step.classList.add(index === currentStepIndex ? "rj-active" : "rj-inactive");
+    });
+
+    // Update form sections and buttons
+    if (currentStepIndex === 0) {
+      formFirst.classList.remove("rj-form-hidden");
+      formSecond.classList.add("rj-form-hidden");
+      buttonContainer.innerHTML = '<button type="button" class="rj-nav-button" id="nextButton">Next</button>';
+    } else if (currentStepIndex === 1) {
+      formFirst.classList.add("rj-form-hidden");
+      formSecond.classList.remove("rj-form-hidden");
+      buttonContainer.innerHTML = `
+        <div class="rj-form-action-buttons">
+          <button type="button" class="rj-back-button" id="backButton">&larr; Back</button>
+          <button type="submit" class="rj-submit-button" id="submitButton">Submit</button>
+        </div>
+      `;
+    }
+  }
+
+  // Button event handling
+  buttonContainer.addEventListener("click", function(event) {
+    const clickedButton = event.target;
+    
+    if (clickedButton.id === "nextButton") {
+      if (validateCurrentStep() && currentStepIndex < steps.length - 1) {
+        currentStepIndex++;
+        updateUI();
+      }
+    } else if (clickedButton.id === "backButton") {
+      if (currentStepIndex > 0) {
+        currentStepIndex--;
+        updateUI();
+      }
+    } else if (clickedButton.id === "submitButton") {
+      if (validateCurrentStep()) {
+        document.getElementById("showload").style.display = "block";
+        document.getElementById("registrationForm").submit();
+      }
+    }
   });
+
+  // Basic form validation
+  function validateCurrentStep() {
+    const currentForm = currentStepIndex === 0 ? formFirst : formSecond;
+    const requiredFields = currentForm.querySelectorAll("input[required], select[required]");
+    
+    for (let field of requiredFields) {
+      if (!field.value.trim()) {
+        field.focus();
+        alert("Please fill in all required fields.");
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Initialize UI
+  updateUI();
+});
 </script>
 
-{% include 'users/login.html' %} {% endblock %}
+{% include 'users/login.html' %}
+{% endblock %}
