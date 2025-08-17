@@ -117,6 +117,7 @@ h8 {
   /* border-bottom: 2px solid rgb(180 180 180); */
   width: 100%;
   margin-bottom: 25px;
+  background-color: #f8f1e7;;
 }
 
 .input_field:focus {
@@ -247,12 +248,14 @@ h8 {
   border: 0;
   padding: 0 0 0.4vh 0.8vh;
   width: 40vh;
+  background-color: #f8f1e7;;
 }
 
 #city {
   border: 0;
   padding: 0 0 0.4vh 0.8vh;
   width: 40vh;
+  background-color: #f8f1e7;;
 }
 
 .StateAndCity {
@@ -260,6 +263,7 @@ h8 {
   justify-content: space-between;
   margin-bottom: 2vh;
   gap: 1vw;
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 800px) {
