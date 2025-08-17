@@ -58,6 +58,7 @@ input.form-control:focus {
 }
 body {
   overflow-x: hidden;
+  background-color: #f8f1e7;
 }
 
 .form-wapper h2 {
