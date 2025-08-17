@@ -111,7 +111,7 @@
    display: flex;
    gap: 1.5rem;
    margin-bottom: 2rem;
-   margin-left: 6rem;
+   margin-left: 3rem;
  }
  .rj-button-second {
    padding: 6px 40px;
@@ -135,7 +135,7 @@
    border: none;
  }
  .rj-guideline-box {
-   margin-left: 6rem;
+   margin-left: 3rem;
    width: 80%;
    min-height: 50px; /* Adjusted height */
    background-color: #f8f1e7;
@@ -278,7 +278,14 @@
 .navbar {
   padding: 1vh 27.5vh;
 }
+.rj{
+  margin-left: 3rem;
+  margin-top: 6rem;
+}
  @media screen and (max-width: 600px) {
+  .rj-head{
+    font-size: 24px;
+  }
    #rj-image-container,
    #rj-form-image {
      display: none;
@@ -292,18 +299,18 @@
    }
    .rj-form-wrapper {
      display: block;
-     width: 75%;
+     width: 100%;
    }
    .rj-guideline-box {
      width: 90%;
      margin: auto;
    }
    .rj-body {
-     width: 100vw;
+     width: 90vw;
    }
    .rj-button-container-second,
    .rj-button-container {
-     margin-left: 2rem;
+     margin-left: 1rem;
    }
  
    @media (max-width: 768px) {
@@ -312,6 +319,9 @@
 }
      .navbar {
        padding: 1vh 4.5vh; /* Reduced padding for screens up to 768px wide */
+     }
+     .rj-button-container-second,.rj{
+      margin-left: 1rem;
      }
    }
  }
