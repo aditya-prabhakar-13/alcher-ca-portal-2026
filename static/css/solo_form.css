@@ -4,6 +4,7 @@
  .rj-body {
    width: 80vw;
    margin: auto;
+   margin-top: 100px;
  }
  .rj-form-container {
    background-color: #f8f1e7;
@@ -286,6 +287,9 @@
    #rj-form-second {
      width: 100%;
    }
+   .rj-progress-line{
+    left: 42%;
+   }
    .rj-form-wrapper {
      display: block;
      width: 75%;
@@ -303,6 +307,9 @@
    }
  
    @media (max-width: 768px) {
+    .rj-progress-line{
+ left: 45%;
+}
      .navbar {
        padding: 1vh 4.5vh; /* Reduced padding for screens up to 768px wide */
      }
