@@ -92,18 +92,113 @@ class GroupUserRegisterForm(forms.ModelForm):
 
 class UserUpdateForm(forms.ModelForm):
 
-    firstname = forms.CharField(label="Full Name")
-    phone = forms.CharField(widget=forms.TextInput(
-    ), label="Phone number (e.g. +12125552368)", required=True)
-    img = forms.ImageField()
-    position_of_responsibility=forms.CharField(required=True)
-    interested_modules=forms.CharField(required=False)
-    fb_handle = forms.CharField(required=False,
-        label="Facebook Handle", widget=forms.TextInput(attrs={'class': 'input_field'}))
-    instahandle = forms.CharField(required=False,
-        label="Instagram Handle", widget=forms.TextInput(attrs={'class': 'input_field'}))
+    firstname = forms.CharField(
+        label="Full Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter your full name',
+            'class': 'form-input'
+        })
+    )
+    
+    phone = forms.CharField(
+        label="Phone Number",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., +91 98765 43210',
+            'class': 'form-input'
+        }),
+        required=True
+    )
+    
+    graduation_year = forms.CharField(
+        label="Graduation Year",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., 2027',
+            'class': 'form-input'
+        })
+    )
+    
+    college_state = forms.CharField(
+        label="College State",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., Assam',
+            'class': 'form-input'
+        })
+    )
+    
+    college_city = forms.CharField(
+        label="College City",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., Guwahati',
+            'class': 'form-input'
+        })
+    )
+    
+    college_name = forms.CharField(
+        label="College Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., IIT Guwahati',
+            'class': 'form-input'
+        })
+    )
+    
+    position_of_responsibility = forms.CharField(
+        label="Position of Responsibility",
+        required=False,
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., Student Council President',
+            'class': 'form-input'
+        })
+    )
+    
+    interested_modules = forms.CharField(
+        label="Interested Modules",
+        required=False,
+        widget=forms.Textarea(attrs={
+            'placeholder': 'e.g., Marketing, Event Management, Social Media',
+            'class': 'form-input',
+            'rows': 3
+        })
+    )
+    
+    about = forms.CharField(
+        label="About Me",
+        required=False,
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Tell us about yourself, your interests, and goals...',
+            'class': 'form-input',
+            'rows': 4
+        })
+    )
+    
+    fb_handle = forms.CharField(
+        required=False,
+        label="Facebook Handle",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., @username or facebook.com/username',
+            'class': 'form-input'
+        })
+    )
+    
+    instahandle = forms.CharField(
+        required=False,
+        label="Instagram Handle",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'e.g., @username',
+            'class': 'form-input'
+        })
+    )
+    
+    img = forms.ImageField(
+        label="Profile Picture",
+        required=False,
+        widget=forms.FileInput(attrs={
+            'accept': 'image/*',
+            'class': 'form-input'
+        })
+    )
 
     class Meta:
         model = User
         fields = ['firstname', 'phone', 'graduation_year', 'college_state',
-                  'college_city', 'college_name',  'position_of_responsibility', 'interested_modules', 'img','instahandle', 'fb_handle']
+                  'college_city', 'college_name', 'position_of_responsibility', 
+                  'interested_modules', 'about', 'img', 'instahandle', 'fb_handle']
