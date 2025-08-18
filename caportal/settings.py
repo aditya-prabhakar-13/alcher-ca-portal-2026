@@ -154,6 +154,7 @@ DJANGO_SUPERUSER_EMAIL=os.environ.get('email')
 
 
 LOGOUT_REDIRECT_URL = 'dashboard_page'
+LOGIN_URL = '/users/login/'
 # Setup Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
