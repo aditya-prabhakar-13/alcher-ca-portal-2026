@@ -12,7 +12,7 @@ body {
 .box1 {
   display: flex;
   background: linear-gradient(to right, #f2df31, #ffc548, #ffc548);
-  height: 85vh;
+  height: 65vh;
   margin: 0;
   font-family: sans-serif;
 }
@@ -43,7 +43,7 @@ body {
       transparent 1px
     ),
     linear-gradient(to bottom, rgba(0, 0, 0, 1) 1px, transparent 1px);
-  background-size: calc(100% / 8) calc(100% / 5);
+  background-size: calc(100% / 4) calc(100% / 4);
   background-repeat: repeat;
   background-position: top left;
   border-right: 1px solid black;
