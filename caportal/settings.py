@@ -185,13 +185,13 @@ if PROD:
     MINIO_STORAGE_ACCESS_KEY = 'akshat2403'
     MINIO_STORAGE_SECRET_KEY = 'akshat2403'
     MINIO_STORAGE_USE_HTTPS = True
-    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alchercamedia'
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherca26media'
     MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
-    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alchercastatic'
+    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherca26static'
     MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
 if PROD:
     CSRF_TRUSTED_ORIGINS = [
-        'https://testca.alcheringa.in', 'https://ambassador.alcheringa.in']
+        'https://caportal.alcheringa.co.in', 'https://ambassador.alcheringa.co.in']
