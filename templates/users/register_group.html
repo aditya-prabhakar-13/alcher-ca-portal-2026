@@ -89,7 +89,7 @@
 </nav>
 
 <div>
-  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; padding: 0.4rem 1rem; margin-top: 6rem; margin-left: 4%;"><img src= {%static 'images/backButton.png'%}/></button>
+  	<button id="GoBack" style = "justify-content:flex-start; background-color: #f8f1e7; padding: 0.4rem 1rem; margin-top: 6rem; margin-left: 13.5%;"><img src= {%static 'images/backButton.png'%}/></button>
 </div>
 
 <div class="crow">
@@ -203,13 +203,13 @@
 
 							{{ single_user_register_form_1.graduation_year }}
 
-							<div id="connect-social" style="color: #707683; padding-top:0.6rem;">
+							<!-- <div id="connect-social" style="color: #707683; padding-top:0.6rem;">
 								Connect social media 
 								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
 								</div>
-							</div>
+							</div> -->
 
 							<br>
 
@@ -221,7 +221,7 @@
 						</div>
 					</form>
 					<div class="img-div" style = "width: 100%;">
-						<img src="{% static 'images/register_group.png' %}" alt="" style="position:absolute; background: none; width: 45%; bottom:38%; left:58%; ">
+						<img src="{% static 'images/register_group.png' %}" alt="" style="position:absolute; background: none; width: 45%; bottom:30%; left:58%; ">
 					</div>
 				</div>	
 
@@ -281,13 +281,13 @@
 							{% endfor %}
 						</ul>       
 
-							<div id="connect-social" style="color: #707683; padding-top:0.6rem;">
+							<!-- <div id="connect-social" style="color: #707683; padding-top:0.6rem;">
 								Connect social media 
 								<div class="social-btns" style="gap: 1.5rem; display: flex; margin-top: 0.8rem;">
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
 									<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.2rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
 								</div>
-							</div>
+							</div> -->
 							<br>
 							<button type="button" id="nextBtn2"
 								class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
@@ -370,8 +370,8 @@
 </div>
 
 <div id="bottom-connect1" style="display:flex; align-items:center; gap:1rem; align-self:center;justify-content:center; padding-top: 8rem; padding-bottom: 16rem;">
-	<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.4rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
-	<button style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.5rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
+	<button onclick='window.open("https://www.facebook.com/alcheringaiitg/")' style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.4rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-fb.png'%}/>  Facebook</button>
+	<button onclick='window.open("https://www.instagram.com/alcheringaiitg/")'style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.5rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
 </div>
 
 <div id="bottom-connect2" style="display: none; padding-top: 12rem; "></div>

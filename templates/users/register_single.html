@@ -1,16 +1,45 @@
-{% extends '../basicbootstrap.html'%} 
-{% load static %}
-{% load crispy_forms_tags %}
-
-{% block title %}Register | Alcheringa{% endblock %}
-
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/register_login.css' %}">
-<link rel="stylesheet" href="{% static 'css/autoFill.css' %}">
+{% extends '../basicbootstrap.html'%} {% load static %} {% load static %}
+{%block title%}Register | Alcheringa {%endblock%} {% block style %} <link
+rel="stylesheet" href={% static "css/register_login.css" %}> <link
+rel="stylesheet" href={% static "css/autoFill.css" %}>
+<script src="{% static 'js/autoFill.js' %}"></script>
 <link rel="stylesheet" href="{%static 'css/solo_form.css'%}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+{% endblock %} {% block body %} {% load crispy_forms_tags %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<!-- CSS only -->
 
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+  crossorigin="anonymous"
+/>
+<!-- JavaScript Bundle with Popper -->
+
+{% if request.session.show_alert %}
+
+<script>
+  // alert('Registration successful. Check your mail for the link to activate your account.');
+  window.location.href = "{% url 'successfull' %}";
+</script>
+
+{% endif %}
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+  crossorigin="anonymous"
+></script>
+<nav class="navbar navbar-light">
+  <div class="ccontainer-fluid" style="width: 100%; height: 100%">
+    <a class="cnavbar-brand" href="/">
+      <img src="{% static 'images/rjimages/logo.svg' %}" alt="" />
+    </a>
+  </div>
+</nav>
 <style>
   body{
     background-color: #f8f1e7;
@@ -33,46 +62,21 @@
     }
 }
 </style>
-{% endblock %}
-
-{% block body %}
-<script src="{% static 'js/autoFill.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
-{% if request.session.show_alert %}
-<script>
-  window.location.href = "{% url 'successfull' %}";
-</script>
-{% endif %}
-
-<nav class="navbar navbar-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img src="{% static 'images/rjimages/logo.svg' %}" alt="Logo" />
-    </a>
-  </div>
-</nav>
-
 <div class="rj-body">
   <div class="rj-btn">
-    <button class="rj-fbc" onclick="window.location.href='/'">
-      <span>&larr;</span>
-      <span>Back</span>
-    </button>
+    <button class="rj-fbc"><span>&larr;</span><span>Back</span></button>
   </div>
-  
-  <h1 class="rj-head">Registration</h1>
-  
+  <div class="rj-head">Registration</div>
   <div class="rj-form-container">
     <div class="rj-progress-container">
-      <div class="rj-step rj-active" data-step="1">
+      <div class="rj-step rj-active" data-step="1"  style="background-color: #009E77;">
         <div class="rj-step-circle">1</div>
-        <div class="rj-step-text">Personal Details</div>
+        <div class="rj-step-text" style="background-color: #009E77; color:white;">Personal details</div>
       </div>
       <div class="rj-progress-line"></div>
-      <div class="rj-step rj-inactive" data-step="2">
+      <div class="rj-step rj-inactive" data-step="2" style="background-color: #009E77;">
         <div class="rj-step-circle">2</div>
-        <div class="rj-step-text">Academic Details</div>
+        <div class="rj-step-text" style="background-color: #009E77; color:white;">CA Details</div>
       </div>
     </div>
     <div style="    border: solid;
@@ -83,19 +87,36 @@
     border-right-width: 6px;
     border-bottom-width: 6px;
     box-shadow: rgba(84, 84, 84, 0.19) 0px 10px 20px, rgba(84, 84, 84, 0.19) 0px 6px 6px;">
-    <p style="margin-left: 6rem;margin-top: 3rem;">Join as a <span style="color: red;">*</span></p>
+    <p class="rj">Join as a <span style="color: red;">*</span></p>
     <div class="rj-button-container-second">
-      <a href="{% url 'register_single' %}" class="rj-button-second rj-act" data-mode="solo">Solo</a>
-      <a href="{% url 'register_group' %}" class="rj-button-second" data-mode="team">Team</a>
+      <a
+        href="{% url 'register_single' %}"
+        class="rj-button-second rj-act"
+        data-mode="solo"
+        >Solo</a
+      >
+      <a
+        href="{% url 'register_group' %}"
+        class="rj-button-second"
+        data-mode="team"
+        >Team</a
+      >
     </div>
-
     <div class="rj-guideline-box">
-      <div class="rj-guideline-header" id="rj-guideline-toggle">
-        <span>Guidelines</span>
+      <div class="rj-guideline-header">
+        <span>Guideline</span>
         <span id="rj-key-icon" class="rj-key-icon">&#x25BC;</span>
       </div>
-      <div class="rj-guideline-text" id="rj-guideline-text">
-        <p>Please fill out all required fields marked with an asterisk (*). Ensure your email address is valid as you will receive confirmation and updates there. Your password should be at least 8 characters long and contain a mix of letters and numbers for security.</p>
+      <div class="rj-guideline-text">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
     </div>
 <form id="form" method="POST">
@@ -106,7 +127,7 @@
         {% endif %}
     </ul>
 
-      <div class="rj-form-wrapper">
+    <div class="rj-form-wrapper">
         <div class="rj-form-section" id="rj-form-first">
             <p class="text-sm">
                 Fields marked <span style="color: red">*</span> are mandatory
@@ -144,7 +165,9 @@
         </div>
 
         <div class="rj-form-section rj-form-hidden" id="rj-form-second">
-          <p class="text-sm">Fields marked <span style="color: red">*</span> are mandatory</p>
+            <p class="text-sm">
+                Fields marked <span style="color: red">*</span> are mandatory
+            </p>
 
             <div class="rj-input-group">
                 {{ single_user_register_form.graduation_year }}
@@ -154,13 +177,13 @@
                 {{ single_user_register_form.college_name }}
             </div>
 
-            <div class="StateAndCity">
+            <div class="rj-StateAndCity">
                 <div style="width:100%">
-                    <input type="text" id="state" name="college_state" onkeyup="suggestState()" autocomplete="off" placeholder="College State*" required>
+                    <input type="text" id="rj-state" name="college_state" onkeyup="suggestState()" autocomplete="off" placeholder="College State*" required>
                     <div id="state-suggestions"></div>
                 </div>
                 <div style="width:100%">
-                    <input type="text" id="city" name="college_city" onkeyup="suggestCity()" autocomplete="off" placeholder="College City*" required>
+                    <input type="text" id="rj-city" name="college_city" onkeyup="suggestCity()" autocomplete="off" placeholder="College City*" required>
                     <div id="city-suggestions"></div>
                 </div>
             </div>
@@ -173,7 +196,12 @@
         <p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
         
         <div id="rj-image-container">
-          <img id="rj-form-image" class="rj-form-image" src="{% static 'images/rjimages/form.svg' %}" alt="Registration Form" />
+          <img
+          id="rj-form-image"
+          class="rj-form-image"
+          src="{%static 'images/rjimages/form.svg'%}"
+          alt="Form Step 1 Image"
+          />
         </div>
     </div>
     <div class="rj-button-container"></div>
@@ -181,93 +209,99 @@
 </div>
 </div>
 </div>
-
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Initialize variables
-  const steps = document.querySelectorAll(".rj-step");
-  const buttonContainer = document.querySelector(".rj-button-container");
-  const formImage = document.getElementById("rj-form-image");
-  const formFirst = document.getElementById("rj-form-first");
-  const formSecond = document.getElementById("rj-form-second");
-  const guidelineToggle = document.getElementById("rj-guideline-toggle");
-  const guidelineText = document.getElementById("rj-guideline-text");
-  const keyIcon = document.getElementById("rj-key-icon");
-  
-  let currentStepIndex = 0;
+  document.addEventListener("DOMContentLoaded", () => {
+    // Get references to the buttons and the guideline text element
+    const rjButtons = document.querySelectorAll(".rj-button-second");
+    const rjGuidelineText = document.querySelector(".rj-guideline-text");
+    const rjKeyIcon = document.getElementById("rj-key-icon");
 
-  // Guideline toggle functionality
-  guidelineToggle.addEventListener("click", function() {
-    guidelineText.classList.toggle("rj-show");
-    keyIcon.innerHTML = guidelineText.classList.contains("rj-show") ? "&#x25B2;" : "&#x25BC;";
-  });
-
-  // Multi-step form functionality
-  function updateUI() {
-    // Update step indicators
-    steps.forEach((step, index) => {
-      step.classList.remove("rj-active", "rj-inactive");
-      step.classList.add(index === currentStepIndex ? "rj-active" : "rj-inactive");
+    // Add a click event listener to each button
+    rjButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Remove the 'rj-active' class from all buttons
+        rjButtons.forEach((btn) => btn.classList.remove("rj-act"));
+        // Add the 'rj-active' class to the clicked button
+        button.classList.add("rj-act");
+      });
     });
 
-    // Update form sections and buttons
-    if (currentStepIndex === 0) {
-      formFirst.classList.remove("rj-form-hidden");
-      formSecond.classList.add("rj-form-hidden");
-      buttonContainer.innerHTML = '<button type="button" class="rj-nav-button" id="nextButton">Next</button>';
-    } else if (currentStepIndex === 1) {
-      formFirst.classList.add("rj-form-hidden");
-      formSecond.classList.remove("rj-form-hidden");
-      buttonContainer.innerHTML = `
-        <div class="rj-form-action-buttons">
-          <button type="button" class="rj-back-button" id="backButton">&larr; Back</button>
-          <button type="submit" class="rj-submit-button" id="submitButton">Submit</button>
-        </div>
-      `;
-    }
-  }
+    // Add a click event listener to the key icon
+    rjKeyIcon.addEventListener("click", () => {
+      // Toggle the 'rj-show' class to show/hide the text
+      rjGuidelineText.classList.toggle("rj-show");
 
-  // Button event handling
-  buttonContainer.addEventListener("click", function(event) {
-    const clickedButton = event.target;
-    
-    if (clickedButton.id === "nextButton") {
-      if (validateCurrentStep() && currentStepIndex < steps.length - 1) {
-        currentStepIndex++;
-        updateUI();
+      // Change the icon based on the current state
+      if (rjGuidelineText.classList.contains("rj-show")) {
+        rjKeyIcon.innerHTML = "&#x25B2;"; // Up-pointing triangle
+      } else {
+        rjKeyIcon.innerHTML = "&#x25BC;"; // Down-pointing triangle
       }
-    } else if (clickedButton.id === "backButton") {
-      if (currentStepIndex > 0) {
-        currentStepIndex--;
-        updateUI();
+    });
+
+    // --- Multi-Step Form Logic ---
+    const steps = document.querySelectorAll(".rj-step");
+    const buttonContainer = document.querySelector(".rj-button-container");
+    const formImage = document.getElementById("rj-form-image");
+    const formFirst = document.getElementById("rj-form-first");
+    const formSecond = document.getElementById("rj-form-second");
+
+    let currentStepIndex = 0;
+
+    const updateUI = () => {
+      steps.forEach((s) => {
+        s.classList.remove("rj-active", "rj-inactive");
+      });
+      steps.forEach((s, index) => {
+        if (index === currentStepIndex) {
+          s.classList.add("rj-active");
+        } else {
+          s.classList.add("rj-inactive");
+        }
+      });
+
+      if (currentStepIndex === 0) {
+        formFirst.classList.remove("rj-form-hidden");
+        formSecond.classList.add("rj-form-hidden");
+        formImage.src = "{%static 'images/rjimages/form.svg'%}";
+        formImage.alt = "Form Step 1 Image";
+        buttonContainer.innerHTML =
+          '<button class="rj-nav-button" id="nextButton">Next</button>';
+      } else if (currentStepIndex === 1) {
+        formFirst.classList.add("rj-form-hidden");
+        formSecond.classList.remove("rj-form-hidden");
+        formImage.src = "{%static 'images/rjimages/form.svg'%}";
+        formImage.alt = "Form Step 2 Image";
+        buttonContainer.innerHTML =
+          '<div class="rj-form-action-buttons"><button class="rj-form-action-button rj-back-button" id="backButton">&larr; Back</button><button class="rj-form-action-button rj-submit-button" id="submitButton">Submit</button></div>';
       }
-    } else if (clickedButton.id === "submitButton") {
-      if (validateCurrentStep()) {
-        document.getElementById("showload").style.display = "block";
-        document.getElementById("registrationForm").submit();
+    };
+
+    buttonContainer.addEventListener("click", (event) => {
+      const clickedButton = event.target;
+      if (clickedButton.id === "nextButton") {
+        if (currentStepIndex < steps.length - 1) {
+          currentStepIndex++;
+          updateUI();
+        }
+      } else if (clickedButton.id === "backButton") {
+        if (currentStepIndex > 0) {
+          currentStepIndex--;
+          updateUI();
+        }
       }
-    }
+    });
+
+    updateUI();
   });
+  // Get a reference to the button
+  const backButton = document.querySelector(".rj-fbc");
 
-  // Basic form validation
-  function validateCurrentStep() {
-    const currentForm = currentStepIndex === 0 ? formFirst : formSecond;
-    const requiredFields = currentForm.querySelectorAll("input[required], select[required]");
-    
-    for (let field of requiredFields) {
-      if (!field.value.trim()) {
-        field.focus();
-        alert("Please fill in all required fields.");
-        return false;
-      }
-    }
-    return true;
-  }
-
-  // Initialize UI
-  updateUI();
-});
+  // Add a click event listener
+  backButton.addEventListener("click", () => {
+    // Redirect to the home page
+    window.location.href = "/";
+  });
 </script>
 
-{% include 'users/login.html' %}
-{% endblock %}
+{% include 'users/login.html' %} {% endblock %}

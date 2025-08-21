@@ -111,7 +111,7 @@
    display: flex;
    gap: 1.5rem;
    margin-bottom: 2rem;
-   margin-left: 6rem;
+   margin-left: 3rem;
  }
  .rj-button-second {
    padding: 6px 40px;
@@ -135,7 +135,7 @@
    border: none;
  }
  .rj-guideline-box {
-   margin-left: 6rem;
+   margin-left: 3rem;
    width: 80%;
    min-height: 50px; /* Adjusted height */
    background-color: #f8f1e7;
@@ -278,7 +278,14 @@
 .navbar {
   padding: 1vh 27.5vh;
 }
+.rj{
+  margin-left: 3rem;
+  margin-top: 6rem;
+}
  @media screen and (max-width: 600px) {
+  .rj-head{
+    font-size: 24px;
+  }
    #rj-image-container,
    #rj-form-image {
      display: none;
@@ -288,30 +295,71 @@
      width: 100%;
    }
    .rj-progress-line{
-    left: 42%;
+    left: 40%;
    }
    .rj-form-wrapper {
      display: block;
-     width: 75%;
+     width: 100%;
    }
    .rj-guideline-box {
      width: 90%;
      margin: auto;
    }
    .rj-body {
-     width: 100vw;
+     width: 90vw;
    }
    .rj-button-container-second,
    .rj-button-container {
-     margin-left: 2rem;
+     margin-left: 1rem;
    }
  
-   @media (max-width: 768px) {
+   @media (max-width: 800px) {
     .rj-progress-line{
- left: 45%;
+ left: 40%;
 }
      .navbar {
        padding: 1vh 4.5vh; /* Reduced padding for screens up to 768px wide */
      }
+     .rj-button-container-second,.rj{
+      margin-left: 1rem;
+     }
    }
  }
+ #rj-state {
+  border: 0;
+  padding: 0 0 0.4vh 0.8vh;
+  width: 40vh;
+  background-color: #f8f1e7;;
+}
+
+#rj-city {
+  border: 0;
+  padding: 0 0 0.4vh 0.8vh;
+  width: 40vh;
+  background-color: #f8f1e7;;
+}
+
+.rj-StateAndCity {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+  gap: 1vw;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 800px) {
+  .rj-StateAndCity {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #rj-city {
+    margin-top: 4vw;
+  }
+}
+@media screen and (max-width:600px) {
+  #rj-city,#rj-state{
+    width: 20vw;
+  }
+  
+}

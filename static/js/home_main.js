@@ -41,40 +41,22 @@ window.onscroll = function () {
 /*alcher 2026 js*/
      const testimonials = [
   {
-    pfp: "/static/images/pfp1.png",
-    image: "/static/images/pfp1.png",
-    name: "- John Doe",
-    text: "John's testimonial goes here. Amazing stuff!  John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff! John's testimonial goes here. Amazing stuff!   ",
+    pfp: "/static/images/pfp1.jpg",
+    image: "/static/images/pfp1.jpg",
+    name: "- Emadadul Hoq Milon",
+    text: "l represented Alcheringa, IIT Guwahati, last year. It was a great opportunity to represent this lovely program as a campus ambassador. The entire experience was incredible. I gained fresh knowledge from this experience, which also aided in my development of leadership, management, and communication abilities. We are pleased to participate in this monumental occasion. We aim to attend this major event every year and strengthen our friendship. Finally, I want to express my gratitude to the entire Alcheringa team for picking me up and providing me with this chance, as well as to my friend Prashams Matcha.",
   },
   {
-    pfp: "/static/images/pfp2.png",
-    image: "/static/images/pfp2.png",
-    name: "- Jane Smith",
-    text: "Jane loved the experience. So should you!",
+    pfp: "/static/images/pfp5.jpg",
+    image: "/static/images/pfp5.jpg",
+    name: "- Nandini",
+    text: "Being a part of team Alcheringa was a beautiful learning experience, and learning becomes fun, when people are supportive. Thanks to Siddhant andAkshara, two heads of Alcheringa for their support and my friends Arunav and Debashish, who made the journey extremely a smooth run, with their hands in crisis. Made alot of mistakes, and learnt alot of new things. A journey, worth remembering, a journey with it's own ups and downs to be cherished. Also, huge thanks to all the participants for cooperating in making the event successful.",
   },
   {
-    pfp: "/static/images/pfp3.png",
-    image: "/static/images/pfp3.png",
-    name: "- Max Turner",
-    text: "This platform is insanely good. Kudos!",
-  },
-  {
-    pfp: "/static/images/pfp4.png",
-    image: "/static/images/pfp4.png",
-    name: "- Alicia Belarus",
-    text: "Alicia's feedback is glowing, just like this UI.",
-  },
-  {
-    pfp: "/static/images/pfp5.png",
-    image: "/static/images/pfp5.png",
-    name: "- Rajiv Gandhi",
-    text: "Great testimonials, smooth experience!",
-  },
-  {
-    pfp: "/static/images/pfp6.png",
-    image: "/static/images/pfp6.png",
-    name: "- Angel Priya",
-    text: "Clean design, and I loved the flow!",
+    pfp: "/static/images/pfp6.jpeg",
+    image: "/static/images/pfp6.jpeg",
+    name: "- Rishab Dhur",
+    text: "I received significant experience as a campus ambassador at Alcheringa, IIT-Guwahati's annual festival. As an introvert, I earned the chance to create interactions, build networks, and, most importantly, a sense of self in my own campus. In addition, as the highest-scoring campus ambassador in the country, I received an invitation to attend Alcheringa live at IIT-Guwahati. Alcheringa captivated me. Hail Alcher!",
   },
 ];
 

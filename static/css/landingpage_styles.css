@@ -468,11 +468,6 @@
     width: 100%;
     gap: 6px;
   }
-  
-  .section-title {
-    font-size: 1.2rem;
-    margin-bottom: 1px;
-  }
 
   .links {
     font-weight: 350;
@@ -551,4 +546,3 @@
     align-items: flex-start;
   }
 }
-
