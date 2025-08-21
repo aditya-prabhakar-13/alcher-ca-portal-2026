@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os,sys
+import os
+import sys
 from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,9 +23,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-PROD =os.environ.get('prod')
+PROD = os.environ.get('prod')
 if PROD:
-    SECRET_KEY =PROD
+    SECRET_KEY = PROD
 else:
     SECRET_KEY = 'django-insecure-fuv21z*#t8sh)%!!!^-aso7lx+3nv1*fo8(pr(j5-5+0xd2hv9'
 
@@ -148,9 +149,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-DJANGO_SUPERUSER_PASSWORD=os.environ.get('password')
-DJANGO_SUPERUSER_USERNAME=os.environ.get('username')
-DJANGO_SUPERUSER_EMAIL=os.environ.get('email')
+DJANGO_SUPERUSER_PASSWORD = os.environ.get('password')
+DJANGO_SUPERUSER_USERNAME = os.environ.get('username')
+DJANGO_SUPERUSER_EMAIL = os.environ.get('email')
 
 
 LOGOUT_REDIRECT_URL = 'dashboard_page'
@@ -163,7 +164,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # Setup Static
-STATIC_URL = 'static/'
+
+# Added / in static
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -189,5 +192,6 @@ if PROD:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
-if PROD: 
-    CSRF_TRUSTED_ORIGINS = ['https://testca.alcheringa.in','https://ambassador.alcheringa.in']
+if PROD:
+    CSRF_TRUSTED_ORIGINS = [
+        'https://testca.alcheringa.in', 'https://ambassador.alcheringa.in']
