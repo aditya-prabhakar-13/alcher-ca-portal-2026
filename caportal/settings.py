@@ -149,11 +149,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-DJANGO_SUPERUSER_PASSWORD = os.environ.get('password')
-DJANGO_SUPERUSER_USERNAME = os.environ.get('username')
-DJANGO_SUPERUSER_EMAIL = os.environ.get('email')
-
-
 LOGOUT_REDIRECT_URL = 'dashboard_page'
 LOGIN_URL = '/users/login/'
 # Setup Email
@@ -181,9 +176,9 @@ MEDIA_URL = '/media/'
 if PROD:
     DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
     STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
-    MINIO_STORAGE_ENDPOINT = 'minio-api.alcheringa.in'
-    MINIO_STORAGE_ACCESS_KEY = 'akshat2403'
-    MINIO_STORAGE_SECRET_KEY = 'akshat2403'
+    MINIO_STORAGE_ENDPOINT = os.environ.get('minio_endpoint')
+    MINIO_STORAGE_ACCESS_KEY = os.environ.get('minio_access')
+    MINIO_STORAGE_SECRET_KEY = os.environ.get('minio_secret')
     MINIO_STORAGE_USE_HTTPS = True
     MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherca26media'
     MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
