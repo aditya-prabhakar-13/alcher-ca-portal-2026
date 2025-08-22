@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 import os
 import sys
@@ -99,14 +99,7 @@ if not PROD:
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('db_name'),
-            'USER': os.environ.get('db_user'),
-            'PASSWORD': os.environ.get('db_password'),
-            'HOST': os.environ.get('db_host'),
-            'PORT': os.environ.get('db_port')
-        }
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=False)
     }
 
 # Setup Messages
