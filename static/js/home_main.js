@@ -58,6 +58,12 @@ window.onscroll = function () {
     name: "- Rishab Dhur",
     text: "I received significant experience as a campus ambassador at Alcheringa, IIT-Guwahati's annual festival. As an introvert, I earned the chance to create interactions, build networks, and, most importantly, a sense of self in my own campus. In addition, as the highest-scoring campus ambassador in the country, I received an invitation to attend Alcheringa live at IIT-Guwahati. Alcheringa captivated me. Hail Alcher!",
   },
+  {
+    pfp: "/static/images/pfp7.jpg",
+    image: "/static/images/pfp7.jpg",
+    name: "- Anurag Dutta",
+    text: "Being a Campus Ambassador for Alcheringa, IIT Guwahati, was a highly enriching experience that allowed me to develop new skills in networking, event coordination, and team collaboration. The role gave me the opportunity to connect with diverse individuals, work closely with both my peers at Royal Global University and the IIT Guwahati team, and contribute participants to the festival while gaining valuable exposure to large-scale event management. As a performer, Alcheringa also provided me with the platform to showcase my talent on a prestigious stage while simultaneously building connections with sponsors and brands associated with the event. This experience not only enhanced my interpersonal skills but also broadened my perspective on cultural events, making it one of the most rewarding journeys of my academic and artistic life.",
+  }
 ];
 
 let currentIndex = 0;
