@@ -12,7 +12,7 @@ urlpatterns = [
     path('scoring_system/',user_views.scoring,name='scoring'),
     path('guidelines/',user_views.guidelines,name='guidelines'),
     path('activate/<uidb64>/<token>', VerificationView.as_view(), name="activate"),
-    path('logout/', auth_views.LogoutView.as_view(template_name='dashboard/landing_page.html'), name='logout'),
+    path('logout/', user_views.CustomLogoutView.as_view(next_page='/'), name='logout'),
     # Password reset urls
     path("password_reset", user_views.password_reset_request, name="password_reset"),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="users/password/password_reset_confirm.html"), name='password_reset_confirm'),
