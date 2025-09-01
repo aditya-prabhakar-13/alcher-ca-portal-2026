@@ -157,6 +157,7 @@ body {
 .step {
   font-size: 48px;
   font-weight: bold;
+  cursor: pointer;
 }
 .step-details {
   max-height: 0;
@@ -193,7 +194,7 @@ body {
 }
 .box3first {
   position: relative;
-  animation: floatUpDown 3s ease-in-out infinite alternate;
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
