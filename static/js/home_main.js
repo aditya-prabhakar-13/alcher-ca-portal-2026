@@ -55,7 +55,7 @@ window.onscroll = function () {
   {
     pfp: "/static/images/pfp6.jpeg",
     image: "/static/images/pfp6.jpeg",
-    name: "- Rishab Dhur",
+    name: "- Rishav Dhar",
     text: "I received significant experience as a campus ambassador at Alcheringa, IIT-Guwahati's annual festival. As an introvert, I earned the chance to create interactions, build networks, and, most importantly, a sense of self in my own campus. In addition, as the highest-scoring campus ambassador in the country, I received an invitation to attend Alcheringa live at IIT-Guwahati. Alcheringa captivated me. Hail Alcher!",
   },
   {
