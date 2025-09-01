@@ -80,6 +80,25 @@ body {
   margin-bottom: 1rem;
 }
 
+.rj-guideline-text {
+    /* Initially hide the text using max-height for a smooth transition */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.rj-show {
+    /* This class will be toggled by JavaScript to show the text */
+    max-height: 500px; /* A large enough value to accommodate the content */
+}
+
+.rj-key-icon {
+    /* Set the initial rotation for the arrow to point right */
+    transform: rotate(0deg);
+    transition: transform 0.3s ease; /* Add a smooth rotation transition */
+    cursor: pointer;
+}
+
 .main {
   position:relative;
   display: flex;
