@@ -248,6 +248,10 @@ body {
 	padding: 80px 0;
 }
 
+.roles-section .container{
+	margin: auto;
+}
+
 .roles-header {
 	position: relative;
 	text-align: center;
@@ -304,7 +308,7 @@ body {
 	border-radius: 30px;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 0;
-	max-width: 1000px;
+	max-width: 1200px;
 	margin: 0 auto;
 	background-color: #1a1a1a;
 }

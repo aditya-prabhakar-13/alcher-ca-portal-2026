@@ -153,20 +153,28 @@ console.log("Counts found:", document.querySelectorAll(".counts").length);
       ambassadors: 10,
     },
     {
-      id: "allahabad-marker",
-      name: "Allahabad",
-      x: 300,
-      y: 275,
-      colleges: 3,
-      ambassadors: 18,
-    },
-    {
       id: "mumbai-marker",
       name: "Mumbai",
       x: 140,
       y: 450,
       colleges: 8,
       ambassadors: 25,
+    },
+    {
+      id: "guwahati-marker",
+      name: "Guwahati",
+      x: 493,
+      y: 294,
+      colleges: 15, // Adjust as needed
+      ambassadors: 40, // Adjust as needed
+    },
+    {
+      id: "ahmedabad-marker", 
+      name: "Ahmedabad",
+      x: 128,
+      y: 358,
+      colleges: 6, // Adjust as needed
+      ambassadors: 20, // Adjust as needed
     },
     {
       id: "pune-marker",
