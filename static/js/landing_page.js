@@ -25,6 +25,19 @@ console.log("Less arrows found:", document.querySelectorAll(".steps .less").leng
 console.log("Counts found:", document.querySelectorAll(".counts").length);
 
 
+  document.querySelectorAll(".steps .step").forEach((downArrow) => {
+    downArrow.addEventListener("click", () => {
+      const stepsDiv = downArrow.parentElement;
+      const moreArrow = stepsDiv.querySelector(".step");
+      const paragraph = stepsDiv.nextElementSibling;
+
+      // Show paragraph
+      paragraph.classList.add("show");
+
+    });
+  });
+
+
   document.querySelectorAll(".steps .less").forEach((downArrow) => {
     downArrow.addEventListener("click", () => {
       const stepsDiv = downArrow.parentElement;
@@ -39,6 +52,8 @@ console.log("Counts found:", document.querySelectorAll(".counts").length);
       moreArrow.style.display = "inline";
     });
   });
+
+  
 
   document.querySelectorAll(".steps .more").forEach((upArrow) => {
     upArrow.addEventListener("click", () => {
@@ -112,6 +127,54 @@ console.log("Counts found:", document.querySelectorAll(".counts").length);
       y: 300,
       colleges: 20,
       ambassadors: 50,
+    },
+    {
+      id: "indore-marker",
+      name: "Indore",
+      x: 210,
+      y: 360,
+      colleges: 6,
+      ambassadors: 20,
+    },
+    {
+      id: "bangalore-marker",
+      name: "Bangalore",
+      x: 230,
+      y: 560,
+      colleges: 10,
+      ambassadors: 30,
+    },
+    {
+      id: "bhopal-marker",
+      name: "Bhopal",
+      x: 245,
+      y: 350,
+      colleges: 5,
+      ambassadors: 10,
+    },
+    {
+      id: "allahabad-marker",
+      name: "Allahabad",
+      x: 300,
+      y: 275,
+      colleges: 3,
+      ambassadors: 18,
+    },
+    {
+      id: "mumbai-marker",
+      name: "Mumbai",
+      x: 140,
+      y: 450,
+      colleges: 8,
+      ambassadors: 25,
+    },
+    {
+      id: "pune-marker",
+      name: "Pune",
+      x: 165,
+      y: 460,
+      colleges: 6,
+      ambassadors: 15,
     },
     {
       id: "trichy-marker",

@@ -16,15 +16,24 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
-.box1left,
-.box1right {
-  width: 50%;
+.box1left{
+    width: 50%;
   height: 100%;
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.box1right {
+  width: 50%;
+  height: 30%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .temp {
   height: 50%;
   width: 50%;
@@ -39,15 +48,15 @@ body {
   height: 100%;
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 1) 1px,
-      transparent 1px
+      rgba(0, 0, 0, 1) 0.1px,
+      transparent 0.5px
     ),
-    linear-gradient(to bottom, rgba(0, 0, 0, 1) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 0.1px, transparent 0.5px);
   background-size: calc(100% / 4) calc(100% / 4);
   background-repeat: repeat;
   background-position: top left;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 0.1px solid black;
+  border-bottom: 0.1px solid black;
 }
 .less {
   margin-right: 0px;
@@ -154,6 +163,7 @@ body {
   text-align: center;
   justify-content: space-between;
 }
+
 .step {
   font-size: 48px;
   font-weight: bold;
@@ -231,7 +241,7 @@ body {
 }
 .counts {
   font-size: 48px;
-  font-weight: bold;
+  font-weight: 600;
   color: white;
 }
 .bfr {
@@ -260,8 +270,8 @@ body {
   .box3first p,
   .box2para,
   .counts {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 600;
   }
   .box3secondleft,
   .box3secondright {
@@ -287,7 +297,7 @@ body {
     height: 65vh;
   }
   .temp {
-    width: 75%;
+    width: 100%;
   }
   .box1left {
     padding-top: 20px;
@@ -296,9 +306,10 @@ body {
   }
   .box1right {
     width: 100%;
-    height: 75%;
+    height: 100%;
     margin-top: 8px;
     align-items: flex-start;
+    
   }
   .mainContent {
     width: 95%;

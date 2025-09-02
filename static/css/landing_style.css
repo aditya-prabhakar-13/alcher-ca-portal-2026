@@ -2233,3 +2233,111 @@ main {
     left: 20px;
   }
 }
+
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 768px) {
+
+  /* Ensure the overall container for the testimonial has space below it */
+  .frame1 {
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 50px; /* Add space below the entire testimonial section */
+  }
+
+  /* Make sure the main content box expands with its content */
+  .frame2 {
+    flex-direction: column;
+    width: 100%;
+    height: auto; /* IMPORTANT: Allow height to be determined by content */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .frame2 img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 0;
+    margin-bottom: 20px;
+    align-self: center; /* Center the image in the column */
+  }
+
+  .content {
+      flex-direction: column; /* Ensure content itself is stacked */
+      align-items: center; /* Center items inside .content */
+  }
+
+  .text {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .name {
+    align-self: center;
+    margin-top: 15px;
+  }
+
+  .up-apos,
+  .down-apos {
+    display: none;
+  }
+
+  .elements {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+  }
+
+  /* Adjust arrow positioning if needed, or if they are part of .elements now */
+  .left-arrow, .right-arrow {
+      margin: 10px 0; /* Add some vertical margin for arrows */
+  }
+}
+
+/* Also, ensure that the *original* .frame2 does not have a fixed height when not in the media query, 
+   or that its height is handled by flex-grow if it's in a flex container. 
+   If you absolutely need a fixed height on desktop, that's fine, but ensure 'height: auto;' is in the media query.
+*/
+.frame2 {
+    /* Existing desktop styles for frame2, but if height: 430px; is here,
+       it needs to be overridden to 'height: auto;' in the media query.
+       It's usually better to let content dictate height, even on desktop if possible. */
+    height: auto; /* Consider making this 'auto' even on desktop if it helps flexibility */
+}
+
+/* --- Responsive Styles for VERY Small Screens (e.g., 360px, 390px) --- */
+@media (max-width: 480px) {
+
+  /* 1. Further reduce padding inside the main box */
+  .frame2 {
+    padding: 15px; /* Reduces the inner white space */
+  }
+
+  /* 2. Make the image smaller */
+  .frame2 img {
+    width: 120px;   /* Was 150px, makes it take less vertical space */
+    height: 120px;
+    margin-bottom: 15px; /* Slightly less space below the image */
+  }
+
+  /* 3. Make the text font smaller for readability */
+  .text {
+    font-size: 14px; /* Was 16px, helps the text block shrink */
+    line-height: 1.4; /* Improves readability for smaller font */
+  }
+
+  /* 4. Adjust spacing for the name */
+  .name {
+    margin-top: 12px; /* Reduces space above the name */
+  }
+  
+  /* 5. Adjust the space below the entire component */
+  .frame1 {
+    margin-bottom: 40px; /* Fine-tune space to avoid overlap */
+  }
+}
