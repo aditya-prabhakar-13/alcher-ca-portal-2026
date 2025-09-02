@@ -119,7 +119,7 @@
 
 .alcherTxt {
   color: #2A6ACB !important;
-  font-size: 4vmax;
+  font-size: 3.8vmax;
   font-weight: 700;
   text-align: center;
   font-family: GeneralSans;
@@ -238,14 +238,15 @@
     top: 12%;
   }
   .spark2 {
-    top: 30%;
+    top: 32%;
     right: 20%;
   }
   .spark3 {
     top: 25%;
   }
   .spark4 {
-    top: 15%;
+    top: 13%;
+    width: 3vw;
   }
 
   .caTxt {

@@ -471,6 +471,7 @@
 
   .links {
     font-weight: 350;
+    gap: 3vh;
   }
  
   .links a {
@@ -479,7 +480,7 @@
   }
 
   .contact {
-    gap: 0;
+    gap: 2vh;
   }
 
   .contact .section-title {
@@ -524,6 +525,7 @@
 
   .logo-social {
     margin-left: 10px;
+    margin-bottom: 10px;
   }
 
   .footer-section {
