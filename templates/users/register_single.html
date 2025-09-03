@@ -2,7 +2,7 @@
 {%block title%}Register | Alcheringa {%endblock%} {% block style %} <link
 rel="stylesheet" href={% static "css/register_login.css" %}> <link
 rel="stylesheet" href={% static "css/autoFill.css" %}>
-<script src="{% static 'js/autoFill.js' %}"></script>
+<script src="{% static 'js/autoFill_solo.js' %}"></script>
 <link rel="stylesheet" href="{%static 'css/solo_form.css'%}">
 {% endblock %} {% block body %} {% load crispy_forms_tags %}
 <link
@@ -141,97 +141,75 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
 					</div>
 				</div>
 
-<div class="main" id="main1" style="display:block;">
-    <form method="POST" style="width: 60%;">
-    {% csrf_token %}
-        <div id="form1" style="overflow-y:scroll; padding:2rem 2rem;">
-            <h6 class="my-1" style="padding-bottom:1.2rem; color:#4C5862;">Field marked<span style="color:red"> * </span>are mandatory</h6>
-            <ul class="errorlist">
-                {% if single_user_register_form.non_field_errors %}
-                <li>{{ single_user_register_form.non_field_errors }}</li>
-                {% endif %}
-                {% for field in single_user_register_form %}
-                {% if field.errors %}
-                <ul class="errorlist">
-                    {% for error in field.errors %}
-                    {{ error }}
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                {% endfor %}
-            </ul>
-            
-            {{ single_user_register_form.firstname }}
-            {{ single_user_register_form.phone }}
-            {{ single_user_register_form.email }}
-            {{ single_user_register_form.password1 }}
-            {{ single_user_register_form.password2 }}
-            
-            <br>
+<form method="POST" style="width: 60%;">
+  {% csrf_token %}
 
-            <button type="button" id="nextBtn1"
-                class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-                style="background-color: #009E77; margin-top:2.5rem; border:none;" />
-                <img style="background-color: #009E77; color:white;" src="{%static 'images/NextBtn.png'%}"/>
-            </button>
-        </div>
-    </form>
-    <div class="img-div" style="width: 100%;">
-        <img src="{% static 'images/register_group.png' %}" alt="" style="position:absolute; background: none; width: 45%; bottom:30%; left:58%;">
-    </div>
-</div>
+  <!-- Step 1 -->
+  <div class="main" id="main1" style="display:block;">
+      <div id="form1" style="overflow-y:scroll; padding:2rem 2rem;">
+          <h6 class="my-1" style="padding-bottom:1.2rem; color:#4C5862;">
+              Field marked<span style="color:red"> * </span>are mandatory
+          </h6>
 
-<div class="main" id="main2" style="display:none;">
-    <form method="POST" style="width: 60%;">
-    {% csrf_token %}
-        <div id="form1" style="overflow-y:scroll; padding:2rem 2rem;">
-            <h6 class="my-1" style="padding-bottom:1.2rem; color:#4C5862;">Field marked<span style="color:red"> * </span>are mandatory</h6>
-            <ul class="errorlist">
-                {% if single_user_register_form.non_field_errors %}
-                <li>{{ single_user_register_form.non_field_errors }}</li>
-                {% endif %}
-                {% for field in single_user_register_form %}
-                {% if field.errors %}
-                <ul class="errorlist">
-                    {% for error in field.errors %}
-                    {{ error }}
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                {% endfor %}
-            </ul>
+          {{ single_user_register_form.firstname }}
+          {{ single_user_register_form.phone }}
+          {{ single_user_register_form.email }}
+          {{ single_user_register_form.password1 }}
+          {{ single_user_register_form.password2 }}
 
-            {{ single_user_register_form.graduation_year }}
-            {{ single_user_register_form.college_name }}
+          <br>
+          <button type="button" id="nextBtn1"
+                class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm text-base"
+                style="background-color: #009E77; margin-top:2.5rem; border:none;">
+                <img style="background-color: #009E77; color:white;" src="{% static 'images/NextBtn.png' %}" />
+          </button>
+      </div>
 
-            <div class="rj-StateAndCity">
-                <div style="width:100%">
-                    <input type="text" id="rj-state" name="college_state" onkeyup="suggestState()" autocomplete="off" placeholder="College State*" required class="input_field">
-                    <div id="state-suggestions"></div>
-                </div>
-                <div style="width:100%">
-                    <input type="text" id="rj-city" name="college_city" onkeyup="suggestCity()" autocomplete="off" placeholder="College City*" required class="input_field">
-                    <div id="city-suggestions"></div>
-                </div>
-            </div>
+      <!-- Keep image as before -->
+      <div class="img-div" style="width: 100%;">
+          <img src="{% static 'images/register_group.png' %}" alt=""
+               style="position:absolute; background: none; width: 45%; bottom:30%; left:120%;">
+      </div>
+  </div>
 
-            {{ single_user_register_form.referred_by }}
-            
-            <br>
-            
-            <div style="display:flex; gap:2rem; padding-left: 0rem;">
-                <button type="button" id="backBtn" style="border:none;">
-                    <img style="height:2.5rem; margin-bottom: 3rem;" src="{%static 'images/backB.png' %}"/>
-                </button>
-                <button type="button" id="submitBtn"
-                    class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm  text-base"
-                    style="background-color: #009E77; border:none; margin-bottom: 3rem; height: 2.5rem;">Submit
-                </button>
-            </div>
-            
-        </div>
-    </form>
-</div>
+  <!-- Step 2 -->
+  <div class="main" id="main2" style="display:none;">
+      <div id="form2" style="overflow-y:scroll; padding:2rem 2rem;">
+          {{ single_user_register_form.graduation_year }}
+          {{ single_user_register_form.college_name }}
+
+          <div class="rj-StateAndCity">
+              <div style="width:100%; position: relative;">
+                  <input type="text" id="rj-state" name="college_state"
+                         onkeyup="suggestState()" autocomplete="off"
+                         placeholder="College State*" required class="input_field">
+                  <div id="state-suggestions"></div>
+              </div>
+              <div style="width:100%; position: relative;">
+                  <input type="text" id="rj-city" name="college_city"
+                         onkeyup="suggestCity()" autocomplete="off"
+                         placeholder="College City*" required class="input_field">
+                  <div id="city-suggestions"></div>
+              </div>
+          </div>
+
+          {{ single_user_register_form.referred_by }}
+
+          <div style="display:flex; gap:2rem; padding-left: 0rem; margin-top:2rem;">
+              <button type="button" id="backBtn" style="border:none;">
+                  <img style="height:2.5rem; margin-bottom: 3rem;"
+                       src="{% static 'images/backB.png' %}"/>
+              </button>
+              <button type="submit" id="submitBtn"
+                  class="bg-pur text-white inline-block py-2 px-4 rounded shadow-sm text-base"
+                  style="background-color: #009E77; border:none; margin-bottom: 3rem; height: 2.5rem;">
+                  Submit
+              </button>
+          </div>
+      </div>
+  </div>
+</form>
+
     
 <p style="color:green; display:none;" id="showload">Please Wait, don't refresh the page...</p>
 
@@ -242,5 +220,91 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
     <button onclick='window.open("https://www.instagram.com/alcheringaiitg/")'style="display: flex; background-color: #f8f1e7; border: solid #2A6ACB 2px; padding: 0.5rem 0.6rem; border-radius: 6px; align-items: center;"><img style="height:80%; margin-right: 0.4rem;" src={%static 'images/connect-insta.png'%}/>  Instagram</button>
 </div>
 <div id="bottom-connect2" style="display: none; padding-top: 24rem;"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Get references to the buttons and the guideline text element
+    const rjButtons = document.querySelectorAll(".rj-button-second");
+    const rjGuidelineText = document.querySelector(".rj-guideline-text");
+    const rjKeyIcon = document.getElementById("rj-key-icon");
+
+    // Add a click event listener to each button
+    rjButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Remove the 'rj-active' class from all buttons
+        rjButtons.forEach((btn) => btn.classList.remove("rj-act"));
+        // Add the 'rj-active' class to the clicked button
+        button.classList.add("rj-act");
+      });
+    });
+
+    // Add a click event listener to the key icon
+    rjKeyIcon.addEventListener("click", () => {
+			// Toggle the 'rj-show' class to show/hide the text
+			rjGuidelineText.classList.toggle("rj-show");
+
+			// Change the icon based on the current state
+			if (rjGuidelineText.classList.contains("rj-show")) {
+				// Rotate the icon downwards when the text is visible
+				rjKeyIcon.style.transform = 'rotate(90deg)';
+			} else {
+				// Reset the rotation to point right when the text is hidden
+				rjKeyIcon.style.transform = 'rotate(0deg)';
+			}
+		});
+
+    // --- Multi-Step Form Logic ---
+    const rjFormFirst = document.getElementById("main1");
+    const rjFormSecond = document.getElementById("main2");
+
+    const rjNextButton = document.getElementById("nextBtn1");
+    const rjBackButton = document.getElementById("backBtn");
+    const rjSubmitButton = document.getElementById("submitBtn");
+    const rjBackToHomeButton = document.querySelector(".rj-fbc");
+
+    const rjBottomConnect1 = document.getElementById("bottom-connect1");
+    const rjBottomConnect2 = document.getElementById("bottom-connect2");
+
+    rjNextButton.addEventListener("click", () => {
+        // validate only the visible inputs in Step 1
+        const step1Inputs = rjFormFirst.querySelectorAll("input, select, textarea");
+        let step1Valid = true;
+
+        step1Inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                step1Valid = false;
+                input.reportValidity();  // show validation message
+            }
+        });
+
+        if (step1Valid) {
+            rjFormFirst.style.display = 'none';
+            rjFormSecond.style.display = 'block';
+            rjBottomConnect1.style.display = 'none';
+            rjBottomConnect2.style.display = 'block';
+        }
+    });
+
+    rjBackButton.addEventListener("click", () => {
+        rjFormSecond.style.display = 'none';
+        rjFormFirst.style.display = 'block';
+        rjBottomConnect2.style.display = 'none';
+        rjBottomConnect1.style.display = 'flex';
+    });
+
+    rjSubmitButton.addEventListener("click", () => {
+        const mainForm = document.querySelector("form");
+        if (mainForm.reportValidity()) {
+            document.getElementById("showload").style.display = "block";
+            mainForm.submit();
+        }
+    });
+
+
+    rjBackToHomeButton.addEventListener("click", () => {
+        window.location.href = "/";
+    });
+  });
+</script>
 
 {% include 'users/login.html' %} {% endblock %}

@@ -2167,9 +2167,10 @@ const data = {
 
     // ... (rest of the states)
 };
+
 // Function to filter and suggest matching states
 function suggestState() {
-    const input = document.getElementById('state').value;
+    const input = document.getElementById('rj-state').value;
     const suggestionsDiv = document.getElementById('state-suggestions');
     suggestionsDiv.innerHTML = '';
 
@@ -2181,23 +2182,19 @@ function suggestState() {
                 const suggestionDiv = document.createElement('div');
                 suggestionDiv.textContent = result;
                 suggestionDiv.addEventListener('click', () => {
-                    document.getElementById('state').value = result;
+                    document.getElementById('rj-state').value = result;
                     suggestionsDiv.innerHTML = '';
                 });
                 suggestionsDiv.appendChild(suggestionDiv);
             });
-        } else {
-            const noMatchDiv = document.createElement('div');
-            noMatchDiv.textContent = 'No matching states found.';
-            suggestionsDiv.appendChild(noMatchDiv);
         }
     }
 }
 
 // Function to filter and suggest matching cities
 function suggestCity() {
-    const selectedState = document.getElementById('state').value;
-    const input = document.getElementById('city').value;
+    const selectedState = document.getElementById('rj-state').value;
+    const input = document.getElementById('rj-city').value;
     const suggestionsDiv = document.getElementById('city-suggestions');
     suggestionsDiv.innerHTML = '';
 
@@ -2209,22 +2206,19 @@ function suggestCity() {
                 const suggestionDiv = document.createElement('div');
                 suggestionDiv.textContent = result;
                 suggestionDiv.addEventListener('click', () => {
-                    document.getElementById('city').value = result;
+                    document.getElementById('rj-city').value = result;
                     suggestionsDiv.innerHTML = '';
                 });
                 suggestionsDiv.appendChild(suggestionDiv);
             });
-        } else {
-            const noMatchDiv = document.createElement('div');
-            noMatchDiv.textContent = 'No matching cities found.';
-            suggestionsDiv.appendChild(noMatchDiv);
         }
     }
 }
 
+// Expose functions to the global scope so they can be called from the HTML
 window.suggestState = suggestState;
 window.suggestCity = suggestCity;
-// Adding states and cities
+
 function stringsToDictionaryArray(inputStrings) {
     const dictionary = {};
   
