@@ -184,8 +184,8 @@ if PROD:
     CSRF_TRUSTED_ORIGINS = [
         'https://caportal.alcheringa.co.in', 'https://ambassador.alcheringa.co.in']
     # Make sure cookies are tied to your domain
-    SESSION_COOKIE_DOMAIN = ".alcheringa.co.in"
-    CSRF_COOKIE_DOMAIN = ".alcheringa.co.in"
+    SESSION_COOKIE_DOMAIN = "caportal.alcheringa.co.in"
+    CSRF_COOKIE_DOMAIN = "caportal.alcheringa.co.in"
 
     # Ensure cookies are only sent via HTTPS
     SESSION_COOKIE_SECURE = True
