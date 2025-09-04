@@ -80,7 +80,7 @@
   width: 10vw; 
   height: auto; 
   opacity: 1;
-  top: 26%;
+  top: 32%;
   right: 20.23%;
   z-index: 99;
 }
@@ -174,17 +174,45 @@
 }
 
 .video-container {
-  width: 100%;
+  width: 95%;
   max-width: 1289px;
-  aspect-ratio: 1289 / 768;
+  position: relative;
   border-radius: 24px;
   overflow: hidden; 
   margin-bottom: 40px; /* Add margin instead of margin-top */
 }
 
+.after-video-button {
+    position: absolute;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;
+    font-weight: 550;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    position: absolute;
+  top: 90%; /* Adjust as needed */
+  left: 20%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 12px 24px; /* Recommended for better spacing */
+  white-space: nowrap; /* Prevents text from breaking into two lines */
+
+  /* --- CHANGE --- */
+  margin-top: 0; /* Remove or set to 0 */
+
+  /* --- Your existing styles below --- */
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
 .video-container .youtube {
   width: 100%;
   height: 100%;
+  border-radius: 24px;
   border: 0;
 }
 
@@ -235,7 +263,8 @@
   }
 
   .spark1 {
-    top: 12%;
+    top: 8%;
+
   }
   .spark2 {
     top: 32%;
@@ -246,6 +275,7 @@
   }
   .spark4 {
     top: 13%;
+    right:10%;
     width: 3vw;
   }
 
@@ -280,7 +310,7 @@
   }
   
   .video-container {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   .alcherTxt {
@@ -295,3 +325,22 @@
     padding-top: 100px;
   }
 }
+@media (max-width: 768px) {
+  
+  .after-video-button {
+    /* 1. Change positioning to put it back in the normal flow */
+    position: relative; 
+    
+    /* 2. Reset the properties used for overlapping */
+    top: auto;
+    left: auto;
+    transform: none;
+    color: black;
+    border-color: black;
+    font-size: 0.7rem;
+    /* 3. Style it for its new position below the video */
+    display: block; /* Makes it take up its own line */
+    width: 90%;     /* Adjust width as needed */
+    margin: 1rem auto 0 auto; /* Adds space on top and centers it */
+    text-align: center;
+  }
