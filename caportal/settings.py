@@ -183,3 +183,16 @@ SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
 if PROD:
     CSRF_TRUSTED_ORIGINS = [
         'https://caportal.alcheringa.co.in', 'https://ambassador.alcheringa.co.in']
+    # Make sure cookies are tied to your domain
+    SESSION_COOKIE_DOMAIN = ".alcheringa.co.in"
+    CSRF_COOKIE_DOMAIN = ".alcheringa.co.in"
+
+    # Ensure cookies are only sent via HTTPS
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    # Prevent JavaScript access to session cookies
+    SESSION_COOKIE_HTTPONLY = True
+
+    # Redirect after logout to landing page
+    LOGOUT_REDIRECT_URL = "/"
