@@ -8,9 +8,8 @@ class StaticViewSitemap(Sitemap):
     def items(self):
         return [
             'dashboard_page', 'register_single', 'register_group', 'login', 'profile', 'scoring',
-            'guidelines', 'successfull', # Add all named URLs you want indexed
-            # add more if needed
+            'guidelines', 'successfull',
         ]
 
-    def location(self, item):
-        return reverse(item)
+    def location(self, obj):
+        return reverse(obj)
