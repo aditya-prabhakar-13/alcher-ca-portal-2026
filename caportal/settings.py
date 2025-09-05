@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'rest_framework',
     'minio_storage',
+    'import_export',
     'crispy_bootstrap4'
 ]
 
@@ -221,7 +222,7 @@ else:
     # Development settings
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
-    
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
