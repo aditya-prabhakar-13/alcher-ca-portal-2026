@@ -188,22 +188,40 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
 
 if PROD:
+    # CSRF and CORS settings
     CSRF_TRUSTED_ORIGINS = [
-        'https://caportal.alcheringa.co.in', 'https://ambassador.alcheringa.co.in']
-    # Make sure cookies are tied to your domain
-    SESSION_COOKIE_DOMAIN = "caportal.alcheringa.co.in"
-    CSRF_COOKIE_DOMAIN = "caportal.alcheringa.co.in"
-
-    # Ensure cookies are only sent via HTTPS
+        'https://caportal.alcheringa.co.in', 
+        'https://ambassador.alcheringa.co.in'
+    ]
+    
+    # Cookie domain settings - use the root domain without subdomain
+    # This allows cookies to work across subdomains
+    SESSION_COOKIE_DOMAIN = ".alcheringa.co.in"  # Note the leading dot
+    CSRF_COOKIE_DOMAIN = ".alcheringa.co.in"
+    
+    # Security settings for HTTPS
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-
-    # Prevent JavaScript access to session cookies
     SESSION_COOKIE_HTTPONLY = True
-
-    # Redirect after logout to landing page
+    
+    # Session settings
+    SESSION_COOKIE_AGE = 3600  # 1 hour
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+    SESSION_SAVE_EVERY_REQUEST = False
+    
+    # Logout redirect
     LOGOUT_REDIRECT_URL = "/"
-
+    LOGIN_REDIRECT_URL = "/"
+    
+    # Additional security headers
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    
+else:
+    # Development settings
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

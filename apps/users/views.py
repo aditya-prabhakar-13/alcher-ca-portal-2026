@@ -17,13 +17,14 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
 from django.db.models.query_utils import Q
 from .models import UserSingle
 from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
+from django.views.decorators.cache import never_cache
 User = get_user_model()
 
 
@@ -472,9 +473,8 @@ def handleCSV(request):
 def cadetails(request):
     users=NewUser.objects.all().order_by("date_joined")
     return render(request=request,template_name="users/user_details.html",context={"users":users})
-class CustomLogoutView(LogoutView):
-    def dispatch(self, request, *args, **kwargs):
-        # allow GET requests
-        return super().dispatch(request, *args, **kwargs)
 
-    http_method_names = ['get', 'post', 'head', 'options']
+@never_cache
+def logout_view(request):
+    logout(request)
+    return redirect('/')
