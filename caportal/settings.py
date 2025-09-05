@@ -197,3 +197,19 @@ if PROD:
 
     # Redirect after logout to landing page
     LOGOUT_REDIRECT_URL = "/"
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',  # or 'INFO'
+            'propagate': True,
+        },
+    },
+}
