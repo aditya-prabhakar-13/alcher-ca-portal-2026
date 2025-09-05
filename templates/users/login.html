@@ -136,7 +136,7 @@
 				<a href="{% url 'password_reset'%}">Forgot password?</a>
 			</div>
 			<div class="form-element">
-				<button type="submit">Login</button>
+				<button onclick="gtag('event', 'click', {'event_category': 'Button','event_label': 'Register Button'});" type="submit">Login</button>
 			</div>
 			<div class="form-element">
 				<p>Don't have an account yet?<a href="{% url 'register_single' %}">Register Now</a></p>
