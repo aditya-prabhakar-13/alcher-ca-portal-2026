@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-PROD = os.environ.get('prod')
+PROD = os.environ.get('prod', 'false').lower() == 'true'
 if PROD:
     SECRET_KEY = PROD
 else:
@@ -168,6 +168,7 @@ MEDIA_URL = '/media/'
 
 # Minio Storage
 if PROD:
+    
     DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
     STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
     MINIO_STORAGE_ENDPOINT = os.environ.get('minio_endpoint')
@@ -178,9 +179,14 @@ if PROD:
     MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
     MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherca26static'
     MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
+    print(f"PROD is True")
+    print(f"MINIO_STORAGE_ENDPOINT: {MINIO_STORAGE_ENDPOINT}")
+    print(f"MINIO_STORAGE_ACCESS_KEY: {MINIO_STORAGE_ACCESS_KEY}")
+    print(f"MINIO_STORAGE_SECRET_KEY: {MINIO_STORAGE_SECRET_KEY}")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
+
 if PROD:
     CSRF_TRUSTED_ORIGINS = [
         'https://caportal.alcheringa.co.in', 'https://ambassador.alcheringa.co.in']
