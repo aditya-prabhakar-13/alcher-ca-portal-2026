@@ -186,9 +186,9 @@ console.log("Counts found:", document.querySelectorAll(".counts").length);
     },
     {
       id: "trichy-marker",
-      name: "Trichy",
-      x: 250,
-      y: 600,
+      name: "Tiruchirappalli",
+      x: 245,
+      y: 610,
       colleges: 5,
       ambassadors: 15,
     },
@@ -251,8 +251,8 @@ console.log("Counts found:", document.querySelectorAll(".counts").length);
     {
       id: "nagpur-marker",
       name: "Nagpur",
-      x: 260,
-      y: 415,
+      x: 257,
+      y: 405,
       colleges: 14,
       ambassadors: 33,
     },
