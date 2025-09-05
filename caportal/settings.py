@@ -200,6 +200,7 @@ if PROD:
 
 LOGGING = {
     'version': 1,
+    'disable_existing_loggers': False,
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
@@ -208,8 +209,19 @@ LOGGING = {
     'loggers': {
         'django.request': {
             'handlers': ['console'],
-            'level': 'DEBUG',  # or 'INFO'
+            'level': 'DEBUG',
             'propagate': True,
+        },
+        'minio_storage': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        # Optionally add the root logger to catch unhandled logs
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
         },
     },
 }
+

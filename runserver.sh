@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Collect static files and upload to MinIO
-python manage.py collectstatic --no-input --clear --verbosity 2
+python manage.py collectstatic --no-input --clear --verbosity 3
 
 # Make and apply migrations
 python manage.py makemigrations
