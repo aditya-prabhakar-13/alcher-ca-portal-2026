@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # SECURITY WARNING: keep the secret key used in production secret!
 PROD = os.environ.get('prod', 'false').lower() == 'true'
 if PROD:
-    SECRET_KEY = PROD
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 else:
     SECRET_KEY = 'django-insecure-fuv21z*#t8sh)%!!!^-aso7lx+3nv1*fo8(pr(j5-5+0xd2hv9'
 
