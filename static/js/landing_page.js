@@ -272,6 +272,46 @@ console.log("Counts found:", document.querySelectorAll(".counts").length);
       colleges: 22,
       ambassadors: 55,
     },
+    {
+      id: "agartala-marker",
+      name: "Agartala",
+      x: 485,
+      y: 341,
+      colleges: 14,
+      ambassadors: 33,
+    },
+    {
+      id: "silchar-marker",
+      name: "Silchar",
+      x: 513,
+      y: 320,
+      colleges: 16,
+      ambassadors: 30,
+    },
+    {
+      id: "aizawl-marker",
+      name: "Aizawl",
+      x: 513,
+      y: 345,
+      colleges: 16,
+      ambassadors: 30,
+    },
+    {
+      id: "gangtok-marker",
+      name: "Gangtok",
+      x: 435,
+      y: 258,
+      colleges: 22,
+      ambassadors: 55,
+    },
+    {
+      id: "hyderabad-marker",
+      name: "Hyderabad",
+      x: 243,
+      y: 471,
+      colleges: 6,
+      ambassadors: 15,
+    },
   ];
 
   // Check if the device supports touch events
