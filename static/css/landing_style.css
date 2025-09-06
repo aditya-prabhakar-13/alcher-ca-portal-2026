@@ -85,30 +85,42 @@ nav {
   padding: 0;
   font-family: "GeneralSans", sans-serif;
 }
-
 nav.scrolled {
   border-bottom: 1px solid #C8C8C8;
   backdrop-filter: blur(8px);
   background-color: #F8F1E7;
   z-index: 100;
+  width: 100%;
+  display: flex;                 /* make nav a flex container */
+  align-items: center;           /* vertically center */
+  justify-content: space-between;/* spread logo and links */
+  padding: 12px 5%;
+  box-sizing: border-box;
 }
 
 nav img {
   width: 209px;
+  flex-shrink: 0;                /* logo won’t shrink */
 }
 
 .nav-links {
   flex: 1;
-  text-align: right;
-  padding-right: 13%;
+  display: flex;                 /* make links flex */
+  justify-content: flex-end;     /* push links to the right */
+  align-items: center;
+}
+
+.nav-links ul {
+  display: flex;                 /* align list items in one line */
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;             /* prevent wrapping */
 }
 
 .nav-links ul li {
   list-style: none;
-  display: inline-block;
-  padding: 8px 28px;
-  position: relative;
-  cursor: pointer;
+  margin: 0 12px;                /* spacing between links */
+  white-space: nowrap;           /* stop text from breaking */
 }
 
 .nav-links ul li a {
@@ -117,38 +129,9 @@ nav img {
   font-weight: 500;
 }
 
-#navlink5 {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.jointeamm {
-  font-family: "GeneralSans";
-  color: black;
-  font-weight: 300;
-}
-
-#navlink5:hover {
-  color: #109cf1;
-  transition: 0.5s;
-}
-
-#navlink1.scroll,
-#navlink2.scroll,
-#navlink3.scroll,
-#navlink4.scroll,
-#navlink5.scroll {
-  color: #334d6e;
-}
-
-.nav-links ul li a:hover,
-#navlink1.scroll:hover,
-#navlink2.scroll:hover,
-#navlink3.scroll:hover,
-#navlink4.scroll:hover,
-#navlink5.scroll:hover {
-  color: #109cf1;
-  transition: 0.5s;
+.join-now-btn {
+  margin-left: 20px;             /* spacing from nav links */
+  flex-shrink: 0;
 }
 
 #join-button {
@@ -962,6 +945,7 @@ nav img {
   color: #ffffff !important;
   position: relative;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .hero-btn:hover {
@@ -1211,6 +1195,7 @@ opacity: 1;
     color: #000000;
     position: relative;
     cursor: pointer;
+    white-space: nowrap;
   }
 
   html,
