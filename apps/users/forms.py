@@ -26,9 +26,9 @@ class SingleUserRegisterForm(UserCreationForm):
         label="Full Name", widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College Name*'}), required=True)
     
     password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'input_field', 'placeholder': 'Set Password*'}), required=True)
+        widget=forms.PasswordInput(attrs={'class': 'input_field', 'placeholder': 'Set Password*', 'title': 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'}), required=True)
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'input_field', 'placeholder': 'Confirm Password*'}), required=True)
+        widget=forms.PasswordInput(attrs={'class': 'input_field', 'placeholder': 'Confirm Password*', 'title': 'Must match the password above' }), required=True)
 
     def clean(self):
         cleaned_data = super(SingleUserRegisterForm, self).clean()
