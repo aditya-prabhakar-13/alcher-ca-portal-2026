@@ -4,45 +4,123 @@ from django import forms
 from .models import Profile, UserGroup, NewUser
 from django.contrib.auth import get_user_model
 from phonenumber_field.formfields import PhoneNumberField
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+
 User = get_user_model()
 
 class SingleUserRegisterForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.TextInput(
-        attrs={'class': 'input_field', 'placeholder': 'Enter Email*'}), required=True)
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'class': 'input_field',
+            'placeholder': 'Enter Email*',
+            'title': 'Enter a valid email address'
+        })
+    )
+
     firstname = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'Enter Full Name*'}), required=True)
-    referred_by = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'input_field', 'placeholder': 'Enter referral id'}))
-    phone = forms.CharField(widget=forms.TextInput(attrs={
-                             'class': 'input_field', 'placeholder': 'Enter Phone Number*'}), label="PhoneNumber", required=True)
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'input_field',
+            'placeholder': 'Enter Full Name*',
+            'pattern': '^[A-Za-z ]+$',
+            'title': 'Full name can only contain letters and spaces'
+        })
+    )
 
-    graduation_year = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'Graduation Year*'}), required=True)
+    referred_by = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'input_field',
+            'placeholder': 'Enter referral id'
+        })
+    )
+
+    phone = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'input_field',
+            'type': 'tel',
+            'pattern': '^[0-9]{10}$',
+            'title': 'Enter a valid 10-digit phone number',
+            'placeholder': 'Enter Phone Number*'
+        })
+    )
+
+    graduation_year = forms.IntegerField(
+        required=True,
+        widget=forms.NumberInput(attrs={
+            'class': 'input_field',
+            'min': '2025',
+            'max': '2035',
+            'title': 'Enter a graduation year between 2025 and 2035',
+            'placeholder': 'Graduation Year*'
+        })
+    )
+
     college_city = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College City*'}), required=True)
-    college_state = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College State*'}), required=True)
-    college_name = forms.CharField(
-        label="Full Name", widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College Name*'}), required=True)
-    
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'input_field', 'placeholder': 'Set Password*', 'title': 'Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'}), required=True)
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'input_field', 'placeholder': 'Confirm Password*', 'title': 'Must match the password above' }), required=True)
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College City*'})
+    )
 
-    def clean(self):
-        cleaned_data = super(SingleUserRegisterForm, self).clean()
-        referred_by = cleaned_data.get("referred_by")
-        if referred_by:
-            user = NewUser.objects.filter(alcherid=referred_by)
-            if not user:
-                raise forms.ValidationError("Referral ID is invalid")
-        return self.cleaned_data
+    college_state = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College State*'})
+    )
+
+    college_name = forms.CharField(
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'input_field', 'placeholder': 'College Name*'})
+    )
+
+    password1 = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(attrs={
+            'class': 'input_field',
+            'placeholder': 'Set Password*',
+            'pattern': '(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}',
+            'title': 'Must contain at least one number, one uppercase and lowercase letter, one special character, and at least 8 characters long.'
+    })
+)
+
+    password2 = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(attrs={
+            'class': 'input_field',
+            'placeholder': 'Confirm Password*',
+            'title': 'Must match the password above'
+        })
+    )
 
     class Meta:
         model = User
         fields = ['firstname', 'email', 'phone', 'graduation_year', 'college_state', 'college_city',
-                  'college_name', 'referred_by']
+                  'college_name', 'referred_by', 'password1', 'password2']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+        referred_by = cleaned_data.get("referred_by")
+
+        # Password match check
+        if password1 and password2 and password1 != password2:
+            self.add_error('password2', "Passwords do not match")
+
+        # Password strength check
+        if password1:
+            try:
+                validate_password(password1)
+            except ValidationError as e:
+                self.add_error('password1', e)
+
+        # Referral check
+        if referred_by:
+            if not NewUser.objects.filter(alcherid=referred_by).exists():
+                self.add_error('referred_by', "Referral ID is invalid")
+
+        return cleaned_data
 
 
 class GroupUserRegisterFormForSingle(forms.ModelForm):

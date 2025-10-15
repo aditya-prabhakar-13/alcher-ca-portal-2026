@@ -150,9 +150,25 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
               Field marked<span style="color:red"> * </span>are mandatory
           </h6>
 
+          <ul class="errorlist">
+								{% if single_user_register_form.non_field_errors %}
+								<li>{{ single_user_register_form.non_field_errors }}</li>
+									{% endif %}
+									{% for field in single_user_register_form %}
+								  {% if field.errors %}
+								<ul class="errorlist">
+									{% for error in field.errors %}
+									{{ error }}
+									{% endfor %}
+								</ul>
+								{% endif %}
+								{% endfor %}
+					</ul>
+
           {{ single_user_register_form.firstname }}
           {{ single_user_register_form.phone }}
           {{ single_user_register_form.email }}
+          
           {{ single_user_register_form.password1 }}
           {{ single_user_register_form.password2 }}
 
@@ -167,7 +183,7 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
       <!-- Keep image as before -->
       <div class="img-div" style="width: 100%;">
           <img src="{% static 'images/register_group.png' %}" alt=""
-               style="position:absolute; background: none; width: 45%; bottom:30%; left:120%;">
+               style="position:absolute; background: none; width: 70%; bottom:25%; left:98%;">
       </div>
   </div>
 
@@ -263,19 +279,41 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
 
     const rjBottomConnect1 = document.getElementById("bottom-connect1");
     const rjBottomConnect2 = document.getElementById("bottom-connect2");
+    const password1 = document.getElementById('id_password1');
+    const password2 = document.getElementById('id_password2');
+
+    password2.addEventListener('input', () => {
+      if (password1.value === password2.value) {
+          password2.setCustomValidity('');
+      } else {
+          password2.setCustomValidity('Passwords do not match');
+      }
+    });
+
 
     rjNextButton.addEventListener("click", () => {
-        // validate only the visible inputs in Step 1
         const step1Inputs = rjFormFirst.querySelectorAll("input, select, textarea");
         let step1Valid = true;
 
+        // Clear previous custom validity messages
+        password2.setCustomValidity("");
+
+        // Validate all inputs on Step 1
         step1Inputs.forEach(input => {
             if (!input.checkValidity()) {
                 step1Valid = false;
-                input.reportValidity();  // show validation message
+                input.reportValidity();
             }
         });
 
+        // Check if passwords match
+        if (password1.value !== password2.value) {
+            password2.setCustomValidity("Passwords do not match");
+            step1Valid = false;
+            password2.reportValidity();
+        }
+
+        // Proceed only if everything is valid
         if (step1Valid) {
             rjFormFirst.style.display = 'none';
             rjFormSecond.style.display = 'block';
@@ -283,6 +321,8 @@ rel="stylesheet" href={% static "css/autoFill.css" %}>
             rjBottomConnect2.style.display = 'block';
         }
     });
+
+
 
     rjBackButton.addEventListener("click", () => {
         rjFormSecond.style.display = 'none';
