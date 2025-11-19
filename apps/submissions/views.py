@@ -26,15 +26,15 @@ def sendNotification(type):
     email_template_name = "submissions/notification_mail.html"
     poc = {
         'type': "POC",
-        'link': 'https://ambassador.alcheringa.in/admin/submissions/poc/'
+        'link': 'https://caportal.alcheringa.co.in/admin/submissions/poc/'
     }
     pocbulk = {
         'type': "POC",
-        'link': 'https://ambassador.alcheringa.in/admin/submissions/pocbulk/'
+        'link': 'https://caportal.alcheringa.co.in/admin/submissions/pocbulk/'
     }
     idea = {
         'type': "idea",
-        'link': 'https://ambassador.alcheringa.in/admin/submissions/idea/'
+        'link': 'https://caportal.alcheringa.co.in/admin/submissions/idea/'
     }
     if(type==1):
         email = render_to_string(email_template_name, poc)
@@ -48,8 +48,8 @@ def sendNotification(type):
             body="mail testing",
             from_email='Alcheringa Campus Ambassador',
             to=["commonwebops@gmail.com",
-                "sudhanshu@alcheringa.in", 
-                "siddharth@alcheringa.in",
+                "shashank.d@alcheringa.co.in", 
+                "khushi.g@alcheringa.co.i",
             ]
         )
         message.attach_alternative(email, "text/html")
