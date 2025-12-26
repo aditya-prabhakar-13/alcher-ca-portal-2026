@@ -49,7 +49,7 @@ def sendNotification(type):
             from_email='Alcheringa Campus Ambassador',
             to=["commonwebops@gmail.com",
                 "shashank.d@alcheringa.co.in", 
-                "khushi.g@alcheringa.co.i",
+                "khushi.g@alcheringa.co.in",
             ]
         )
         message.attach_alternative(email, "text/html")
