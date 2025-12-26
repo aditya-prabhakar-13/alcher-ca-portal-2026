@@ -564,10 +564,11 @@
 .sponsorHeading {
   font-family: 'VastagoGrotesk', sans-serif;
   font-size: 48px;
-  font-weight: 800;
+  font-weight: 900;
   color: #2c2c2c;
   text-align: center;
   margin: 0;
+  margin-top: 2rem;
   letter-spacing: 2px;
 }
 
@@ -587,6 +588,11 @@
   opacity: 4;
   object-fit: contain;
   border-radius: 12px;
+}
+
+.sponsorSubheading{
+  margin-top: -2rem;
+  font-size: 1.5rem;
 }
 
 /* RESPONSIVE SPONSOR SECTION */
@@ -617,5 +623,10 @@
 
   .sponsorImg {
     border-radius: 8px;
+  }
+
+  .sponsorSubheading{
+    margin-top: -1.5rem;
+    font-size: 1rem;
   }
 }
