@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import requests
 
+from django.contrib.auth.views import LogoutView
 from dashboard.models import Notifications
 from .forms import SingleUserRegisterForm, GroupUserRegisterForm, GroupUserRegisterFormForSingle, UserUpdateForm
 from django.contrib.auth import authenticate, login
@@ -16,13 +17,14 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
 from django.db.models.query_utils import Q
 from .models import UserSingle
 from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
+from django.views.decorators.cache import never_cache
 User = get_user_model()
 
 
@@ -93,8 +95,8 @@ def register_group_user(request):
                     'college_city')
                 single_form_1_result.college_name = request.POST.get(
                     'college_name')
-                single_form_1_result.referred_by = request.POST.get(
-                    'referred_by')
+                # single_form_1_result.referred_by = request.POST.get(
+                #     'referred_by')
                 if request.POST.get('password1')!=request.POST.get('password2'):
                     messages.warning(request,"Passwords do not Match")
                     return redirect('register_group')
@@ -111,8 +113,8 @@ def register_group_user(request):
                     'college_city')
                 single_form_2_result.college_name = request.POST.get(
                     'college_name')
-                single_form_2_result.referred_by = request.POST.get(
-                    'referred_by')
+                # single_form_2_result.referred_by = request.POST.get(
+                #     'referred_by')
                 if request.POST.get('password1')!=request.POST.get('password2'):
                     messages.warning(request,"Passwords do not Match")
                     return redirect('register_group')
@@ -124,6 +126,8 @@ def register_group_user(request):
 
                 group_form_result = group_user_form.save(commit=False)
                 
+                single_form_1_result.referred_by = request.POST.get('referred_by', None)
+                single_form_2_result.referred_by = request.POST.get('referred_by', None)
 
                 if(request.POST.get('referred_by')):
                     alcherid=request.POST.get('referred_by')
@@ -471,3 +475,8 @@ def handleCSV(request):
 def cadetails(request):
     users=NewUser.objects.all().order_by("date_joined")
     return render(request=request,template_name="users/user_details.html",context={"users":users})
+
+@never_cache
+def logout_view(request):
+    logout(request)
+    return redirect('/')

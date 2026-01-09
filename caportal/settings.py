@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
-import os,sys
+import os
+import sys
 from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,9 +23,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-PROD =os.environ.get('prod')
+PROD = os.environ.get('prod', 'false').lower() == 'true'
 if PROD:
-    SECRET_KEY =PROD
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 else:
     SECRET_KEY = 'django-insecure-fuv21z*#t8sh)%!!!^-aso7lx+3nv1*fo8(pr(j5-5+0xd2hv9'
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'apps.users',
     'apps.api',
     'apps.dashboard',
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'rest_framework',
     'minio_storage',
+    'import_export',
     'crispy_bootstrap4'
 ]
 
@@ -98,14 +101,7 @@ if not PROD:
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('db_name'),
-            'USER': os.environ.get('db_user'),
-            'PASSWORD': os.environ.get('db_password'),
-            'HOST': os.environ.get('db_host'),
-            'PORT': os.environ.get('db_port')
-        }
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=False)
     }
 
 # Setup Messages
@@ -148,21 +144,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-DJANGO_SUPERUSER_PASSWORD=os.environ.get('password')
-DJANGO_SUPERUSER_USERNAME=os.environ.get('username')
-DJANGO_SUPERUSER_EMAIL=os.environ.get('email')
-
-
 LOGOUT_REDIRECT_URL = 'dashboard_page'
+LOGIN_URL = '/users/login/'
 # Setup Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 # Setup Static
-STATIC_URL = 'static/'
+
+# Added / in static
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -175,18 +169,84 @@ MEDIA_URL = '/media/'
 
 # Minio Storage
 if PROD:
+    
     DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
     STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
-    MINIO_STORAGE_ENDPOINT = 'minio-api.alcheringa.in'
-    MINIO_STORAGE_ACCESS_KEY = 'akshat2403'
-    MINIO_STORAGE_SECRET_KEY = 'akshat2403'
+    MINIO_STORAGE_ENDPOINT = os.environ.get('minio_endpoint')
+    MINIO_STORAGE_ACCESS_KEY = os.environ.get('minio_access')
+    MINIO_STORAGE_SECRET_KEY = os.environ.get('minio_secret')
     MINIO_STORAGE_USE_HTTPS = True
-    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alchercamedia'
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'alcherca26media'
     MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
-    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alchercastatic'
+    MINIO_STORAGE_STATIC_BUCKET_NAME = 'alcherca26static'
     MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
+    print(f"PROD is True")
+    print(f"MINIO_STORAGE_ENDPOINT: {MINIO_STORAGE_ENDPOINT}")
+    print(f"MINIO_STORAGE_ACCESS_KEY: {MINIO_STORAGE_ACCESS_KEY}")
+    print(f"MINIO_STORAGE_SECRET_KEY: {MINIO_STORAGE_SECRET_KEY}")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
-if PROD: 
-    CSRF_TRUSTED_ORIGINS = ['https://testca.alcheringa.in','https://ambassador.alcheringa.in']
+
+if PROD:
+    # CSRF and CORS settings
+    CSRF_TRUSTED_ORIGINS = [
+        'https://caportal.alcheringa.co.in', 
+        'https://ambassador.alcheringa.co.in'
+    ]
+    
+    # Cookie domain settings - use the root domain without subdomain
+    # This allows cookies to work across subdomains
+    SESSION_COOKIE_DOMAIN = ".alcheringa.co.in"  # Note the leading dot
+    CSRF_COOKIE_DOMAIN = ".alcheringa.co.in"
+    
+    # Security settings for HTTPS
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    
+    # Session settings
+    SESSION_COOKIE_AGE = 3600  # 1 hour
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+    SESSION_SAVE_EVERY_REQUEST = False
+    
+    # Logout redirect
+    LOGOUT_REDIRECT_URL = "/"
+    LOGIN_REDIRECT_URL = "/"
+    
+    # Additional security headers
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    
+else:
+    # Development settings
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'minio_storage': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        # Optionally add the root logger to catch unhandled logs
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
+

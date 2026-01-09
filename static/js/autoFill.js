@@ -2221,6 +2221,9 @@ function suggestCity() {
         }
     }
 }
+
+window.suggestState = suggestState;
+window.suggestCity = suggestCity;
 // Adding states and cities
 function stringsToDictionaryArray(inputStrings) {
     const dictionary = {};

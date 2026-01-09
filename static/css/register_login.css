@@ -1,63 +1,47 @@
+/* Fonts */
 @font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Extralight.ttf) format("truetype");
-  font-weight: 200;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Light.ttf) format("truetype");
-  font-weight: 300;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Regular.ttf) format("truetype");
+  font-family: "Poppins";
+  src: url(../Fonts/Poppins-Regular.ttf) format("truetype");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Medium.ttf) format("truetype");
-  font-weight: 500;
-  font-display: swap;
-  font-style: normal;
-}
-@font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Semibold.ttf) format("truetype");
+  font-family: "Poppins";
+  src: url(../Fonts/Poppins-Bold.ttf) format("truetype");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
-  font-family: "GeneralSans";
-  src: url(../Fonts/GeneralSans-Bold.ttf) format("truetype");
-  font-weight: 700;
+  font-family: "Poppins";
+  src: url(../Fonts/Poppins-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url(../Fonts/Poppins-SemiBold.ttf) format("truetype");
+  font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 
 * {
-  font-family: "GeneralSans";
+  font-family: "Poppins";
   margin: 0%;
+  background-color: #f8f1e7;
 }
+
 input:focus,
 input.form-control:focus {
   outline: none !important;
 }
+
 body {
   overflow-x: hidden;
+  background-color: #f8f1e7;
 }
 
 .form-wapper h2 {
@@ -71,11 +55,83 @@ body {
 
 .cform {
   overflow: hidden;
-  border: grey;
-  border-radius: 6px;
+  border: solid;
+  border-color: #009E77;
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-right-width: 6px;
+  border-bottom-width: 6px;
   box-shadow: rgba(84, 84, 84, 0.19) 0px 10px 20px,
     rgba(84, 84, 84, 0.19) 0px 6px 6px;
-  padding: 1.5vh 2vh;
+  padding: 1.5vh 6vh;
+}
+
+.join a {
+  border: solid black 1px;
+  border-radius: 4px;
+  padding: 4px 38px;
+}
+
+.guidelines {
+  border: solid 1px;
+  border-color: #C2CFE0;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.rj-guideline-text {
+    /* Initially hide the text using max-height for a smooth transition */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.rj-show {
+    /* This class will be toggled by JavaScript to show the text */
+    max-height: 500px; /* A large enough value to accommodate the content */
+}
+
+.rj-key-icon {
+    /* Set the initial rotation for the arrow to point right */
+    transform: rotate(0deg);
+    transition: transform 0.3s ease; /* Add a smooth rotation transition */
+    cursor: pointer;
+}
+
+.main {
+  position:relative;
+  display: flex;
+  flex-direction : column;
+  align-items: flex-start;
+}
+
+
+form {
+  width: 60%;
+}
+
+label.required::after {
+    content: " *";
+    color: red;
+}
+
+#form1 {
+  padding: 2rem;
+}
+
+.img-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;    
+    min-width: 200px;         
+}
+
+.img-div img {
+    display: block;  
+    max-width: 90%;          
+    height: auto;
 }
 
 input,
@@ -83,25 +139,10 @@ select {
   margin: 6px 0;
 }
 
-
-.img-div img {
-  width: 100%;
-  margin-top: 2rem;
-}
-
-.btn-outline-primary {
-  border: none !important;
-  width: auto !important;
-}
-
 .placeholder {
   color: white;
   position: relative;
   top: -30px;
-}
-
-.sub-btn {
-  margin-bottom: 6px;
 }
 
 h8 {
@@ -114,14 +155,13 @@ h8 {
   border-top: none;
   border-left: none;
   border-right: none;
-  /* border-bottom: 2px solid rgb(180 180 180); */
   width: 100%;
   margin-bottom: 25px;
+  background-color: #f8f1e7;;
 }
 
 .input_field:focus {
   outline: none;
-  /* border-bottom: 2px solid black; */
 }
 
 .register-top {
@@ -247,12 +287,14 @@ h8 {
   border: 0;
   padding: 0 0 0.4vh 0.8vh;
   width: 40vh;
+  background-color: #f8f1e7;;
 }
 
 #city {
   border: 0;
   padding: 0 0 0.4vh 0.8vh;
   width: 40vh;
+  background-color: #f8f1e7;;
 }
 
 .StateAndCity {
@@ -260,6 +302,7 @@ h8 {
   justify-content: space-between;
   margin-bottom: 2vh;
   gap: 1vw;
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 800px) {

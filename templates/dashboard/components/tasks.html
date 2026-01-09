@@ -12,16 +12,16 @@
         box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
     }
     .bg-pur{
-        background-color: #B542FB;
+        background-color: #009E77;
     }
     .bg-pur:hover{
-        background-color: #a715ff;
+        background-color: #009E77;
     }
     .points{
-        color: red;
+        color: #0A7116;
         border-radius: 3px;
         padding: 3px;
-        background-color: #FFF3F2;
+        background-color: #D4F1C0;
     }
     @media screen and (min-width: 640px) {
         .taskss{
@@ -30,13 +30,13 @@
     }
 </style>
 <div class="bg-white rounded-md shadow-xd pb-1 w-full taskss gen">
-    <div class="py-3 pl-6 font-medium text-lg border-b" style="font-size: 1.2rem;font-weight: 750;">Tasks</div>
+    <div class="py-3 pl-6 font-medium text-lg border-b" style="font-size: 1.2rem;font-weight: 600; border-bottom:1px solid #959595;">Pending Tasks</div>
 
     {% for quiz in quizzes %}
-    <div class="task rounded-md shadow-xd flex justify-between">
+    <div class="task rounded-md flex justify-between" style="border:1px solid #95959580;">
         <div style="text-align:left">
             <div class=" mb-2">
-                <span class="font-bold text-xl">{{ quiz.name }}</span>
+                <span class="font-bold text-xl" style="font-weight:500">{{ quiz.name }}</span>
                 <span class=" bg-green-50 text-green-400 font-medium text-lg mx-1 px-2 mb-2 points">500
                     points</span>
             </div>
@@ -53,8 +53,7 @@
             {% if submitted %}
             <a href="{% url 'quiz' quiz.id %}">
                 <button
-                    class=" bg-pur text-white inline-block py-2 px-4 rounded shadow-sm font-semibold text-base"
-                    disabled style="background-color:rgb(181, 208, 246) ;">
+                    class=" bg-pur text-white inline-block py-2 px-4 rounded shadow-sm font-semibold text-base">
                     Start
                 </button></a>
             {% else %}
@@ -68,10 +67,10 @@
     </div>
     {% endfor %}
 
-    <div class="task rounded-md shadow-xd flex justify-between">
+    <div class="task rounded-md flex justify-between" style="border:1px solid #95959580;">
         <div style="text-align:left">
             <div class=" mb-2">
-                <span class="font-medium text-xl" style="font-weight: 750;font-size: 1.3rem;">Submit POC</span>
+                <span class="font-medium text-xl" style="font-weight: 500;font-size: 1.3rem;">Submit POC</span>
                 <span class="font-medium text-lg mx-1 px-2 mb-2 points">250
                     points</span>
             </div>
@@ -94,9 +93,9 @@
                 </button></a>
         </div>
     </div>
-    <div class="task rounded-md shadow-xd flex justify-between">
+    <div class="task rounded-md flex justify-between" style="border:1px solid #95959580;">
         <div style="text-align:left">
-            <span class="font-medium text-xl mb-2" style="font-weight: 750;font-size: 1.3rem;">Submit Idea</span>
+            <span class="font-medium text-xl mb-2" style="font-weight: 500;font-size: 1.3rem;">Submit Idea</span>
             <span class=" font-medium text-lg mx-1 px-2 mb-2 points">200
                 points</span>
             <p class=" text-justify mr-4">

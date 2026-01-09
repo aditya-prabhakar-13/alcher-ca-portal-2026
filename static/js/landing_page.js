@@ -1,102 +1,121 @@
-console.log("raj script is running");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("raj script is running");
 
-const rightbox1btns = document.querySelectorAll(".rightbox1btn");
-const teamList = document.querySelector(".Team");
-const soloList = document.querySelector(".solo");
+  const rightbox1btns = document.querySelectorAll(".rightbox1btn");
+  const teamList = document.querySelector(".Team");
+  const soloList = document.querySelector(".solo");
 
-rightbox1btns.forEach((button) => {
-  button.addEventListener("click", () => {
-    rightbox1btns.forEach((btn) => btn.classList.remove("act"));
-    button.classList.add("act");
+  rightbox1btns.forEach((button) => {
+    button.addEventListener("click", () => {
+      rightbox1btns.forEach((btn) => btn.classList.remove("act"));
+      button.classList.add("act");
 
-    if (button.textContent.includes("Team")) {
-      teamList.style.display = "block";
-      soloList.style.display = "none";
-    } else {
-      teamList.style.display = "none";
-      soloList.style.display = "block";
-    }
-  });
-});
-
-document.querySelectorAll(".steps .less").forEach((downArrow) => {
-  downArrow.addEventListener("click", () => {
-    const stepsDiv = downArrow.parentElement;
-    const moreArrow = stepsDiv.querySelector(".more");
-    const paragraph = stepsDiv.nextElementSibling;
-
-    // Show paragraph
-    paragraph.classList.add("show");
-
-    // Toggle arrow icons
-    downArrow.style.display = "none";
-    moreArrow.style.display = "inline";
-  });
-});
-
-document.querySelectorAll(".steps .more").forEach((upArrow) => {
-  upArrow.addEventListener("click", () => {
-    const stepsDiv = upArrow.parentElement;
-    const downArrow = stepsDiv.querySelector(".less");
-    const paragraph = stepsDiv.nextElementSibling;
-
-    // Hide paragraph
-    paragraph.classList.remove("show");
-
-    // Toggle arrow icons
-    upArrow.style.display = "none";
-    downArrow.style.display = "inline";
-  });
-});
-
-
-function animateCount(el, target, duration = 3000) {
-  const start = 0;
-  const startTime = performance.now();
-
-  function update(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1); // 0 to 1
-
-    const value = Math.floor(progress * target);
-    el.textContent = value + "+";
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      el.textContent = target + "+"; // ensure final value
-    }
-  }
-
-  requestAnimationFrame(update);
-}
-
-const observer = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const counts = entry.target.querySelectorAll(".counts");
-        counts.forEach((el) => {
-          const target = parseInt(el.dataset.target);
-          animateCount(el, target);
-        });
-
-        observer.unobserve(entry.target); // Only run once
+      if (button.textContent.includes("Team")) {
+        teamList.style.display = "block";
+        soloList.style.display = "none";
+      } else {
+        teamList.style.display = "none";
+        soloList.style.display = "block";
       }
     });
-  },
-  {
-    threshold: 0.5, // Trigger when 50% of the section is visible
-  }
-);
-
-document
-  .querySelectorAll("#stats-section, #achievements-section")
-  .forEach((section) => {
-    observer.observe(section);
   });
 
-document.addEventListener("DOMContentLoaded", () => {
+  console.log("Buttons found:", rightbox1btns.length);
+console.log("Less arrows found:", document.querySelectorAll(".steps .less").length);
+console.log("Counts found:", document.querySelectorAll(".counts").length);
+
+
+  document.querySelectorAll(".steps .step").forEach((downArrow) => {
+    downArrow.addEventListener("click", () => {
+      const stepsDiv = downArrow.parentElement;
+      const moreArrow = stepsDiv.querySelector(".step");
+      const paragraph = stepsDiv.nextElementSibling;
+
+      // Show paragraph
+      paragraph.classList.add("show");
+
+    });
+  });
+
+
+  document.querySelectorAll(".steps .less").forEach((downArrow) => {
+    downArrow.addEventListener("click", () => {
+      const stepsDiv = downArrow.parentElement;
+      const moreArrow = stepsDiv.querySelector(".more");
+      const paragraph = stepsDiv.nextElementSibling;
+
+      // Show paragraph
+      paragraph.classList.add("show");
+
+      // Toggle arrow icons
+      downArrow.style.display = "none";
+      moreArrow.style.display = "inline";
+    });
+  });
+
+  
+
+  document.querySelectorAll(".steps .more").forEach((upArrow) => {
+    upArrow.addEventListener("click", () => {
+      const stepsDiv = upArrow.parentElement;
+      const downArrow = stepsDiv.querySelector(".less");
+      const paragraph = stepsDiv.nextElementSibling;
+
+      // Hide paragraph
+      paragraph.classList.remove("show");
+
+      // Toggle arrow icons
+      upArrow.style.display = "none";
+      downArrow.style.display = "inline";
+    });
+  });
+
+  function animateCount(el, target, duration = 3000) {
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1); // 0 to 1
+
+      const value = Math.floor(progress * target);
+      el.textContent = value + "+";
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target + "+"; // ensure final value
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counts = entry.target.querySelectorAll(".counts");
+          counts.forEach((el) => {
+            const target = parseInt(el.dataset.target);
+            animateCount(el, target);
+          });
+
+          observer.unobserve(entry.target); // Only run once
+        }
+      });
+    },
+    {
+      threshold: 0.5, // Trigger when 50% of the section is visible
+    }
+  );
+
+  document
+    .querySelectorAll("#stats-section, #achievements-section")
+    .forEach((section) => {
+      observer.observe(section);
+    });
+
   const map = document.getElementById("india-map");
   const tooltip = document.getElementById("map-tooltip");
 
@@ -110,10 +129,66 @@ document.addEventListener("DOMContentLoaded", () => {
       ambassadors: 50,
     },
     {
+      id: "indore-marker",
+      name: "Indore",
+      x: 210,
+      y: 360,
+      colleges: 6,
+      ambassadors: 20,
+    },
+    {
+      id: "bangalore-marker",
+      name: "Bangalore",
+      x: 230,
+      y: 560,
+      colleges: 10,
+      ambassadors: 30,
+    },
+    {
+      id: "bhopal-marker",
+      name: "Bhopal",
+      x: 245,
+      y: 350,
+      colleges: 5,
+      ambassadors: 10,
+    },
+    {
+      id: "mumbai-marker",
+      name: "Mumbai",
+      x: 140,
+      y: 450,
+      colleges: 8,
+      ambassadors: 25,
+    },
+    {
+      id: "guwahati-marker",
+      name: "Guwahati",
+      x: 493,
+      y: 294,
+      colleges: 15, // Adjust as needed
+      ambassadors: 40, // Adjust as needed
+    },
+    {
+      id: "ahmedabad-marker", 
+      name: "Ahmedabad",
+      x: 128,
+      y: 358,
+      colleges: 6, // Adjust as needed
+      ambassadors: 20, // Adjust as needed
+    },
+    {
+      id: "pune-marker",
+      name: "Pune",
+      x: 165,
+      y: 460,
+      colleges: 6,
+      ambassadors: 15,
+    },
+    {
       id: "trichy-marker",
-      name: "Trichy",
-      x: 250,
-      y: 600,
+      name: "Tiruchirappalli",
+      x: 245,
+      y: 610,
       colleges: 5,
       ambassadors: 15,
     },
@@ -176,8 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "nagpur-marker",
       name: "Nagpur",
-      x: 260,
-      y: 415,
+      x: 257,
+      y: 405,
       colleges: 14,
       ambassadors: 33,
     },
@@ -197,6 +272,46 @@ document.addEventListener("DOMContentLoaded", () => {
       colleges: 22,
       ambassadors: 55,
     },
+    {
+      id: "agartala-marker",
+      name: "Agartala",
+      x: 485,
+      y: 341,
+      colleges: 14,
+      ambassadors: 33,
+    },
+    {
+      id: "silchar-marker",
+      name: "Silchar",
+      x: 513,
+      y: 320,
+      colleges: 16,
+      ambassadors: 30,
+    },
+    {
+      id: "aizawl-marker",
+      name: "Aizawl",
+      x: 513,
+      y: 345,
+      colleges: 16,
+      ambassadors: 30,
+    },
+    {
+      id: "gangtok-marker",
+      name: "Gangtok",
+      x: 435,
+      y: 258,
+      colleges: 22,
+      ambassadors: 55,
+    },
+    {
+      id: "hyderabad-marker",
+      name: "Hyderabad",
+      x: 243,
+      y: 471,
+      colleges: 6,
+      ambassadors: 15,
+    },
   ];
 
   // Check if the device supports touch events
@@ -204,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return "ontouchstart" in window || navigator.maxTouchPoints > 0;
   }
 
-        console.log(isTouchDevice());
+  console.log(isTouchDevice());
 
   function showTooltip(cityData, event) {
     const customMessage = `
@@ -234,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tooltip.classList.remove("visible");
     tooltip.classList.add("hidden");
   }
-   function handleDesktopMouseOver(event) {
+  function handleDesktopMouseOver(event) {
     const cityMarker = event.target.closest(".city-marker");
     if (!cityMarker) return;
     const cityId = cityMarker.getAttribute("data-city-id");
@@ -253,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cityId = cityMarker.getAttribute("data-city-id");
     const cityData = cities.find((city) => city.id === cityId);
     if (!cityData) return;
-    
+
     // Toggle tooltip visibility on click
     if (tooltip.classList.contains("visible")) {
       hideTooltip();
